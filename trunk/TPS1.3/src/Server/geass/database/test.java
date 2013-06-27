@@ -1,5 +1,6 @@
 package Server.geass.database;
 
+import Shared.geass.dataPOJO.City;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -7,36 +8,47 @@ import java.util.Date;
 import Shared.geass.dataPOJO.Plan;
 import Shared.geass.dataPOJO.User;
 import Shared.geass.message.request.plan.GetCityListRequest;
+import java.util.ArrayList;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Kite
- * Date: 13-4-10
- * Time: 上午1:15
- * To change this template use File | Settings | File Templates.
+ * Created with IntelliJ IDEA. User: Kite Date: 13-4-10 Time: 上午1:15 To change
+ * this template use File | Settings | File Templates.
  */
 public class test {
-    public static void main(String args[]){
 
-        User user = new User("d","d","d","d","d","d");
-        UserDAO dBuser = new UserDAO();
-        user = dBuser.getUserByName("nju");
-        System.out.println(user.getPassword());
-        
-        PlanDAO dbplan = new PlanDAO();
+    public static void main(String args[]) {
+
+//        User user = new User("d", "d", "d", "d", "d", "d");
+//        DBuser dBuser = new DBuser();
+//        user = dBuser.getUserByName("nju");
+//        System.out.println(user.getPassword());
+//
+//        DBplan dbplan = new DBplan();
         //dbplan.createPlan("hi","d",new Date(),new Date());
-        Plan plan = dbplan.getPlanInfo("d");
-        Date a = plan.getStartdate();
-        DateFormat d1 = new SimpleDateFormat("yyyyy-MM-dd HH:mm:ss"); //默认语言（汉语）下的默认风格（MEDIUM风格，比如：2008-6-16 20:54:53）
-        String str1 = d1.format(a);
-        String str2 = d1.format(new Date());
-        System.out.println(str1+" \n"+str2);
-        String cities[] = dbplan.getCityList("泰国");
-        System.out.println(cities[1]);
-        
-		GetCityListRequest request = new  GetCityListRequest("泰国");
+//        Plan plan = dbplan.getPlanInfo("d");
+//        Date a = plan.getStartdate();
+//        DateFormat d1 = new SimpleDateFormat("yyyyy-MM-dd HH:mm:ss"); //默认语言（汉语）下的默认风格（MEDIUM风格，比如：2008-6-16 20:54:53）
+//        String str1 = d1.format(a);
+//        String str2 = d1.format(new Date());
+//        System.out.println(str1 + " \n" + str2);
+        //String cities[] = dbplan.getCityList("泰国");
+        //System.out.println(cities[1]);
 
-        
+        //GetCityListRequest request = new GetCityListRequest("泰国");
+
+        DBcity dbcity = new DBcity();
+        ArrayList<City> cities;
+        cities = dbcity.searchCityBySeason("冬");
+
+        Date dddd = new Date();
+        dddd.setDate(23);
+        dddd.setYear(2013);
+        dddd.setMonth(6);
+        //System.out.println(cities.get(0).getDescription());
+        ArrayList<Plan> plans = dbcity.searchPlanByCityDate("南京", new Date());
+        System.out.println(plans.get(0).getPlanid());
+        ArrayList<Plan> planss = dbcity.searchPlanByTwoDate(plans.get(0).getStartdate(), plans.get(0).getEnddate());
+        System.out.println(planss.size());
 
 
 
