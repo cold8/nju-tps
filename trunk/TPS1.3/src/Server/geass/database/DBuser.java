@@ -10,12 +10,12 @@ import java.util.ArrayList;
  * User: Kite
  * To change this template use File | Settings | File Templates.
  */
-public class UserDAO {
+public class DBuser {
 
     Connection connection = null;
 
     public boolean addUser(User user){
-        connection = DatabaseConnection.getDBConnection();
+        connection = DBConnection.getDBConnection();
         PreparedStatement pstmt = null;
         ResultSet resultSet = null;
         try{
@@ -48,7 +48,7 @@ public class UserDAO {
             }catch (SQLException e){
                 e.printStackTrace();
             }
-            DatabaseConnection.freeDBConnection(connection);
+            DBConnection.freeDBConnection(connection);
         }
 
 
@@ -56,7 +56,7 @@ public class UserDAO {
     }
 
     public boolean deleteUser(User user){
-        connection = DatabaseConnection.getDBConnection();
+        connection = DBConnection.getDBConnection();
         Statement stmt = null;
         try {
             stmt = connection.createStatement();
@@ -78,14 +78,14 @@ public class UserDAO {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            DatabaseConnection.freeDBConnection(connection);
+            DBConnection.freeDBConnection(connection);
         }
         return true;
 
     }
 
     public boolean modifyUserInfo(User user){
-        connection = DatabaseConnection.getDBConnection() ;
+        connection = DBConnection.getDBConnection() ;
         Statement stmt = null;
         try{
             stmt = connection.createStatement();
@@ -101,7 +101,7 @@ public class UserDAO {
             }catch (SQLException e){
                 e.printStackTrace();
             }
-            DatabaseConnection.freeDBConnection(connection);
+            DBConnection.freeDBConnection(connection);
         }
 
         return true;
@@ -109,7 +109,7 @@ public class UserDAO {
 
     public User getUserByName(String name){
 
-        connection = DatabaseConnection.getDBConnection();
+        connection = DBConnection.getDBConnection();
         Statement statement= null;
         ResultSet resultSet = null;
         User user = null;
@@ -135,7 +135,7 @@ public class UserDAO {
             }catch (SQLException e){
                 e.printStackTrace();
             }
-            DatabaseConnection.freeDBConnection(connection);
+            DBConnection.freeDBConnection(connection);
         }
         return user;
     }

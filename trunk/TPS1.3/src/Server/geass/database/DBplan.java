@@ -13,7 +13,7 @@ import Shared.geass.dataPOJO.Phase;
 import Shared.geass.dataPOJO.Plan;
 
 
-public class PlanDAO {
+public class DBplan {
 
     Connection connection = null;
 
@@ -25,7 +25,7 @@ public class PlanDAO {
      * @return
      */
 public Plan createPlan(String username,String title, Date startdate, Date enddate) {
-        connection = DatabaseConnection.getDBConnection();
+        connection = DBConnection.getDBConnection();
         PreparedStatement pstmt = null;
         ResultSet resultSet = null;
         Plan plan =null;
@@ -62,7 +62,7 @@ public Plan createPlan(String username,String title, Date startdate, Date enddat
             }catch (SQLException e){
                 e.printStackTrace();
             }
-            DatabaseConnection.freeDBConnection(connection);
+            DBConnection.freeDBConnection(connection);
         }
 
 
@@ -76,7 +76,7 @@ public Plan createPlan(String username,String title, Date startdate, Date enddat
 	 */
 	public Plan getPlanInfo(String plantitle) {
 		Plan plan = null;
-		connection = DatabaseConnection.getDBConnection();
+		connection = DBConnection.getDBConnection();
 		PreparedStatement pstmt = null;
 		ResultSet resultSet = null;
 		try {
@@ -101,7 +101,7 @@ public Plan createPlan(String username,String title, Date startdate, Date enddat
             }catch (SQLException e){
                 e.printStackTrace();
             }
-            DatabaseConnection.freeDBConnection(connection);
+            DBConnection.freeDBConnection(connection);
         }
 		return plan;		
 	}
@@ -114,7 +114,7 @@ public Plan createPlan(String username,String title, Date startdate, Date enddat
 	 */
 	public ArrayList<Phase> getDay(int planid, Date date) {
 		ArrayList<Phase> phases = new ArrayList<Phase>();
-		connection = DatabaseConnection.getDBConnection();
+		connection = DBConnection.getDBConnection();
 		PreparedStatement pstmt = null;
 		ResultSet resultSet = null;
 		try {
@@ -143,7 +143,7 @@ public Plan createPlan(String username,String title, Date startdate, Date enddat
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            DatabaseConnection.freeDBConnection(connection);
+            DBConnection.freeDBConnection(connection);
 		}
 		
 		return phases;
@@ -158,7 +158,7 @@ public Plan createPlan(String username,String title, Date startdate, Date enddat
 			Date endtime, String cityname, String site, String transport,
 			String breakfast, String lunch, String dinner, String comment) {
 
-        connection = DatabaseConnection.getDBConnection();
+        connection = DBConnection.getDBConnection();
         PreparedStatement pstmt = null;
         ResultSet resultSet = null;
         try{
@@ -198,7 +198,7 @@ public Plan createPlan(String username,String title, Date startdate, Date enddat
             }catch (SQLException e){
                 e.printStackTrace();
             }
-            DatabaseConnection.freeDBConnection(connection);
+            DBConnection.freeDBConnection(connection);
         }
 
 		return true;
@@ -210,7 +210,7 @@ public Plan createPlan(String username,String title, Date startdate, Date enddat
 	 */
 	public boolean validPhase(int planid, Date date, Date beginTime,
 			Date endTime) {
-        connection = DatabaseConnection.getDBConnection();
+        connection = DBConnection.getDBConnection();
         PreparedStatement pstmt = null;
         ResultSet resultSet = null;
         try{
@@ -225,7 +225,7 @@ public Plan createPlan(String username,String title, Date startdate, Date enddat
                     resultSet.close();
                 if(pstmt!=null)
                     pstmt.close();
-                DatabaseConnection.freeDBConnection(connection);
+                DBConnection.freeDBConnection(connection);
             	return false;
             }
         }catch (SQLException e){
@@ -239,7 +239,7 @@ public Plan createPlan(String username,String title, Date startdate, Date enddat
             }catch (SQLException e){
                 e.printStackTrace();
             }
-            DatabaseConnection.freeDBConnection(connection);
+            DBConnection.freeDBConnection(connection);
         }
 		
 
@@ -249,7 +249,7 @@ public Plan createPlan(String username,String title, Date startdate, Date enddat
 	public Plan getPlan(int planid) {
 		// TODO Auto-generated method stub
 		Plan plan = null;
-		connection = DatabaseConnection.getDBConnection();
+		connection = DBConnection.getDBConnection();
 		PreparedStatement pstmt = null;
 		ResultSet resultSet = null;
 		try{
@@ -274,7 +274,7 @@ public Plan createPlan(String username,String title, Date startdate, Date enddat
             }catch (SQLException e){
                 e.printStackTrace();
             }
-            DatabaseConnection.freeDBConnection(connection);
+            DBConnection.freeDBConnection(connection);
         }
 
 		return plan;
@@ -294,7 +294,7 @@ public Plan createPlan(String username,String title, Date startdate, Date enddat
 
 	public ArrayList<Phase> getPhaseOfDay(int planid, Date date) {
 		ArrayList<Phase> phases = new ArrayList<Phase>();
-		connection = DatabaseConnection.getDBConnection();
+		connection = DBConnection.getDBConnection();
 		PreparedStatement pstmt = null;
 		ResultSet resultSet = null;
 		try {
@@ -323,7 +323,7 @@ public Plan createPlan(String username,String title, Date startdate, Date enddat
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            DatabaseConnection.freeDBConnection(connection);
+            DBConnection.freeDBConnection(connection);
 		}
 		
 		return phases;
@@ -331,7 +331,7 @@ public Plan createPlan(String username,String title, Date startdate, Date enddat
 
 	public String[] getCountryList() {
 		String[] countries = null;
-		connection = DatabaseConnection.getDBConnection();
+		connection = DBConnection.getDBConnection();
 		PreparedStatement pstmt = null;
 		ResultSet resultSet = null;
 		int i = 0;
@@ -359,7 +359,7 @@ public Plan createPlan(String username,String title, Date startdate, Date enddat
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            DatabaseConnection.freeDBConnection(connection);
+            DBConnection.freeDBConnection(connection);
 		}
 		
 		return countries;
@@ -368,7 +368,7 @@ public Plan createPlan(String username,String title, Date startdate, Date enddat
 	
 	public String[] getCityList(String countryname) {
 		String[] cities = null;
-		connection = DatabaseConnection.getDBConnection();
+		connection = DBConnection.getDBConnection();
 		PreparedStatement pstmt = null;
 		ResultSet resultSet = null;
 		System.out.println("dbplan getcity "+countryname);
@@ -401,14 +401,14 @@ public Plan createPlan(String username,String title, Date startdate, Date enddat
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            DatabaseConnection.freeDBConnection(connection);
+            DBConnection.freeDBConnection(connection);
 		}
 		
 		return cities;
 	}
 
 	public boolean deletePlan(int planid) {
-		connection = DatabaseConnection.getDBConnection();
+		connection = DBConnection.getDBConnection();
 		PreparedStatement pstmt = null;
 		try {
 			String sql = "delete * from plan where planid = ?";
@@ -430,14 +430,14 @@ public Plan createPlan(String username,String title, Date startdate, Date enddat
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            DatabaseConnection.freeDBConnection(connection);
+            DBConnection.freeDBConnection(connection);
 		}
 
 		return true;
 	}
 
 	public boolean setPlantitle(int planid, String newPlantitle) {
-		connection = DatabaseConnection.getDBConnection();
+		connection = DBConnection.getDBConnection();
 		PreparedStatement pstmt = null;
 		try {
 			String sql = "update plan set plantitle = ? where planid = ?";
@@ -455,7 +455,7 @@ public Plan createPlan(String username,String title, Date startdate, Date enddat
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            DatabaseConnection.freeDBConnection(connection);
+            DBConnection.freeDBConnection(connection);
 		}
 
 		return true;
@@ -467,7 +467,7 @@ public Plan createPlan(String username,String title, Date startdate, Date enddat
 	 */
 	public boolean setPlanStartdate(int planid, Date newStartdate) {
 		// TODO Auto-generated method stub
-		connection = DatabaseConnection.getDBConnection();
+		connection = DBConnection.getDBConnection();
 		PreparedStatement pstmt = null;
 		try {
 			String sql = "update plan set startdate = ? where planid = ?";
@@ -493,7 +493,7 @@ public Plan createPlan(String username,String title, Date startdate, Date enddat
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            DatabaseConnection.freeDBConnection(connection);
+            DBConnection.freeDBConnection(connection);
 		}
 
 		return true;
@@ -506,7 +506,7 @@ public Plan createPlan(String username,String title, Date startdate, Date enddat
 	public boolean setPlanEnddate(int planid, Date newEnddate) {
 		// TODO Auto-generated method stub
 
-		connection = DatabaseConnection.getDBConnection();
+		connection = DBConnection.getDBConnection();
 		PreparedStatement pstmt = null;
 		try {
 			String sql = "update plan set startdate = ? where planid = ?";
@@ -532,7 +532,7 @@ public Plan createPlan(String username,String title, Date startdate, Date enddat
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            DatabaseConnection.freeDBConnection(connection);
+            DBConnection.freeDBConnection(connection);
 		}
 
 		return true;
@@ -544,7 +544,7 @@ public Plan createPlan(String username,String title, Date startdate, Date enddat
 	public Phase getPhase(int planid, Date begintime, Date endtime) {
 		// TODO Auto-generated method stub
 		Phase phase = null;
-		connection = DatabaseConnection.getDBConnection();
+		connection = DBConnection.getDBConnection();
 		PreparedStatement pstmt = null;
 		ResultSet resultSet = null;
 		try {
@@ -574,7 +574,7 @@ public Plan createPlan(String username,String title, Date startdate, Date enddat
 
 	public ArrayList<Plan> getPlanList() {
 		ArrayList<Plan> plans = new ArrayList<Plan>();
-		connection = DatabaseConnection.getDBConnection();
+		connection = DBConnection.getDBConnection();
 		PreparedStatement pstmt = null;
 		ResultSet resultSet = null;
 		try {
@@ -594,7 +594,7 @@ public Plan createPlan(String username,String title, Date startdate, Date enddat
 	}
 
 	public boolean deletePhase(int phaseid) {
-		connection = DatabaseConnection.getDBConnection();
+		connection = DBConnection.getDBConnection();
 		PreparedStatement pstmt = null;
 		try {
 			/*删除关联内容？*/
@@ -615,7 +615,7 @@ public Plan createPlan(String username,String title, Date startdate, Date enddat
 	 * 不改变开始日期和结束日期，只删除所有拥有这个日期的Phase
 	 */
 	public boolean clearDay(int planid, Date date) {
-		connection = DatabaseConnection.getDBConnection();
+		connection = DBConnection.getDBConnection();
 		PreparedStatement pstmt = null;
 		try {
 			/*删除关联内容？*/
@@ -640,7 +640,7 @@ public Plan createPlan(String username,String title, Date startdate, Date enddat
 	 * @return 重复则返回false，否则返回true
 	 */
 	public boolean checkPlanTitle(String plantitle) {
-		connection = DatabaseConnection.getDBConnection();
+		connection = DBConnection.getDBConnection();
 		PreparedStatement pstmt = null;
 		ResultSet resultSet = null;
 		boolean result = true;

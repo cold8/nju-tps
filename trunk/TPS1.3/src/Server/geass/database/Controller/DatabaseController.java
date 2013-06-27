@@ -3,8 +3,8 @@ package Server.geass.database.Controller;
 import java.util.ArrayList;
 import java.util.Date;
 
-import Server.geass.database.PlanDAO;
-import Server.geass.database.UserDAO;
+import Server.geass.database.DBplan;
+import Server.geass.database.DBuser;
 import Shared.geass.dataPOJO.City;
 import Shared.geass.dataPOJO.Phase;
 import Shared.geass.dataPOJO.Plan;
@@ -19,14 +19,14 @@ import Shared.geass.dataPOJO.User;
  */
 public class DatabaseController implements DatabaseControllerInterface{
 
-    private UserDAO dBuser = null;
-    private PlanDAO dBplan = null;
+    private DBuser dBuser = null;
+    private DBplan dBplan = null;
 
     static DatabaseController instance;
 
     public DatabaseController() {
-        this.dBuser = new UserDAO();
-        this.dBplan = new PlanDAO();
+        this.dBuser = new DBuser();
+        this.dBplan = new DBplan();
     }
 
     static public DatabaseController getInstance(){
@@ -149,7 +149,7 @@ public class DatabaseController implements DatabaseControllerInterface{
 		return dBplan.clearDay(planid,date);
 	}
 
-	public Plan[] searchPlanByCity(String cityname) {
+	public ArrayList searchPlanByCity(String cityname) {
 		// TODO Auto-generated method stub
 		return null;
 	}

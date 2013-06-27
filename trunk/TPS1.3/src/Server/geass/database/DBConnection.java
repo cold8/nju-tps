@@ -9,14 +9,14 @@ import java.sql.Connection;
  * Time: 下午3:53
  * To change this template use File | Settings | File Templates.
  */
-public class DatabaseConnection {
+public class DBConnection {
 
     private static String user = "root";
     private static String password = "root";
     private static String url = "jdbc:mysql://127.0.0.1:3306/TPSDB";
     private static String driver = "com.mysql.jdbc.Driver";
     private static int maxcon = 20;
-    private static DatabaseConnectionPool pool = new DatabaseConnectionPool(user,password,url,driver,maxcon);
+    private static DBConnectionPool pool = new DBConnectionPool(user,password,url,driver,maxcon);
 
     public static Connection getDBConnection(){
         return pool.getDBConnection(1000);

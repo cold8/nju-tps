@@ -12,7 +12,7 @@ public class GetPlanByTwoDateResponse extends Response{
 		this.planList=list;
 		
 	}
-    public ArrayList<Plan> GetCityByTwoDate(){
+    public ArrayList<Plan> GetPlanList(){
     	return planList ;
     }
 	
