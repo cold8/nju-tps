@@ -23,7 +23,7 @@ public class searchFrame extends javax.swing.JFrame {
     public void innit(){
         citySearchPanel = new CitySearchPanel();
         planSearchPanel = new PlanSearchPanel();
-        this.setContentPane(planSearchPanel);
+        this.setContentPane(citySearchPanel);
         this.validate();
     }
 
