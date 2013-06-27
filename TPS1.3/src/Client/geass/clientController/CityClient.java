@@ -9,8 +9,8 @@ import Shared.geass.dataPOJO.Plan;
 import Shared.geass.message.request.plan.CheckPlanTitleRequest;
 import Shared.geass.message.request.search.SearchCityByNameRequest;
 import Shared.geass.message.request.search.SearchCityBySeasonRequest;
-import Shared.geass.message.request.search.SearchPlanByCityDate;
-import Shared.geass.message.request.search.SearchPlanByTwoDate;
+import Shared.geass.message.request.search.SearchPlanByCityDateRequest;
+import Shared.geass.message.request.search.SearchPlanByTwoDateRequest;
 import Shared.geass.message.response.ConfirmResponse;
 import Shared.geass.message.response.search.GetCityByNameResponse;
 import Shared.geass.message.response.search.GetCityBySeasonResponse;
@@ -61,15 +61,15 @@ public class CityClient {
 	}
 	
 	public ArrayList<Plan> searchPlanByTwoDate(Date beginDate, Date endDate)throws IOException{
-		Object obj = infoSender.sendRequest(new SearchPlanByTwoDate(beginDate, endDate));
+		Object obj = infoSender.sendRequest(new SearchPlanByTwoDateRequest(beginDate, endDate));
 		GetPlanByTwoDateResponse response = (GetPlanByTwoDateResponse)obj;
-		return response.GetCityByTwoDate();
+		return response.GetPlanList();
 	}
 
 	public ArrayList<Plan> searchPlanByCityDate(String cityName, Date indate) throws IOException{
-		Object obj = infoSender.sendRequest(new SearchPlanByCityDate(cityName, indate));
+		Object obj = infoSender.sendRequest(new SearchPlanByCityDateRequest(cityName, indate));
 		GetPlanByCityDateResponse response = (GetPlanByCityDateResponse)obj;
-		return response.GetCityByCityDate();
+		return response.GetPlanByCityDate();
 	}
 
 }

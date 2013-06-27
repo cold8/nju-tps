@@ -8,11 +8,11 @@ import Shared.geass.message.response.Response;
 public class GetPlanByCityDateResponse extends Response {
 	private static final long serialVersionUID = 1L;
 	ArrayList<Plan>  planList;
-	public GetPlanByCityDateResponse(ArrayList list){
+	public GetPlanByCityDateResponse(ArrayList<Plan> list){
 		this.planList=list;
 		
 	}
-    public ArrayList<Plan> GetCityByCityDate(){
+    public ArrayList<Plan> GetPlanByCityDate(){
     	return planList ;
     }
 

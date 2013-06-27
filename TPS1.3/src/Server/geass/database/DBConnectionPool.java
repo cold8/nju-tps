@@ -13,7 +13,7 @@ import java.util.Iterator;
  * Time: 下午3:53
  * To change this template use File | Settings | File Templates.
  */
-public class DatabaseConnectionPool {
+public class DBConnectionPool {
 
     private String dbUsername ;
     private String dbPassword ;
@@ -25,7 +25,7 @@ public class DatabaseConnectionPool {
 
     private ArrayList<Connection> connections;
 
-    public DatabaseConnectionPool(String username, String password, String url, String driver, int maxcon) {
+    public DBConnectionPool(String username, String password, String url, String driver, int maxcon) {
         this.dbUsername = username;
         this.dbPassword = password;
         this.dbUrl = url;

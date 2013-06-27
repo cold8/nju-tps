@@ -8,7 +8,7 @@ import Shared.geass.message.response.Response;
 public class GetCityByNameResponse extends Response{
 	private static final long serialVersionUID = 1L;
 	ArrayList<City>  cityList;
-	public GetCityByNameResponse(ArrayList list){
+	public GetCityByNameResponse(ArrayList<City> list){
 		this.cityList=list;
 		
 	}
