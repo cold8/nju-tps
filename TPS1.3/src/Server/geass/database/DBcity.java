@@ -180,12 +180,14 @@ public class DBcity {
         PreparedStatement pstmt = null;
         ResultSet resultSet = null;
         try {
-            String sql = "select plan.planid, plan.plantitle,plan.username,plan.startdate,plan.enddate from plan join phase on phase.planid = plan.planid and phase.date = ? and phase.cityname = ?";
+            String sql = "select plan.planid, plan.plantitle,plan.username,plan.startdate,plan.enddate from plan"
+                     + " join phase on phase.planid = plan.planid and phase.date = ? and phase.cityname like ?";
             pstmt = connection.prepareStatement(sql);
             pstmt.setDate(1, new java.sql.Date(indate.getTime()));
-            pstmt.setString(2, cityName);
+            pstmt.setString(2, "%"+cityName+"%");
             resultSet = pstmt.executeQuery();
             while (resultSet.next()) {
+                System.out.println(resultSet.getInt("planid"));
                 plans.add(new Plan(resultSet.getInt("planid"), resultSet.getString("plantitle"), resultSet.getString("username"), resultSet.getDate("startdate"), resultSet.getDate("enddate")));
             }
             System.out.println("执行：" + sql);

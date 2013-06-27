@@ -75,7 +75,7 @@ public class TableModel {
 
     public List planToStringArray(Plan plan) {
         Vector<String> list = new Vector<String>();
-        DateFormat dateformat = new SimpleDateFormat("yyyyy-MM-dd");  //("yyyyy-MM-dd HH:mm:ss");
+        DateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");  //("yyyy-MM-dd HH:mm:ss");
         list.add(plan.getPlantitle());
         list.add(plan.getUsername());
         list.add(dateformat.format(plan.getStartdate()));
