@@ -5,6 +5,11 @@
 package Client.geass.gui.searchGUI;
 
 import Client.geass.gui.travellerGUI.TableModel;
+import Server.geass.database.DBcity;
+import Shared.geass.dataPOJO.Plan;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -32,11 +37,11 @@ public class PlanSearchPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        searchButton = new javax.swing.JButton();
+        searchButton1 = new javax.swing.JButton();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
         jDateChooser3 = new com.toedter.calendar.JDateChooser();
-        searchButton1 = new javax.swing.JButton();
+        searchButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -46,9 +51,19 @@ public class PlanSearchPanel extends javax.swing.JPanel {
         jTable1.setModel(planTable);
         jScrollPane1.setViewportView(jTable1);
 
-        searchButton.setText("搜一下");
-
         searchButton1.setText("搜一下");
+        searchButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButton1ActionPerformed(evt);
+            }
+        });
+
+        searchButton2.setText("搜一下");
+        searchButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("计划开始时间");
 
@@ -82,10 +97,10 @@ public class PlanSearchPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(searchButton))
+                        .addComponent(searchButton1))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(104, 104, 104)
-                        .addComponent(searchButton1)))
+                        .addComponent(searchButton2)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -95,13 +110,13 @@ public class PlanSearchPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchButton)
+                    .addComponent(searchButton1)
                     .addComponent(jLabel1)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(searchButton1)
+                        .addComponent(searchButton2)
                         .addComponent(jLabel4)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -132,9 +147,58 @@ public class PlanSearchPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
-    
+    private void searchButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButton1ActionPerformed
+        // TODO add your handling code here:
+        Date start = jDateChooser1.getDate();
+        Date end = jDateChooser2.getDate();
+
+        if ( start == null || end == null) {
+            JOptionPane.showMessageDialog(this, "请选择日期：）");
+        } else {
+
+            this.searchByTwoDate(start, end);
+
+        }
+    }//GEN-LAST:event_searchButton1ActionPerformed
+
+    private void searchButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButton2ActionPerformed
+        // TODO add your handling code here:
+        Date date = jDateChooser3.getDate();
+        String searchCondition = this.jTextField1.getText();
+        if ( searchCondition.equals("") ) {
+            JOptionPane.showMessageDialog(this, "请输入城市名：）");
+        }else if(date == null){
+            JOptionPane.showMessageDialog(this, "请输入选择日期：）");
+        }else {
+
+            this.searchByCityDate(searchCondition, date);
+
+        }
+
+
+    }//GEN-LAST:event_searchButton2ActionPerformed
+
+    private void searchByTwoDate(Date start, Date end) {
+
+        planlist = dbcity.searchPlanByTwoDate(start, end);
+
+        if (planlist == null) {
+            System.out.println("没有找到符合条件的计划");
+            return;
+        }
+        this.planTable.setDataVector(TableModel.getInstance().planTableVector(planlist), TableModel.PLAN_COLUMN_NAMES);
+    }
+
+    private void searchByCityDate(String searchCondition, Date date) {
+        planlist = dbcity.searchPlanByCityDate(searchCondition, date);
+        if (planlist == null) {
+            System.out.println("没有找到符合的城市");
+            return;
+        }
+        this.planTable.setDataVector(TableModel.getInstance().planTableVector(planlist), TableModel.PLAN_COLUMN_NAMES);
+    }
+    ArrayList<Plan> planlist = null;
+    private DBcity dbcity = new DBcity();
     private DefaultTableModel planTable = new DefaultTableModel(null, TableModel.PLAN_COLUMN_NAMES);
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser jDateChooser1;
@@ -148,7 +212,7 @@ public class PlanSearchPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JButton searchButton;
     private javax.swing.JButton searchButton1;
+    private javax.swing.JButton searchButton2;
     // End of variables declaration//GEN-END:variables
 }

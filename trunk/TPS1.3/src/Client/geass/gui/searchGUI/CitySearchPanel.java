@@ -106,8 +106,8 @@ public class CitySearchPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_searchButtonActionPerformed
 
-    private void searchBySeason(String searchkey) {
-        citylist = dbcity.searchCityBySeason(searchkey);
+    private void searchBySeason(String searchCondition) {
+        citylist = dbcity.searchCityBySeason(searchCondition);
         if (citylist == null) {
             System.out.println("没有找到符合的城市");
             return;
@@ -115,8 +115,8 @@ public class CitySearchPanel extends javax.swing.JPanel {
         this.cityTable.setDataVector(TableModel.getInstance().cityTableVector(citylist), TableModel.CITY_COLUMN_NAMES);
     }
 
-    private void searchByCityName(String searchkey) {
-        citylist = dbcity.searchCityByName(searchkey);
+    private void searchByCityName(String searchCondition) {
+        citylist = dbcity.searchCityByName(searchCondition);
         if (citylist == null) {
             System.out.println("没有找到符合的城市");
             return;
