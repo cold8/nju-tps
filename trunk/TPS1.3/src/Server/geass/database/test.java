@@ -39,7 +39,10 @@ public class test {
         DBcity dbcity = new DBcity();
         ArrayList<City> cities;
         cities = dbcity.searchCityBySeason("冬");
-
+        cities = dbcity.searchCityByName("南");
+        for(City c:cities){
+            System.out.println(c.getCityname());
+        }
         Date dddd = new Date();
         dddd.setDate(23);
         dddd.setYear(2013);

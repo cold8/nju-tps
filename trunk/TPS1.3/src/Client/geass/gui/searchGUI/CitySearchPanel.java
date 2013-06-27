@@ -6,7 +6,11 @@ package Client.geass.gui.searchGUI;
 
 import Client.geass.gui.travellerGUI.ComboBoxModel;
 import Client.geass.gui.travellerGUI.TableModel;
+import Server.geass.database.DBcity;
+import Shared.geass.dataPOJO.City;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,9 +25,8 @@ public class CitySearchPanel extends javax.swing.JPanel {
     public CitySearchPanel() {
         initComponents();
     }
-    
-    public void init(){
-        
+
+    public void init() {
     }
 
     /**
@@ -85,10 +88,45 @@ public class CitySearchPanel extends javax.swing.JPanel {
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
+        String searchkey = String.valueOf(jComboBox1.getSelectedItem());
+        String searchCondition = this.jTextField1.getText();
+        if (searchCondition.equals("")) {
+            JOptionPane.showMessageDialog(this, "请输入一些文字：）");
+        } else {
+            if (searchkey.equals("季节")) {
+                this.searchBySeason(searchCondition);
+            } else if (searchkey.equals("城市名")) {
+                this.searchByCityName(searchCondition);
+            } else {
+                JOptionPane.showMessageDialog(this, "好奇怪的搜索条件=.=");
+            }
+
+        }
+
+
     }//GEN-LAST:event_searchButtonActionPerformed
 
+    private void searchBySeason(String searchkey) {
+        citylist = dbcity.searchCityBySeason(searchkey);
+        if (citylist == null) {
+            System.out.println("没有找到符合的城市");
+            return;
+        }
+        this.cityTable.setDataVector(TableModel.getInstance().cityTableVector(citylist), TableModel.CITY_COLUMN_NAMES);
+    }
+
+    private void searchByCityName(String searchkey) {
+        citylist = dbcity.searchCityByName(searchkey);
+        if (citylist == null) {
+            System.out.println("没有找到符合的城市");
+            return;
+        }
+        this.cityTable.setDataVector(TableModel.getInstance().cityTableVector(citylist), TableModel.CITY_COLUMN_NAMES);
+    }
     
     
+    ArrayList<City> citylist = null;
+    private DBcity dbcity = new DBcity();
     private DefaultTableModel cityTable = new DefaultTableModel(null, TableModel.CITY_COLUMN_NAMES);
     private DefaultComboBoxModel cityBox = new DefaultComboBoxModel(ComboBoxModel.CITY_COLUMN_NAMES);
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -98,6 +136,4 @@ public class CitySearchPanel extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton searchButton;
     // End of variables declaration//GEN-END:variables
-    
-
 }
