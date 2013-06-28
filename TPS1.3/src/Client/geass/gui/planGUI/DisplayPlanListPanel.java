@@ -111,7 +111,7 @@ public class DisplayPlanListPanel extends javax.swing.JPanel {
         jPanel4Layout.rowHeights = new int[]{0};
         jPanel4.setLayout(jPanel4Layout);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Client/geass/gui/picture/plan/5.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Client/geass/gui/picture/5.png"))); // NOI18N
         jLabel2.setText("jLabel2");
         jLabel2.setPreferredSize(new java.awt.Dimension(30, 30));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -169,7 +169,7 @@ public class DisplayPlanListPanel extends javax.swing.JPanel {
         jPanel5Layout.rowHeights = new int[]{0};
         jPanel5.setLayout(jPanel5Layout);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Client/geass/traveller/gui/picture/plan/5.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Client/geass/gui/picture/5.png"))); // NOI18N
         jLabel3.setPreferredSize(new java.awt.Dimension(30, 30));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
