@@ -24,12 +24,12 @@ import Shared.geass.dataPOJO.Plan;
 public class DisplayPlanListPanel extends javax.swing.JPanel {
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private ArrayList<Plan> planlist;
-	private TravellerFrame parent;
-	
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    private ArrayList<Plan> planlist;
+    private TravellerFrame parent;
+
     public DisplayPlanListPanel(TravellerFrame parent) throws IOException {
         planlist = GuiDisplayPlanController.getPlanList();
         this.parent = parent;
@@ -68,9 +68,10 @@ public class DisplayPlanListPanel extends javax.swing.JPanel {
         jLabel1.setText("查看计划列表");
         titlePanel.add(jLabel1);
 
-        try{
+        try {
             list.setModel(GuiDisplayPlanController.getPlanListModel());
-        }catch(Exception e){}
+        } catch (Exception e) {
+        }
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         listScrollPane.setViewportView(list);
 
@@ -86,33 +87,31 @@ public class DisplayPlanListPanel extends javax.swing.JPanel {
         javax.swing.GroupLayout listPanelLayout = new javax.swing.GroupLayout(listPanel);
         listPanel.setLayout(listPanelLayout);
         listPanelLayout.setHorizontalGroup(
-            listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(listPanelLayout.createSequentialGroup()
+                listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(listPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(listScrollPane)
-                    .addComponent(buttonPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+                .addComponent(listScrollPane)
+                .addComponent(buttonPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()));
         listPanelLayout.setVerticalGroup(
-            listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(listPanelLayout.createSequentialGroup()
+                listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(listPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(listScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+                .addContainerGap()));
 
         searchPanel.setLayout(new javax.swing.BoxLayout(searchPanel, javax.swing.BoxLayout.LINE_AXIS));
 
         jPanel4.setPreferredSize(new java.awt.Dimension(415, 50));
         java.awt.GridBagLayout jPanel4Layout = new java.awt.GridBagLayout();
-        jPanel4Layout.columnWidths = new int[] {0, 10, 0, 10, 0, 10, 0};
-        jPanel4Layout.rowHeights = new int[] {0};
+        jPanel4Layout.columnWidths = new int[]{0, 10, 0, 10, 0, 10, 0};
+        jPanel4Layout.rowHeights = new int[]{0};
         jPanel4.setLayout(jPanel4Layout);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Client/geass/traveller/gui/picture/plan/5.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Client/geass/gui/picture/plan/5.png"))); // NOI18N
         jLabel2.setText("jLabel2");
         jLabel2.setPreferredSize(new java.awt.Dimension(30, 30));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -151,10 +150,10 @@ public class DisplayPlanListPanel extends javax.swing.JPanel {
         searchCityDateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
-					searchCityDateButtonActionPerformed(evt);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+                    searchCityDateButtonActionPerformed(evt);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -166,8 +165,8 @@ public class DisplayPlanListPanel extends javax.swing.JPanel {
 
         jPanel5.setPreferredSize(new java.awt.Dimension(415, 50));
         java.awt.GridBagLayout jPanel5Layout = new java.awt.GridBagLayout();
-        jPanel5Layout.columnWidths = new int[] {0, 10, 0, 10, 0, 10, 0};
-        jPanel5Layout.rowHeights = new int[] {0};
+        jPanel5Layout.columnWidths = new int[]{0, 10, 0, 10, 0, 10, 0};
+        jPanel5Layout.rowHeights = new int[]{0};
         jPanel5.setLayout(jPanel5Layout);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Client/geass/traveller/gui/picture/plan/5.png"))); // NOI18N
@@ -198,10 +197,10 @@ public class DisplayPlanListPanel extends javax.swing.JPanel {
         searchDateRangeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
-					searchDateRangeButtonActionPerformed(evt);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+                    searchDateRangeButtonActionPerformed(evt);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -218,19 +217,18 @@ public class DisplayPlanListPanel extends javax.swing.JPanel {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(listPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(listPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titlePanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(searchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(subtitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+                .addComponent(titlePanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(searchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(subtitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -238,78 +236,73 @@ public class DisplayPlanListPanel extends javax.swing.JPanel {
                 .addGap(0, 0, 0)
                 .addComponent(subtitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(listPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+                .addComponent(listPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
     }// </editor-fold>                        
 
-    private void searchCityActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void searchCityActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                          
+    }
 
-    private void displayButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    private void displayButtonActionPerformed(java.awt.event.ActionEvent evt) {
         int planindex = list.getSelectedIndex();
-        
-        if(planindex!=-1){
-    	Plan plan = planlist.get(planindex);
-    	//Plan plan = GuiDisplayPlanController.getPlan(String.valueOf(planindex));s
-    	
-    	//----------------------------这是界面跳转代码-------------------------//
-    	this.parent.displayPlan(parent, plan);
-    	//--------------------------------------------------------------//
-        }
-        else
-        	JOptionPane.showMessageDialog(this,"请选择一项计划");
-    }                                             
 
-    private void searchCityDateButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException {                                                     
-           	if(searchCity.getText().isEmpty()||searchCity.getText().equals("请输入城市名称")){
- 		   JOptionPane.showMessageDialog(this, "请输入指定日期和当日所在城市名称，或输入某个城市名称", "搜索失败", JOptionPane.PLAIN_MESSAGE);
- 	   
-    }
-    else{
- 	   ArrayList<Plan> resultList = GuiDisplayPlanController.searchPlanByCityDate(searchCity.getText(),searchDate.getDate());
- 	   /* 
- 	    * 刷新列表
- 	    */
-        if(resultList!=null){
-     	   /*initSearchResultDialog(resultList);
-     	   searchResultDialog.setVisible(true);*/
-        	list.setModel(GuiDisplayPlanController.getPlanListModel(resultList));
-        	list.repaint();
-        }
-        else{
-     	   JOptionPane.showMessageDialog(this, "无法找到符合条件的计划", "搜索失败", JOptionPane.PLAIN_MESSAGE);
+        if (planindex != -1) {
+            Plan plan = planlist.get(planindex);
+            //Plan plan = GuiDisplayPlanController.getPlan(String.valueOf(planindex));s
+
+            //----------------------------这是界面跳转代码-------------------------//
+            this.parent.displayPlan(parent, plan);
+            //--------------------------------------------------------------//
+        } else {
+            JOptionPane.showMessageDialog(this, "请选择一项计划");
         }
     }
-    }                                                    
 
-    private void searchDateRangeButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException {                                                      
-        if(searchStartdate.getDate()==null||searchEnddate.getDate()==null){
-  		   JOptionPane.showMessageDialog(this, "请输入开始日期和结束日期", "搜索失败", JOptionPane.PLAIN_MESSAGE);
-  	   
-     }
-     else{
-  	   ArrayList<Plan> resultList = GuiDisplayPlanController.searchPlanByDateRange(searchStartdate.getDate(),searchEnddate.getDate());
-  	   /* 
-  	    * 刷新列表
-  	    */
-         if(resultList!=null){
-      	   /*initSearchResultDialog(resultList);
-      	   searchResultDialog.setVisible(true);*/
-         	list.setModel(GuiDisplayPlanController.getPlanListModel(resultList));
-         	list.repaint();
-         }
-         else{
-      	   JOptionPane.showMessageDialog(this, "无法找到符合条件的计划", "搜索失败", JOptionPane.PLAIN_MESSAGE);
-         }
-     }
-    }                                                     
+    private void searchCityDateButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException {
+        if (searchCity.getText().isEmpty() || searchCity.getText().equals("请输入城市名称")) {
+            JOptionPane.showMessageDialog(this, "请输入指定日期和当日所在城市名称，或输入某个城市名称", "搜索失败", JOptionPane.PLAIN_MESSAGE);
 
-    private void searchCityFocusGained(java.awt.event.FocusEvent evt) {                                       
-        if(searchCity.getText().equals("请输入城市名称"))
-					searchCity.setText("");
-    }                                      
+        } else {
+            ArrayList<Plan> resultList = GuiDisplayPlanController.searchPlanByCityDate(searchCity.getText(), searchDate.getDate());
+            /* 
+             * 刷新列表
+             */
+            if (resultList != null) {
+                /*initSearchResultDialog(resultList);
+                 searchResultDialog.setVisible(true);*/
+                list.setModel(GuiDisplayPlanController.getPlanListModel(resultList));
+                list.repaint();
+            } else {
+                JOptionPane.showMessageDialog(this, "无法找到符合条件的计划", "搜索失败", JOptionPane.PLAIN_MESSAGE);
+            }
+        }
+    }
 
+    private void searchDateRangeButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException {
+        if (searchStartdate.getDate() == null || searchEnddate.getDate() == null) {
+            JOptionPane.showMessageDialog(this, "请输入开始日期和结束日期", "搜索失败", JOptionPane.PLAIN_MESSAGE);
+
+        } else {
+            ArrayList<Plan> resultList = GuiDisplayPlanController.searchPlanByDateRange(searchStartdate.getDate(), searchEnddate.getDate());
+            /* 
+             * 刷新列表
+             */
+            if (resultList != null) {
+                /*initSearchResultDialog(resultList);
+                 searchResultDialog.setVisible(true);*/
+                list.setModel(GuiDisplayPlanController.getPlanListModel(resultList));
+                list.repaint();
+            } else {
+                JOptionPane.showMessageDialog(this, "无法找到符合条件的计划", "搜索失败", JOptionPane.PLAIN_MESSAGE);
+            }
+        }
+    }
+
+    private void searchCityFocusGained(java.awt.event.FocusEvent evt) {
+        if (searchCity.getText().equals("请输入城市名称")) {
+            searchCity.setText("");
+        }
+    }
     // Variables declaration - do not modify                     
     private javax.swing.JPanel buttonPanel;
     private javax.swing.JButton displayButton;
