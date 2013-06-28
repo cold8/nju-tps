@@ -37,22 +37,20 @@ import Shared.geass.dataPOJO.Plan;
 public class ModifyPlanPanel extends javax.swing.JPanel {
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private Plan plan;
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    private Plan plan;
     private int planid;
     private TravellerFrame parent;
-    
     private Date newStartdate;
     private Date newEnddate;
     private Phase detailPhase;
-	private Phase detailedPhase;
-	
-	//private MapFrame mf = new MapFrame();
-	private JLabel mapPicture;
-    
-    public ModifyPlanPanel(TravellerFrame parent,Plan plan) throws IOException {
+    private Phase detailedPhase;
+    //private MapFrame mf = new MapFrame();
+    private JLabel mapPicture;
+
+    public ModifyPlanPanel(TravellerFrame parent, Plan plan) throws IOException {
         this.plan = plan;
         this.planid = plan.getPlanid();
         this.parent = parent;
@@ -60,14 +58,14 @@ public class ModifyPlanPanel extends javax.swing.JPanel {
         initComponents();
     }
 
-    public ModifyPlanPanel(TravellerFrame parent,int planid) throws IOException {
-		this.planid = planid;
-		this.plan = GuiModifyPlanController.getPlan(planid);
-		this.parent = parent;
-		initComponents();
-	}
+    public ModifyPlanPanel(TravellerFrame parent, int planid) throws IOException {
+        this.planid = planid;
+        this.plan = GuiModifyPlanController.getPlan(planid);
+        this.parent = parent;
+        initComponents();
+    }
 
-	@SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() throws IOException {
         java.awt.GridBagConstraints gridBagConstraints;
@@ -156,10 +154,10 @@ public class ModifyPlanPanel extends javax.swing.JPanel {
         table = new javax.swing.JTable();
 
         startdateDialog.setMinimumSize(new java.awt.Dimension(400, 270));
-        startdateDialog.addWindowListener(new WindowListener(){
-
+        startdateDialog.addWindowListener(new WindowListener() {
             @Override
-            public void windowOpened(WindowEvent e) {}
+            public void windowOpened(WindowEvent e) {
+            }
 
             @Override
             public void windowClosing(WindowEvent e) {
@@ -169,23 +167,28 @@ public class ModifyPlanPanel extends javax.swing.JPanel {
             }
 
             @Override
-            public void windowClosed(WindowEvent e) {}
+            public void windowClosed(WindowEvent e) {
+            }
 
             @Override
-            public void windowIconified(WindowEvent e) {}
+            public void windowIconified(WindowEvent e) {
+            }
 
             @Override
-            public void windowDeiconified(WindowEvent e) {}
+            public void windowDeiconified(WindowEvent e) {
+            }
 
             @Override
-            public void windowActivated(WindowEvent e) {}
+            public void windowActivated(WindowEvent e) {
+            }
 
             @Override
-            public void windowDeactivated(WindowEvent e) {}
+            public void windowDeactivated(WindowEvent e) {
+            }
         });
         java.awt.GridBagLayout modifyStartdateDialogLayout = new java.awt.GridBagLayout();
-        modifyStartdateDialogLayout.columnWidths = new int[] {0, 30, 0, 30, 0, 30, 0};
-        modifyStartdateDialogLayout.rowHeights = new int[] {0, 30, 0, 30, 0, 30, 0};
+        modifyStartdateDialogLayout.columnWidths = new int[]{0, 30, 0, 30, 0, 30, 0};
+        modifyStartdateDialogLayout.rowHeights = new int[]{0, 30, 0, 30, 0, 30, 0};
         startdateDialog.getContentPane().setLayout(modifyStartdateDialogLayout);
 
         jLabel15.setFont(new java.awt.Font("微软雅黑", 1, 18)); // NOI18N
@@ -212,10 +215,10 @@ public class ModifyPlanPanel extends javax.swing.JPanel {
         confirmModifyStartdateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
-					confirmModifyStartdateButtonActionPerformed(evt);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+                    confirmModifyStartdateButtonActionPerformed(evt);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -238,35 +241,40 @@ public class ModifyPlanPanel extends javax.swing.JPanel {
 
         enddateDialog.setMinimumSize(new java.awt.Dimension(400, 270));
         java.awt.GridBagLayout enddateDialogLayout = new java.awt.GridBagLayout();
-        enddateDialogLayout.columnWidths = new int[] {0, 20, 0, 20, 0, 20, 0};
-        enddateDialogLayout.rowHeights = new int[] {0, 30, 0, 30, 0};
+        enddateDialogLayout.columnWidths = new int[]{0, 20, 0, 20, 0, 20, 0};
+        enddateDialogLayout.rowHeights = new int[]{0, 30, 0, 30, 0};
         enddateDialog.getContentPane().setLayout(enddateDialogLayout);
-        enddateDialog.addWindowListener(new WindowListener(){
-
+        enddateDialog.addWindowListener(new WindowListener() {
             @Override
-            public void windowOpened(WindowEvent e) {}
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-            	enddatePicker.getEditor().setText("");
-            	enddatePicker.setDate(null);
-            	enddatePicker.repaint();
+            public void windowOpened(WindowEvent e) {
             }
 
             @Override
-            public void windowClosed(WindowEvent e) {}
+            public void windowClosing(WindowEvent e) {
+                enddatePicker.getEditor().setText("");
+                enddatePicker.setDate(null);
+                enddatePicker.repaint();
+            }
 
             @Override
-            public void windowIconified(WindowEvent e) {}
+            public void windowClosed(WindowEvent e) {
+            }
 
             @Override
-            public void windowDeiconified(WindowEvent e) {}
+            public void windowIconified(WindowEvent e) {
+            }
 
             @Override
-            public void windowActivated(WindowEvent e) {}
+            public void windowDeiconified(WindowEvent e) {
+            }
 
             @Override
-            public void windowDeactivated(WindowEvent e) {}
+            public void windowActivated(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+            }
         });
 
         enddateDialogLabel.setFont(new java.awt.Font("微软雅黑", 1, 18)); // NOI18N
@@ -304,10 +312,10 @@ public class ModifyPlanPanel extends javax.swing.JPanel {
         confirmModifyEnddateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
-					confirmModifyEnddateButtonActionPerformed(evt);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+                    confirmModifyEnddateButtonActionPerformed(evt);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -317,7 +325,7 @@ public class ModifyPlanPanel extends javax.swing.JPanel {
 
         //detailDialog.setResizable(false);
         detailDialog.setTitle("时间段详细内容");
-        detailDialog.setMinimumSize(new java.awt.Dimension(506,414));
+        detailDialog.setMinimumSize(new java.awt.Dimension(506, 414));
 
         titlePanel.setPreferredSize(new java.awt.Dimension(500, 30));
 
@@ -352,8 +360,8 @@ public class ModifyPlanPanel extends javax.swing.JPanel {
         javax.swing.GroupLayout timePanelLayout = new javax.swing.GroupLayout(timePanel);
         timePanel.setLayout(timePanelLayout);
         timePanelLayout.setHorizontalGroup(
-            timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(timePanelLayout.createSequentialGroup()
+                timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(timePanelLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(detailDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
@@ -362,16 +370,14 @@ public class ModifyPlanPanel extends javax.swing.JPanel {
                 .addComponent(jLabel10)
                 .addGap(18, 18, 18)
                 .addComponent(detailEndtime, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
         timePanelLayout.setVerticalGroup(
-            timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(detailStarttime, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(detailEndtime, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(detailDate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+                .addComponent(detailDate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)));
 
         jPanel5.setPreferredSize(new java.awt.Dimension(500, 300));
 
@@ -469,113 +475,111 @@ public class ModifyPlanPanel extends javax.swing.JPanel {
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+                jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(214, 214, 214)
-                        .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(detailCommentScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(detailLunch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel32)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(detailTransport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel25)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(detailCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(60, 60, 60)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel27)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(detailSite, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel5Layout.createSequentialGroup()
-                                            .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(jLabel41)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(detailDinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel5Layout.createSequentialGroup()
-                                            .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(detailBreakfast, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(214, 214, 214)
+                .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(detailCommentScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(detailLunch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(detailTransport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel25)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(detailCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(60, 60, 60)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(detailSite, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel41)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(detailDinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(detailBreakfast, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
         jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+                jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(detailSite, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(detailBreakfast, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(detailTransport, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(detailDinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel44, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(detailCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel47, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addComponent(detailLunch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(detailSite, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(detailBreakfast, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(detailTransport, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(detailDinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(jLabel44, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(detailCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(jLabel47, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(detailLunch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(detailCommentScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
+                .addContainerGap(14, Short.MAX_VALUE)));
 
         buttonPanel.setLayout(new java.awt.GridBagLayout());
 
@@ -600,10 +604,10 @@ public class ModifyPlanPanel extends javax.swing.JPanel {
         detailDeleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
-					detailDeleteButtonActionPerformed(evt);
-				} catch (HeadlessException | IOException e) {
-					e.printStackTrace();
-				}
+                    detailDeleteButtonActionPerformed(evt);
+                } catch (HeadlessException | IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -618,18 +622,17 @@ public class ModifyPlanPanel extends javax.swing.JPanel {
         javax.swing.GroupLayout detailDialogLayout = new javax.swing.GroupLayout(detailDialog.getContentPane());
         detailDialog.getContentPane().setLayout(detailDialogLayout);
         detailDialogLayout.setHorizontalGroup(
-            detailDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(detailDialogLayout.createSequentialGroup()
+                detailDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(detailDialogLayout.createSequentialGroup()
                 .addGroup(detailDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
-                    .addComponent(timePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
-                    .addComponent(titlePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, 0))
-        );
+                .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
+                .addComponent(timePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
+                .addComponent(titlePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0)));
         detailDialogLayout.setVerticalGroup(
-            detailDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(detailDialogLayout.createSequentialGroup()
+                detailDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(detailDialogLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -638,8 +641,7 @@ public class ModifyPlanPanel extends javax.swing.JPanel {
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(buttonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
+                .addGap(0, 0, 0)));
 
         setFont(new java.awt.Font("微软雅黑", 0, 12)); // NOI18N
         setPreferredSize(new java.awt.Dimension(850, 1000));
@@ -729,20 +731,18 @@ public class ModifyPlanPanel extends javax.swing.JPanel {
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 830, Short.MAX_VALUE)
-        );
+                jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 830, Short.MAX_VALUE));
         jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 412, Short.MAX_VALUE)
-        );
+                jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 412, Short.MAX_VALUE));
 
         mapPanel.add(jPanel10);
         mapPicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Client/geass/traveller/gui/picture/plan/map.jpg")));
         mapPicture.setMaximumSize(new java.awt.Dimension(400, 400));
         mapPicture.setMinimumSize(new java.awt.Dimension(400, 400));
-        mapPicture.setPreferredSize(new java.awt.Dimension(400,400));
-        
+        mapPicture.setPreferredSize(new java.awt.Dimension(400, 400));
+
         mapPanel.add(mapPicture);
 
         addPanel.setLayout(new javax.swing.BoxLayout(addPanel, javax.swing.BoxLayout.PAGE_AXIS));
@@ -751,7 +751,7 @@ public class ModifyPlanPanel extends javax.swing.JPanel {
 
         jPanel13.setPreferredSize(new java.awt.Dimension(823, 40));
 
-        jumpDateSelector.setModel(new DefaultComboBoxModel(GuiModifyPlanController.getDaySelector(plan.getStartdate(),plan.getEnddate())));
+        jumpDateSelector.setModel(new DefaultComboBoxModel(GuiModifyPlanController.getDaySelector(plan.getStartdate(), plan.getEnddate())));
         jumpDateSelector.setName(""); // NOI18N
         jumpDateSelector.setPreferredSize(new java.awt.Dimension(160, 30));
         jPanel13.add(jumpDateSelector);
@@ -761,10 +761,10 @@ public class ModifyPlanPanel extends javax.swing.JPanel {
         jumpButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
-					jumpButtonActionPerformed(evt);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+                    jumpButtonActionPerformed(evt);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         jPanel13.add(jumpButton);
@@ -817,10 +817,10 @@ public class ModifyPlanPanel extends javax.swing.JPanel {
         deletePhaseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
-					deletePhaseButtonActionPerformed(evt);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+                    deletePhaseButtonActionPerformed(evt);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         jToolBar1.add(deletePhaseButton);
@@ -842,11 +842,11 @@ public class ModifyPlanPanel extends javax.swing.JPanel {
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
-					backButtonActionPerformed(evt);
-				} catch (IOException e) {
-					
-					e.printStackTrace();
-				}
+                    backButtonActionPerformed(evt);
+                } catch (IOException e) {
+
+                    e.printStackTrace();
+                }
             }
         });
         jToolBar1.add(backButton);
@@ -876,12 +876,11 @@ public class ModifyPlanPanel extends javax.swing.JPanel {
 
         //tablePanel.add(jPanel6);
 
-        try{
-        TableModel model = GuiModifyPlanController.initPlanModel(plan);
-        table.setModel(model);
-        }
-        catch(Exception e){
-        	e.printStackTrace();
+        try {
+            TableModel model = GuiModifyPlanController.initPlanModel(plan);
+            table.setModel(model);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -894,167 +893,160 @@ public class ModifyPlanPanel extends javax.swing.JPanel {
         javax.swing.GroupLayout tablePanelLayout = new javax.swing.GroupLayout(tablePanel);
         tablePanel.setLayout(tablePanelLayout);
         tablePanelLayout.setHorizontalGroup(
-            tablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(tableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+                tablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE));
         tablePanelLayout.setVerticalGroup(
-            tablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tablePanelLayout.createSequentialGroup()
+                tablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(tablePanelLayout.createSequentialGroup()
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(tableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        
+                .addComponent(tableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(headerPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(titlePlan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(addPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(mapPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
+                .addComponent(tablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(headerPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(titlePlan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createSequentialGroup()
+                .addComponent(addPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(mapPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addContainerGap()));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(titlePlan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(mapPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(addPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(mapPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(addPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, 0)
                 .addComponent(tablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+                .addContainerGap()));
     }// </editor-fold>                        
 
-    private void jumpButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException {                                           
-        String date = (String)jumpDateSelector.getSelectedItem();
+    private void jumpButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException {
+        String date = (String) jumpDateSelector.getSelectedItem();
         /*table.setModel(GuiModifyPlanController.getUpdatedDayModel(plan.getPlanid(), date));
-        table.repaint();*/
+         table.repaint();*/
         this.parent.modifyDayOfPlan(parent, plan, date);
-    }                                          
+    }
 
-    private void confirmModifyStartdateButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException {                                                             
-  newStartdate = startdatePicker.getDate();
-		JTimepiece t = new JTimepiece();
-		if(newStartdate!=null){
-		int result = GuiModifyPlanController.setPlanStartdate(planid, plan.getStartdate(),plan.getEnddate(),newStartdate,false);
-		if(result==1){
-			startdateDialog.dispose();
-			startdatePicker.getEditor().setText("");
-			startdatePicker.setDate(null);
-			startdatePicker.repaint();
-			JOptionPane.showMessageDialog(this, "计划开始日期修改成功！","修改成功",JOptionPane.PLAIN_MESSAGE);
-			//-------------------更新-----------------
-			plan = GuiModifyPlanController.getPlan(planid);
-			startdate.setText(t.convertDateToString(plan.getStartdate(), "yyyy'年'MM'月'dd'日'"));
-			startdate.repaint();
-			table.setModel(GuiModifyPlanController.initPlanModel(plan));
-			table.repaint();
-			//----------------------------------------------
-			
-		}
-		else if(result==2){
-			startdateDialog.dispose();
-			startdatePicker.getEditor().setText("");
-			startdatePicker.setDate(null);
-			startdatePicker.repaint();
-			JOptionPane.showMessageDialog(this, "未修改计划开始日期","未做修改",JOptionPane.PLAIN_MESSAGE);
-		}
-		else if(result==-1){
-			startdateDialog.dispose();
-			startdatePicker.getEditor().setText("");
-			startdatePicker.setDate(null);
-			startdatePicker.repaint();
-			JOptionPane.showMessageDialog(this, "计划开始日期修改失败，新开始日期大于原结束日期，请先设置结束日期","修改失败",JOptionPane.PLAIN_MESSAGE);
-		}
-		else{//result==0
-			startdateDialog.dispose();
-			startdatePicker.getEditor().setText("");
-			startdatePicker.setDate(null);
-			startdatePicker.repaint();
-			if(JOptionPane.showOptionDialog(this, "新开始日期大于原来开始日期，将会删除新开始日期之前的计划内容，请问确认要删除吗？", "删除确认", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null)==0){
-				GuiModifyPlanController.setPlanStartdate(planid, plan.getStartdate(),plan.getEnddate(),newStartdate,true);
-				JOptionPane.showMessageDialog(this, "计划开始日期修改成功！","修改成功",JOptionPane.PLAIN_MESSAGE);
-				//-------------------更新-----------------
-				plan = GuiModifyPlanController.getPlan(planid);
-				startdate.setText(t.convertDateToString(plan.getStartdate(), "yyyy'年'MM'月'dd'日'"));
-				startdate.repaint();
-				table.setModel(GuiModifyPlanController.initPlanModel(plan));
-				table.repaint();
-                                jumpDateSelector.setModel(new DefaultComboBoxModel(GuiModifyPlanController.getDaySelector(plan.getStartdate(),plan.getEnddate())));
-				jumpDateSelector.repaint();
-				//----------------------------------------------
-			}
-			else{//CANCEL
-				JOptionPane.showMessageDialog(this, "取消设置新开始日期。将不会删除计划内容","取消设置",JOptionPane.PLAIN_MESSAGE);
-			}
-		}
-    }else
-    	JOptionPane.showMessageDialog(this, "请选择开始日期","修改失败",JOptionPane.PLAIN_MESSAGE);
-			
-    }                                                            
+    private void confirmModifyStartdateButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException {
+        newStartdate = startdatePicker.getDate();
+        JTimepiece t = new JTimepiece();
+        if (newStartdate != null) {
+            int result = GuiModifyPlanController.setPlanStartdate(planid, plan.getStartdate(), plan.getEnddate(), newStartdate, false);
+            if (result == 1) {
+                startdateDialog.dispose();
+                startdatePicker.getEditor().setText("");
+                startdatePicker.setDate(null);
+                startdatePicker.repaint();
+                JOptionPane.showMessageDialog(this, "计划开始日期修改成功！", "修改成功", JOptionPane.PLAIN_MESSAGE);
+                //-------------------更新-----------------
+                plan = GuiModifyPlanController.getPlan(planid);
+                startdate.setText(t.convertDateToString(plan.getStartdate(), "yyyy'年'MM'月'dd'日'"));
+                startdate.repaint();
+                table.setModel(GuiModifyPlanController.initPlanModel(plan));
+                table.repaint();
+                //----------------------------------------------
 
-    private void modifyTitleActionPerformed(java.awt.event.ActionEvent evt) {                                            
-                String newPlantitle = JOptionPane.showInputDialog(this, "请输入计划标题 ", "修改计划标题", JOptionPane.OK_CANCEL_OPTION);
-		if(!newPlantitle.isEmpty()){
+            } else if (result == 2) {
+                startdateDialog.dispose();
+                startdatePicker.getEditor().setText("");
+                startdatePicker.setDate(null);
+                startdatePicker.repaint();
+                JOptionPane.showMessageDialog(this, "未修改计划开始日期", "未做修改", JOptionPane.PLAIN_MESSAGE);
+            } else if (result == -1) {
+                startdateDialog.dispose();
+                startdatePicker.getEditor().setText("");
+                startdatePicker.setDate(null);
+                startdatePicker.repaint();
+                JOptionPane.showMessageDialog(this, "计划开始日期修改失败，新开始日期大于原结束日期，请先设置结束日期", "修改失败", JOptionPane.PLAIN_MESSAGE);
+            } else {//result==0
+                startdateDialog.dispose();
+                startdatePicker.getEditor().setText("");
+                startdatePicker.setDate(null);
+                startdatePicker.repaint();
+                if (JOptionPane.showOptionDialog(this, "新开始日期大于原来开始日期，将会删除新开始日期之前的计划内容，请问确认要删除吗？", "删除确认", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null) == 0) {
+                    GuiModifyPlanController.setPlanStartdate(planid, plan.getStartdate(), plan.getEnddate(), newStartdate, true);
+                    JOptionPane.showMessageDialog(this, "计划开始日期修改成功！", "修改成功", JOptionPane.PLAIN_MESSAGE);
+                    //-------------------更新-----------------
+                    plan = GuiModifyPlanController.getPlan(planid);
+                    startdate.setText(t.convertDateToString(plan.getStartdate(), "yyyy'年'MM'月'dd'日'"));
+                    startdate.repaint();
+                    table.setModel(GuiModifyPlanController.initPlanModel(plan));
+                    table.repaint();
+                    jumpDateSelector.setModel(new DefaultComboBoxModel(GuiModifyPlanController.getDaySelector(plan.getStartdate(), plan.getEnddate())));
+                    jumpDateSelector.repaint();
+                    //----------------------------------------------
+                } else {//CANCEL
+                    JOptionPane.showMessageDialog(this, "取消设置新开始日期。将不会删除计划内容", "取消设置", JOptionPane.PLAIN_MESSAGE);
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "请选择开始日期", "修改失败", JOptionPane.PLAIN_MESSAGE);
+        }
+
+    }
+
+    private void modifyTitleActionPerformed(java.awt.event.ActionEvent evt) {
+        String newPlantitle = JOptionPane.showInputDialog(this, "请输入计划标题 ", "修改计划标题", JOptionPane.OK_CANCEL_OPTION);
+        if (!newPlantitle.isEmpty()) {
             try {
-                if(GuiModifyPlanController.setTitle(planid,newPlantitle)==false)
-                        JOptionPane.showMessageDialog(this, "该标题已经存在", "标题修改失败", JOptionPane.PLAIN_MESSAGE);
-                else{
-                        JOptionPane.showMessageDialog(this, "标题成功修改为："+newPlantitle+"!", "标题修改成功", JOptionPane.PLAIN_MESSAGE);
-                        planTitle.setText(newPlantitle);
-                        planTitle.repaint();
+                if (GuiModifyPlanController.setTitle(planid, newPlantitle) == false) {
+                    JOptionPane.showMessageDialog(this, "该标题已经存在", "标题修改失败", JOptionPane.PLAIN_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(this, "标题成功修改为：" + newPlantitle + "!", "标题修改成功", JOptionPane.PLAIN_MESSAGE);
+                    planTitle.setText(newPlantitle);
+                    planTitle.repaint();
                 }
             } catch (IOException ex) {
                 Logger.getLogger(ModifyPlanPanel.class.getName()).log(Level.SEVERE, null, ex);
             }
-		}
-		else
-			JOptionPane.showMessageDialog(this, "请输入计划标题", "标题修改失败", JOptionPane.PLAIN_MESSAGE);
-    }                                           
+        } else {
+            JOptionPane.showMessageDialog(this, "请输入计划标题", "标题修改失败", JOptionPane.PLAIN_MESSAGE);
+        }
+    }
 
-    private void modifyStartdateActionPerformed(java.awt.event.ActionEvent evt) {                                                
+    private void modifyStartdateActionPerformed(java.awt.event.ActionEvent evt) {
         startdateDialog.setVisible(true);
-    }                                               
+    }
 
-    private void modifyEnddateActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    private void modifyEnddateActionPerformed(java.awt.event.ActionEvent evt) {
         enddateDialog.setVisible(true);
-    }                                             
+    }
 
-    private void cancelModifyStartdateButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                            
+    private void cancelModifyStartdateButtonActionPerformed(java.awt.event.ActionEvent evt) {
         startdateDialog.dispose();
-		startdatePicker.getEditor().setText("");
-		startdatePicker.setDate(null);
-		startdatePicker.repaint();
-    }                                                           
+        startdatePicker.getEditor().setText("");
+        startdatePicker.setDate(null);
+        startdatePicker.repaint();
+    }
 
-    private void detailButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        if(table.getSelectedColumn()==-1||table.getSelectedRow()==-1){
-            JOptionPane.showMessageDialog(this, "请在表格中选择一个时间段","请选择时间段",JOptionPane.INFORMATION_MESSAGE);
-        }else{
+    private void detailButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        if (table.getSelectedColumn() == -1 || table.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(this, "请在表格中选择一个时间段", "请选择时间段", JOptionPane.INFORMATION_MESSAGE);
+        } else {
             JTimepiece t = new JTimepiece();
             int col = table.getSelectedColumn();//第几天，从0开始
 
             Date mydate = t.addDay(plan.getStartdate(), col);
-            String phaseInfo = (String)table.getValueAt(table.getSelectedRow(), table.getSelectedColumn());
+            String phaseInfo = (String) table.getValueAt(table.getSelectedRow(), table.getSelectedColumn());
             try {
-                detailPhase = GuiModifyPlanController.getPhase(planid,mydate,phaseInfo);
+                detailPhase = GuiModifyPlanController.getPhase(planid, mydate, phaseInfo);
             } catch (IOException ex) {
                 Logger.getLogger(DisplayPlanPanel.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1085,148 +1077,143 @@ public class ModifyPlanPanel extends javax.swing.JPanel {
             detailDialog.setVisible(true);
         }
 
-    }                                            
+    }
 
-    private void deletePhaseButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException {    
-    	detailDialog.dispose();
-		if(GuiModifyPlanController.deletePhase(detailedPhase.getPhaseid())){
-			//---------更新部分--------
-			plan = GuiModifyPlanController.getPlan(planid);
-			table.setModel(GuiModifyPlanController.initPlanModel(plan));
-			table.repaint();
-			detailedPhase = null;
-			//-------------------------
-			JOptionPane.showMessageDialog(this, "计划时间段删除成功！","删除成功",JOptionPane.PLAIN_MESSAGE);
-		}
-		else
-			JOptionPane.showMessageDialog(this, "计划时间段删除失败","删除失败",JOptionPane.PLAIN_MESSAGE);
+    private void deletePhaseButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException {
+        detailDialog.dispose();
+        if (GuiModifyPlanController.deletePhase(detailedPhase.getPhaseid())) {
+            //---------更新部分--------
+            plan = GuiModifyPlanController.getPlan(planid);
+            table.setModel(GuiModifyPlanController.initPlanModel(plan));
+            table.repaint();
+            detailedPhase = null;
+            //-------------------------
+            JOptionPane.showMessageDialog(this, "计划时间段删除成功！", "删除成功", JOptionPane.PLAIN_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "计划时间段删除失败", "删除失败", JOptionPane.PLAIN_MESSAGE);
+        }
         /*//-------------这段是界面跳转代码-----------
-        this.getParent().add(new ModifyPlanPanelNetbeans(plan), "ModifyPlanPanel");
-        CardLayout cl = (CardLayout) this.getParent().getLayout();
-        cl.show(this.getParent(),"ModifyPlanPanel");
-        this.getParent().repaint();
-        //---------------------------------------
-*/    }                                            
+         this.getParent().add(new ModifyPlanPanelNetbeans(plan), "ModifyPlanPanel");
+         CardLayout cl = (CardLayout) this.getParent().getLayout();
+         cl.show(this.getParent(),"ModifyPlanPanel");
+         this.getParent().repaint();
+         //---------------------------------------
+         */    }
 
-    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {
         String title = plan.getPlantitle();
 
         //OK:返回0，CANCEL：返回2
         int isConfirmed = 2;
-        isConfirmed = JOptionPane.showConfirmDialog(this, "请问您确定要删除计划："+title+"吗？", 	"删除确认", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+        isConfirmed = JOptionPane.showConfirmDialog(this, "请问您确定要删除计划：" + title + "吗？", "删除确认", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
 
-        if(isConfirmed==2)
-        JOptionPane.showMessageDialog(this, "已取消删除计划:"+title,"删除取消",JOptionPane.INFORMATION_MESSAGE);
-        else{
+        if (isConfirmed == 2) {
+            JOptionPane.showMessageDialog(this, "已取消删除计划:" + title, "删除取消", JOptionPane.INFORMATION_MESSAGE);
+        } else {
             try {
-                if(GuiDeletePlanController.deletePlan(plan.getPlanid())==true){
-                    JOptionPane.showMessageDialog(this, "已成功删除计划:"+title,"删除成功",JOptionPane.INFORMATION_MESSAGE);
+                if (GuiDeletePlanController.deletePlan(plan.getPlanid()) == true) {
+                    JOptionPane.showMessageDialog(this, "已成功删除计划:" + title, "删除成功", JOptionPane.INFORMATION_MESSAGE);
                     //----------这段是界面跳转代码---------------
-                this.parent.displayPlanList(parent);
+                    this.parent.displayPlanList(parent);
                     //---------------------------------
+                } else {
+                    JOptionPane.showMessageDialog(this, "计划:" + title + " 删除失败", "删除失败", JOptionPane.INFORMATION_MESSAGE);
                 }
-                else
-                JOptionPane.showMessageDialog(this, "计划:"+title+" 删除失败","删除失败",JOptionPane.INFORMATION_MESSAGE);
             } catch (IOException ex) {
                 Logger.getLogger(DisplayPlanPanel.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
-    }                                            
+    }
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException {                                           
-       this.parent.displayPlanList(parent);
-    }                                          
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException {
+        this.parent.displayPlanList(parent);
+    }
 
-    private void detailConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                    
-       detailDialog.dispose();
-    }                                                   
+    private void detailConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        detailDialog.dispose();
+    }
 
-    private void detailDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) throws HeadlessException, IOException {                                                   
-    	detailDialog.dispose();
-		if(GuiModifyPlanController.deletePhase(detailedPhase.getPhaseid())){
-			//---------更新部分--------
-			plan = GuiModifyPlanController.getPlan(planid);
-			table.setModel(GuiModifyPlanController.initPlanModel(plan));
-			table.repaint();
-			detailedPhase = null;
-			//-------------------------
-			JOptionPane.showMessageDialog(this, "计划时间段删除成功！","删除成功",JOptionPane.PLAIN_MESSAGE);
-		}
-		else
-			JOptionPane.showMessageDialog(this, "计划时间段删除失败","删除失败",JOptionPane.PLAIN_MESSAGE);
-    }                                                  
+    private void detailDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) throws HeadlessException, IOException {
+        detailDialog.dispose();
+        if (GuiModifyPlanController.deletePhase(detailedPhase.getPhaseid())) {
+            //---------更新部分--------
+            plan = GuiModifyPlanController.getPlan(planid);
+            table.setModel(GuiModifyPlanController.initPlanModel(plan));
+            table.repaint();
+            detailedPhase = null;
+            //-------------------------
+            JOptionPane.showMessageDialog(this, "计划时间段删除成功！", "删除成功", JOptionPane.PLAIN_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "计划时间段删除失败", "删除失败", JOptionPane.PLAIN_MESSAGE);
+        }
+    }
 
-    private void confirmModifyEnddateButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException {                                                           
+    private void confirmModifyEnddateButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException {
         newEnddate = enddatePicker.getDate();
-		JTimepiece t = new JTimepiece();
-		if(newEnddate!=null){
-		int result = GuiModifyPlanController.setPlanEnddate(planid,plan.getEnddate(),plan.getStartdate(), newEnddate,false);
-		if(result==1){
-			enddateDialog.dispose();
-			enddatePicker.getEditor().setText("");
-			enddatePicker.setDate(null);
-			enddatePicker.repaint();
-			JOptionPane.showMessageDialog(this, "计划结束日期修改成功！","修改成功",JOptionPane.PLAIN_MESSAGE);
-			//-------------------更新-----------------
-			plan = GuiModifyPlanController.getPlan(planid);
-			enddate.setText(t.convertDateToString(plan.getEnddate(), "yyyy'年'MM'月'dd'日'"));
-			enddate.repaint();
-			table.setModel(GuiModifyPlanController.initPlanModel(plan));
-			table.repaint();
-			jumpDateSelector.setModel(new DefaultComboBoxModel(GuiModifyPlanController.getDaySelector(plan.getStartdate(),plan.getEnddate())));
-			jumpDateSelector.repaint();
-			//----------------------------------------------
-			
-		}
-		else if(result==2){
-			enddateDialog.dispose();
-			enddatePicker.getEditor().setText("");
-			enddatePicker.setDate(null);
-			enddatePicker.repaint();
-			JOptionPane.showMessageDialog(this, "未修改计划结束日期","未做修改",JOptionPane.PLAIN_MESSAGE);
-		}
-		else if(result==-1){
-			enddateDialog.dispose();
-			enddatePicker.getEditor().setText("");
-			enddatePicker.setDate(null);
-			enddatePicker.repaint();
-			JOptionPane.showMessageDialog(this, "计划结束日期修改失败，新结束日期小于原结束日期，请先设置开始日期","修改失败",JOptionPane.PLAIN_MESSAGE);
-		}
-		else{//result==0
-			enddateDialog.dispose();
-			enddatePicker.getEditor().setText("");
-			enddatePicker.setDate(null);
-			enddatePicker.repaint();
-			if(JOptionPane.showOptionDialog(this, "新结束日期小于原来结束日期，将会删除新结束日期之后的计划内容，请问确认要删除吗？", "删除确认", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null)==0){
-				GuiModifyPlanController.setPlanEnddate(planid, plan.getEnddate(),plan.getStartdate(),newEnddate,true);
-				JOptionPane.showMessageDialog(this, "计划结束日期修改成功！","修改成功",JOptionPane.PLAIN_MESSAGE);
-				//-------------------更新-----------------
-				plan = GuiModifyPlanController.getPlan(planid);
-				enddate.setText(t.convertDateToString(plan.getEnddate(), "yyyy'年'MM'月'dd'日'"));
-				enddate.repaint();
-				table.setModel(GuiModifyPlanController.initPlanModel(plan));
-				table.repaint();
-				jumpDateSelector.setModel(new DefaultComboBoxModel(GuiModifyPlanController.getDaySelector(plan.getStartdate(), plan.getEnddate())));
-				jumpDateSelector.repaint();
-				//----------------------------------------------
-			}
-			else{//CANCEL
-				JOptionPane.showMessageDialog(this, "取消设置新结束日期。将不会删除计划内容","取消设置",JOptionPane.PLAIN_MESSAGE);
-			}
-		}
-		}
-		else
-			JOptionPane.showMessageDialog(this, "请选择结束日期","修改失败",JOptionPane.PLAIN_MESSAGE);
-    }                                                          
+        JTimepiece t = new JTimepiece();
+        if (newEnddate != null) {
+            int result = GuiModifyPlanController.setPlanEnddate(planid, plan.getEnddate(), plan.getStartdate(), newEnddate, false);
+            if (result == 1) {
+                enddateDialog.dispose();
+                enddatePicker.getEditor().setText("");
+                enddatePicker.setDate(null);
+                enddatePicker.repaint();
+                JOptionPane.showMessageDialog(this, "计划结束日期修改成功！", "修改成功", JOptionPane.PLAIN_MESSAGE);
+                //-------------------更新-----------------
+                plan = GuiModifyPlanController.getPlan(planid);
+                enddate.setText(t.convertDateToString(plan.getEnddate(), "yyyy'年'MM'月'dd'日'"));
+                enddate.repaint();
+                table.setModel(GuiModifyPlanController.initPlanModel(plan));
+                table.repaint();
+                jumpDateSelector.setModel(new DefaultComboBoxModel(GuiModifyPlanController.getDaySelector(plan.getStartdate(), plan.getEnddate())));
+                jumpDateSelector.repaint();
+                //----------------------------------------------
 
-    private void cancelModifyEnddateButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                          
+            } else if (result == 2) {
+                enddateDialog.dispose();
+                enddatePicker.getEditor().setText("");
+                enddatePicker.setDate(null);
+                enddatePicker.repaint();
+                JOptionPane.showMessageDialog(this, "未修改计划结束日期", "未做修改", JOptionPane.PLAIN_MESSAGE);
+            } else if (result == -1) {
+                enddateDialog.dispose();
+                enddatePicker.getEditor().setText("");
+                enddatePicker.setDate(null);
+                enddatePicker.repaint();
+                JOptionPane.showMessageDialog(this, "计划结束日期修改失败，新结束日期小于原结束日期，请先设置开始日期", "修改失败", JOptionPane.PLAIN_MESSAGE);
+            } else {//result==0
+                enddateDialog.dispose();
+                enddatePicker.getEditor().setText("");
+                enddatePicker.setDate(null);
+                enddatePicker.repaint();
+                if (JOptionPane.showOptionDialog(this, "新结束日期小于原来结束日期，将会删除新结束日期之后的计划内容，请问确认要删除吗？", "删除确认", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null) == 0) {
+                    GuiModifyPlanController.setPlanEnddate(planid, plan.getEnddate(), plan.getStartdate(), newEnddate, true);
+                    JOptionPane.showMessageDialog(this, "计划结束日期修改成功！", "修改成功", JOptionPane.PLAIN_MESSAGE);
+                    //-------------------更新-----------------
+                    plan = GuiModifyPlanController.getPlan(planid);
+                    enddate.setText(t.convertDateToString(plan.getEnddate(), "yyyy'年'MM'月'dd'日'"));
+                    enddate.repaint();
+                    table.setModel(GuiModifyPlanController.initPlanModel(plan));
+                    table.repaint();
+                    jumpDateSelector.setModel(new DefaultComboBoxModel(GuiModifyPlanController.getDaySelector(plan.getStartdate(), plan.getEnddate())));
+                    jumpDateSelector.repaint();
+                    //----------------------------------------------
+                } else {//CANCEL
+                    JOptionPane.showMessageDialog(this, "取消设置新结束日期。将不会删除计划内容", "取消设置", JOptionPane.PLAIN_MESSAGE);
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "请选择结束日期", "修改失败", JOptionPane.PLAIN_MESSAGE);
+        }
+    }
+
+    private void cancelModifyEnddateButtonActionPerformed(java.awt.event.ActionEvent evt) {
         enddateDialog.dispose();
-		enddatePicker.getEditor().setText("");
-		enddatePicker.setDate(null);
-		enddatePicker.repaint();
-    }                                                         
-
+        enddatePicker.getEditor().setText("");
+        enddatePicker.setDate(null);
+        enddatePicker.repaint();
+    }
     // Variables declaration - do not modify                     
     private javax.swing.JPanel addPanel;
     private javax.swing.JButton backButton;

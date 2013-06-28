@@ -33,23 +33,21 @@ import Shared.geass.dataPOJO.Plan;
 public class ModifyDayOfPlanPanel extends javax.swing.JPanel {
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private Plan plan;
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    private Plan plan;
     private int planid;
     private String datestr;
     private TravellerFrame parent;
-    
     private String selectedCountryname;
     private TableColumn cityColumn;
     private boolean isTableChanged = false;
-	private TableColumn checkColumn;
-	
-	//private MapFrame mf = new MapFrame();
-	private JLabel mapPicture;
-    
-    public ModifyDayOfPlanPanel(TravellerFrame parent,int planid, String datestr) throws IOException {
+    private TableColumn checkColumn;
+    //private MapFrame mf = new MapFrame();
+    private JLabel mapPicture;
+
+    public ModifyDayOfPlanPanel(TravellerFrame parent, int planid, String datestr) throws IOException {
         this.planid = planid;
         this.datestr = datestr;
         this.parent = parent;
@@ -58,15 +56,15 @@ public class ModifyDayOfPlanPanel extends javax.swing.JPanel {
         initComponents();
     }
 
-    public ModifyDayOfPlanPanel(TravellerFrame parent,Plan plan, String datestr) {
-    	 this.plan = plan;
-         this.datestr = datestr;
-         this.planid = plan.getPlanid();
-         this.parent = parent;
-         initComponents();
-	}
+    public ModifyDayOfPlanPanel(TravellerFrame parent, Plan plan, String datestr) {
+        this.plan = plan;
+        this.datestr = datestr;
+        this.planid = plan.getPlanid();
+        this.parent = parent;
+        initComponents();
+    }
 
-	@SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
@@ -206,13 +204,11 @@ public class ModifyDayOfPlanPanel extends javax.swing.JPanel {
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 463, Short.MAX_VALUE)
-        );
+                jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 463, Short.MAX_VALUE));
         jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 405, Short.MAX_VALUE)
-        );
+                jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 405, Short.MAX_VALUE));
 
         mapPanel.add(jPanel10);
 
@@ -318,15 +314,15 @@ public class ModifyDayOfPlanPanel extends javax.swing.JPanel {
             }
         });
 
-        try{
+        try {
             countrySelector.setModel(new javax.swing.DefaultComboBoxModel(GuiCreatePlanController.getCountryList()));
-        }catch(Exception e){}
+        } catch (Exception e) {
+        }
         countrySelector.setPreferredSize(new java.awt.Dimension(160, 30));
-        countrySelector.addItemListener(new ItemListener(){
-
+        countrySelector.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
-                selectedCountryname = (String)e.getItem();
+                selectedCountryname = (String) e.getItem();
                 try {
                     citySelector.setModel(new DefaultComboBoxModel(GuiCreatePlanController.getCityList(selectedCountryname)));
                 } catch (IOException e1) {
@@ -334,139 +330,137 @@ public class ModifyDayOfPlanPanel extends javax.swing.JPanel {
                 }
                 citySelector.repaint();
             }
-
         });
-        
+
         mapPicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Client/geass/traveller/gui/picture/plan/map.jpg")));
         mapPicture.setMaximumSize(new java.awt.Dimension(400, 400));
         mapPicture.setMinimumSize(new java.awt.Dimension(400, 400));
-        mapPicture.setPreferredSize(new java.awt.Dimension(400,400));
-        
+        mapPicture.setPreferredSize(new java.awt.Dimension(400, 400));
+
         mapPanel.add(mapPicture);
 
         jLabel23.setFont(new java.awt.Font("微软雅黑", 1, 14)); // NOI18N
         jLabel23.setText("城市");
 
-        try{
+        try {
             citySelector.setModel(new javax.swing.DefaultComboBoxModel(GuiCreatePlanController.getCityList("中国")));
-        }catch(Exception e){}
+        } catch (Exception e) {
+        }
         citySelector.setPreferredSize(new java.awt.Dimension(160, 30));
 
         javax.swing.GroupLayout addContentPanelLayout = new javax.swing.GroupLayout(addContentPanel);
         addContentPanel.setLayout(addContentPanelLayout);
         addContentPanelLayout.setHorizontalGroup(
-            addContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(addContentPanelLayout.createSequentialGroup()
+                addContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(addContentPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(85, 85, 85)
                 .addComponent(resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(68, 68, 68))
-            .addGroup(addContentPanelLayout.createSequentialGroup()
+                .addGroup(addContentPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(addContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addContentPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel20)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(commentScrollPane))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addContentPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel16)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(breakfastField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel18)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lunchField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)
-                        .addComponent(jLabel19)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(dinnerField, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addContentPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(transportField, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addContentPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel15)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(siteField, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addContentPanelLayout.createSequentialGroup()
-                        .addGroup(addContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(addContentPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(countrySelector, 0, 1, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addContentPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(starthourField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(startminuteField, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(addContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(addContentPanelLayout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(jLabel13)
-                                .addGap(20, 20, 20)
-                                .addComponent(endhourField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel14)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(endminuteField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(addContentPanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel23)
-                                .addGap(12, 12, 12)
-                                .addComponent(citySelector, 0, 1, Short.MAX_VALUE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addContentPanelLayout.createSequentialGroup()
+                .addComponent(jLabel20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(commentScrollPane))
+                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addContentPanelLayout.createSequentialGroup()
+                .addComponent(jLabel16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(breakfastField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lunchField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(dinnerField, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addContentPanelLayout.createSequentialGroup()
+                .addComponent(jLabel17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(transportField, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addContentPanelLayout.createSequentialGroup()
+                .addComponent(jLabel15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(siteField, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addContentPanelLayout.createSequentialGroup()
+                .addGroup(addContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(addContentPanelLayout.createSequentialGroup()
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(countrySelector, 0, 1, Short.MAX_VALUE))
+                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addContentPanelLayout.createSequentialGroup()
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(starthourField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(startminuteField, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(addContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(addContentPanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel13)
+                .addGap(20, 20, 20)
+                .addComponent(endhourField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(endminuteField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(addContentPanelLayout.createSequentialGroup()
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel23)
+                .addGap(12, 12, 12)
+                .addComponent(citySelector, 0, 1, Short.MAX_VALUE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
         addContentPanelLayout.setVerticalGroup(
-            addContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(addContentPanelLayout.createSequentialGroup()
+                addContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(addContentPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(addContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(starthourField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(addContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(startminuteField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(endhourField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel13)
-                        .addComponent(endminuteField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel14)
-                        .addComponent(jLabel8)
-                        .addComponent(jLabel12)))
+                .addComponent(starthourField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(addContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(startminuteField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(endhourField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel13)
+                .addComponent(endminuteField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel14)
+                .addComponent(jLabel8)
+                .addComponent(jLabel12)))
                 .addGap(18, 18, 18)
                 .addGroup(addContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(countrySelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel23)
-                    .addComponent(citySelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel9)
+                .addComponent(countrySelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel23)
+                .addComponent(citySelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(addContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(siteField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15))
+                .addComponent(siteField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel15))
                 .addGap(18, 18, 18)
                 .addGroup(addContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(transportField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel17))
+                .addComponent(transportField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel17))
                 .addGap(18, 18, 18)
                 .addGroup(addContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(breakfastField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lunchField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dinnerField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel18)
-                    .addComponent(jLabel19)
-                    .addComponent(jLabel16))
+                .addComponent(breakfastField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lunchField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dinnerField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel18)
+                .addComponent(jLabel19)
+                .addComponent(jLabel16))
                 .addGap(18, 18, 18)
                 .addGroup(addContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(addContentPanelLayout.createSequentialGroup()
-                        .addComponent(commentScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(addContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel20))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+                .addGroup(addContentPanelLayout.createSequentialGroup()
+                .addComponent(commentScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(addContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jLabel20))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
         addPanel.add(addContentPanel);
 
@@ -475,9 +469,10 @@ public class ModifyDayOfPlanPanel extends javax.swing.JPanel {
         jPanel13.setMinimumSize(new java.awt.Dimension(134, 35));
         jPanel13.setPreferredSize(new java.awt.Dimension(823, 40));
 
-        try{
-            jumpDate.setModel(new DefaultComboBoxModel(GuiModifyPlanController.getDaySelector(plan.getStartdate(),plan.getEnddate())));
-        }catch(Exception e){}
+        try {
+            jumpDate.setModel(new DefaultComboBoxModel(GuiModifyPlanController.getDaySelector(plan.getStartdate(), plan.getEnddate())));
+        } catch (Exception e) {
+        }
         jumpDate.setName(""); // NOI18N
         jumpDate.setPreferredSize(new java.awt.Dimension(160, 30));
         jPanel13.add(jumpDate);
@@ -496,18 +491,16 @@ public class ModifyDayOfPlanPanel extends javax.swing.JPanel {
         tableScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         tableScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 
-        try{
+        try {
             table.setModel(GuiModifyPlanController.getUpdatedDayModel(plan.getPlanid(), datestr));
-        }catch(Exception e){
-        	e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        table.getModel().addTableModelListener(new TableModelListener(){
-
-			@Override
-			public void tableChanged(TableModelEvent e) {
-				isTableChanged = true;
-			}
-        	
+        table.getModel().addTableModelListener(new TableModelListener() {
+            @Override
+            public void tableChanged(TableModelEvent e) {
+                isTableChanged = true;
+            }
         });
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         cityColumn = table.getColumnModel().getColumn(2);
@@ -520,8 +513,8 @@ public class ModifyDayOfPlanPanel extends javax.swing.JPanel {
 
         jPanel11.setPreferredSize(new java.awt.Dimension(823, 50));
         java.awt.GridBagLayout jPanel11Layout = new java.awt.GridBagLayout();
-        jPanel11Layout.columnWidths = new int[] {0, 30, 0, 30, 0};
-        jPanel11Layout.rowHeights = new int[] {0};
+        jPanel11Layout.columnWidths = new int[]{0, 30, 0, 30, 0};
+        jPanel11Layout.rowHeights = new int[]{0};
         jPanel11.setLayout(jPanel11Layout);
 
         backButton.setText("返回计划");
@@ -529,10 +522,10 @@ public class ModifyDayOfPlanPanel extends javax.swing.JPanel {
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
-					backButtonActionPerformed(evt);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+                    backButtonActionPerformed(evt);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -545,10 +538,10 @@ public class ModifyDayOfPlanPanel extends javax.swing.JPanel {
         submitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
-					submitButtonActionPerformed(evt);
-				} catch (HeadlessException | IOException | ClassNotFoundException e) {
-					e.printStackTrace();
-				}
+                    submitButtonActionPerformed(evt);
+                } catch (HeadlessException | IOException | ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -561,10 +554,10 @@ public class ModifyDayOfPlanPanel extends javax.swing.JPanel {
         clearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
-					clearButtonActionPerformed(evt);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+                    clearButtonActionPerformed(evt);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -577,116 +570,111 @@ public class ModifyDayOfPlanPanel extends javax.swing.JPanel {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
-                    .addComponent(headerPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(titlePlan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(addPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(mapPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
+                .addComponent(tablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
+                .addComponent(headerPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(titlePlan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createSequentialGroup()
+                .addComponent(addPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(mapPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)))
+                .addContainerGap()));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(titlePlan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(mapPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(addPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE))
+                .addComponent(mapPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(addPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+                .addContainerGap()));
     }// </editor-fold>                        
 
-    private void jumpButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void jumpButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
         //REMEMBER TO RESET THE DATESTR!!
-        datestr = (String)jumpDate.getSelectedItem();
-        try{
-        table.setModel(GuiModifyPlanController.getUpdatedDayModel(planid, datestr));
-        table.repaint();
-        }
-        catch(Exception e){     
+        datestr = (String) jumpDate.getSelectedItem();
+        try {
+            table.setModel(GuiModifyPlanController.getUpdatedDayModel(planid, datestr));
+            table.repaint();
+        } catch (Exception e) {
         }
         todayDate.setText(datestr);
         todayDate.repaint();
-    }                                          
+    }
 
-    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) throws HeadlessException, IOException, ClassNotFoundException {                                             
-    	
-    	TableModel tableModel = table.getModel();
-    	
-    	if(table.isEditing()){
-    		JOptionPane.showMessageDialog(this,"表格正在修改中，请确定表格修改已完成", "表格正在修改", JOptionPane.PLAIN_MESSAGE);
-    	}
-    	else{
-    	if(isTableChanged){
-    		
-    		if(GuiModifyPlanController.validTableTime(tableModel)){
-    			
-    			if(GuiModifyPlanController.modifyDayOfPlan(planid,datestr,tableModel)==true){
-    				
-        			int opt = 0;//YES:0, NO:1
-        			opt = JOptionPane.showOptionDialog(this, "计划修改成功！是否返回原界面？若否，则跳转至整体计划内容", "修改成功", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
-        			if(opt==0){}
-        			else{
-        				//-------------这段是界面跳转代码-----------
-        				this.parent.modifyPlan(parent, plan.getPlanid());
-        				//---------------------------------------
-        			}
-        		}
-        		else
-        			JOptionPane.showMessageDialog(this, "计划修改失败，请检查是否存在重复的时间段","修改失败",JOptionPane.PLAIN_MESSAGE);
-    		}
-    		else
-    			JOptionPane.showMessageDialog(this, "计划修改失败，请检查是否存在格式错误的开始或结束时间","修改失败",JOptionPane.PLAIN_MESSAGE);
-    	}
-    	else{
-    		JOptionPane.showMessageDialog(this, "请先修改计划内容","计划未修改",JOptionPane.PLAIN_MESSAGE);
-    	}
-    	}
-    }                                            
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) throws HeadlessException, IOException, ClassNotFoundException {
 
-    private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException {                                            
-    	if(GuiModifyPlanController.clearDay(plan.getPlanid(),datestr)){
-    	    JOptionPane.showMessageDialog(this, "清空本日计划内容成功！","清空成功",JOptionPane.PLAIN_MESSAGE);
-    	    table.setModel(GuiModifyPlanController.getUpdatedDayModel(planid, datestr));
-    	    table.repaint();
-    	}    
-    	else
-    	     JOptionPane.showMessageDialog(this, "清空本日计划内容失败","清空失败",JOptionPane.PLAIN_MESSAGE);
-    }                                           
+        TableModel tableModel = table.getModel();
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException {                                           
+        if (table.isEditing()) {
+            JOptionPane.showMessageDialog(this, "表格正在修改中，请确定表格修改已完成", "表格正在修改", JOptionPane.PLAIN_MESSAGE);
+        } else {
+            if (isTableChanged) {
+
+                if (GuiModifyPlanController.validTableTime(tableModel)) {
+
+                    if (GuiModifyPlanController.modifyDayOfPlan(planid, datestr, tableModel) == true) {
+
+                        int opt = 0;//YES:0, NO:1
+                        opt = JOptionPane.showOptionDialog(this, "计划修改成功！是否返回原界面？若否，则跳转至整体计划内容", "修改成功", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+                        if (opt == 0) {
+                        } else {
+                            //-------------这段是界面跳转代码-----------
+                            this.parent.modifyPlan(parent, plan.getPlanid());
+                            //---------------------------------------
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(this, "计划修改失败，请检查是否存在重复的时间段", "修改失败", JOptionPane.PLAIN_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "计划修改失败，请检查是否存在格式错误的开始或结束时间", "修改失败", JOptionPane.PLAIN_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "请先修改计划内容", "计划未修改", JOptionPane.PLAIN_MESSAGE);
+            }
+        }
+    }
+
+    private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException {
+        if (GuiModifyPlanController.clearDay(plan.getPlanid(), datestr)) {
+            JOptionPane.showMessageDialog(this, "清空本日计划内容成功！", "清空成功", JOptionPane.PLAIN_MESSAGE);
+            table.setModel(GuiModifyPlanController.getUpdatedDayModel(planid, datestr));
+            table.repaint();
+        } else {
+            JOptionPane.showMessageDialog(this, "清空本日计划内容失败", "清空失败", JOptionPane.PLAIN_MESSAGE);
+        }
+    }
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException {
         //-------------这段是界面跳转代码-----------
-		this.parent.modifyPlan(parent, planid);
-		//---------------------------------------
-    }                                          
+        this.parent.modifyPlan(parent, planid);
+        //---------------------------------------
+    }
 
-    private void siteFieldActionPerformed(java.awt.event.ActionEvent evt) {                                          
+    private void siteFieldActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                         
+    }
 
-    private void dinnerFieldActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    private void dinnerFieldActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                           
+    }
 
-    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {                                          
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
         //String date = (String)dateSelector.getSelectedItem();
         String beginH = starthourField.getText();//NOT NULL
         String beginM = startminuteField.getText();//NOT NULL
         String endH = endhourField.getText();//NOT NULL
         String endM = endminuteField.getText();//NOT NULL
-        String citi = (String)citySelector.getSelectedItem();//NOT NULL
+        String citi = (String) citySelector.getSelectedItem();//NOT NULL
         String spoty = siteField.getText();
         String trans = transportField.getText();
         String brkfst = breakfastField.getText();
@@ -694,52 +682,51 @@ public class ModifyDayOfPlanPanel extends javax.swing.JPanel {
         String dinn = dinnerField.getText();
         String comm = commentField.getText();
 
-        if(beginH.isEmpty()||beginM.isEmpty()||endH.isEmpty()||endM.isEmpty())
-        JOptionPane.showMessageDialog(this, "请填写开始时间和结束时间", "请填写时间", JOptionPane.WARNING_MESSAGE);
-        else{
-            if(GuiCreatePlanController.validTime(beginH, beginM, endH, endM)<=0){
-                switch(GuiCreatePlanController.validTime(beginH, beginM, endH, endM)){
+        if (beginH.isEmpty() || beginM.isEmpty() || endH.isEmpty() || endM.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "请填写开始时间和结束时间", "请填写时间", JOptionPane.WARNING_MESSAGE);
+        } else {
+            if (GuiCreatePlanController.validTime(beginH, beginM, endH, endM) <= 0) {
+                switch (GuiCreatePlanController.validTime(beginH, beginM, endH, endM)) {
                     case 0:
-                    JOptionPane.showMessageDialog(this, "结束时间请不要小于开始时间", "时间错误", JOptionPane.WARNING_MESSAGE);
-                    break;
+                        JOptionPane.showMessageDialog(this, "结束时间请不要小于开始时间", "时间错误", JOptionPane.WARNING_MESSAGE);
+                        break;
                     case -1:
-                    JOptionPane.showMessageDialog(this, "结束时间不符合格式", "时间错误", JOptionPane.WARNING_MESSAGE);
-                    break;
+                        JOptionPane.showMessageDialog(this, "结束时间不符合格式", "时间错误", JOptionPane.WARNING_MESSAGE);
+                        break;
                     case -2:
-                    JOptionPane.showMessageDialog(this, "开始时间不符合格式","时间错误", JOptionPane.WARNING_MESSAGE);
-                    break;
+                        JOptionPane.showMessageDialog(this, "开始时间不符合格式", "时间错误", JOptionPane.WARNING_MESSAGE);
+                        break;
                     case -3:
-                    JOptionPane.showMessageDialog(this, "0<=小时<=23,0<=分钟<=59", "时间错误", JOptionPane.WARNING_MESSAGE);
-                    break;
+                        JOptionPane.showMessageDialog(this, "0<=小时<=23,0<=分钟<=59", "时间错误", JOptionPane.WARNING_MESSAGE);
+                        break;
                     case -100:
-                    JOptionPane.showMessageDialog(this, "时间请输入数字", "时间错误", JOptionPane.WARNING_MESSAGE);
-                    break;
+                        JOptionPane.showMessageDialog(this, "时间请输入数字", "时间错误", JOptionPane.WARNING_MESSAGE);
+                        break;
                     default:
-                    break;
+                        break;
                 }
-            }
-            else{
+            } else {
                 try {
-                    if(GuiCreatePlanController.insertPhase(plan.getPlanid(), datestr, beginH, beginM, endH, endM, citi, spoty, trans, brkfst, lun, dinn, comm)){
-                        JOptionPane.showMessageDialog(this, "成功设置"+datestr+" "+beginH+":"+beginM+"至"+endH+":"+endM+"的行程！", "行程设置成功", JOptionPane.PLAIN_MESSAGE);
+                    if (GuiCreatePlanController.insertPhase(plan.getPlanid(), datestr, beginH, beginM, endH, endM, citi, spoty, trans, brkfst, lun, dinn, comm)) {
+                        JOptionPane.showMessageDialog(this, "成功设置" + datestr + " " + beginH + ":" + beginM + "至" + endH + ":" + endM + "的行程！", "行程设置成功", JOptionPane.PLAIN_MESSAGE);
                         DefaultTableModel model = GuiCreatePlanController.getUpdatedDayModel(plan.getPlanid(), datestr);
                         table.setModel(model);
                         table.repaint();
-                        
+
                         /*mf.repaint();
-                        mf.show(citi);
-*/                    }
-                    else
-                    JOptionPane.showMessageDialog(this, ""+datestr+" "+beginH+":"+beginM+"至"+endH+":"+endM+"的行程已经存在", "行程设置失败", JOptionPane.WARNING_MESSAGE);
+                         mf.show(citi);
+                         */                    } else {
+                        JOptionPane.showMessageDialog(this, "" + datestr + " " + beginH + ":" + beginM + "至" + endH + ":" + endM + "的行程已经存在", "行程设置失败", JOptionPane.WARNING_MESSAGE);
+                    }
                 } catch (IOException ex) {
                     Logger.getLogger(SetPlanPanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
         }
-    }                                         
+    }
 
-    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {
         //dateSelector.setSelectedIndex(0);
         //dateSelector.repaint();
 
@@ -781,8 +768,7 @@ public class ModifyDayOfPlanPanel extends javax.swing.JPanel {
 
         commentField.setText(null);
         commentField.repaint();
-    }                                           
-
+    }
     // Variables declaration - do not modify                     
     private javax.swing.JButton addButton;
     private javax.swing.JPanel addContentPanel;
