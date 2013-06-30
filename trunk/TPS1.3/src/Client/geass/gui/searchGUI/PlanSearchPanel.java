@@ -4,9 +4,17 @@
  */
 package Client.geass.gui.searchGUI;
 
+import Client.geass.clientController.searchController.CityLogic;
+import Client.geass.clientController.searchController.CityLogicInterface;
 import Client.geass.gui.travellerGUI.TableModel;
 import Server.geass.database.DBcity;
+import Shared.geass.dataPOJO.Phase;
 import Shared.geass.dataPOJO.Plan;
+import java.awt.Cursor;
+import java.awt.Image;
+import java.awt.Point;
+import java.awt.Toolkit;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -23,6 +31,7 @@ public class PlanSearchPanel extends javax.swing.JPanel {
      */
     public PlanSearchPanel() {
         initComponents();
+        setDrag();
     }
 
     /**
@@ -146,7 +155,53 @@ public class PlanSearchPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+    private void setDrag(){
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+     public void mouseClicked(java.awt.event.MouseEvent evt) {
+        tableMouseClicked(evt);
+    }
+    public void mouseReleased(java.awt.event.MouseEvent evt) {
+        tableMouseReleased(evt);
+    }
 
+        });
+jTable1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+    public void mouseDragged(java.awt.event.MouseEvent evt) {
+        tableDragged(evt);
+    }
+});
+
+    }PhaseDialog pd =  new PhaseDialog();
+    private void tableMouseClicked(java.awt.event.MouseEvent evt){
+        int index = jTable1.getSelectedRow();
+        int id ;
+        
+        if((planlist!=null)&&(index!=-1)){
+       id =planlist.get(index).getPlanid();
+          // System.out.println(id);
+        phaselist =c.getPhase(id);
+       // System.out.println(phaselist.get(0).getSite());
+         pd.setP(phaselist);
+        pd .setVisible(true);
+          
+        }
+    }
+     private void tableDragged(java.awt.event.MouseEvent evt) {                                     
+        // TODO add your handling code here:
+        Toolkit kit = Toolkit.getDefaultToolkit();    
+					Image img = kit.getImage("src//c.PNG"); 
+					
+					Cursor dynamiteCuror = kit.createCustomCursor(img, new Point(10,10),"dynamite stick") ;      
+					setCursor(dynamiteCuror);
+    }                                    
+
+    private void tableMouseReleased(java.awt.event.MouseEvent evt) {                                      
+        // TODO add your handling code here:
+        setCursor(null);
+    }    
+    public Plan  getDrag(){
+        return planlist.get(jTable1.getSelectedRow());
+    }
     private void searchButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButton1ActionPerformed
         // TODO add your handling code here:
         Date start = jDateChooser1.getDate();
@@ -180,8 +235,8 @@ public class PlanSearchPanel extends javax.swing.JPanel {
 
     private void searchByTwoDate(Date start, Date end) {
 
-        planlist = dbcity.searchPlanByTwoDate(start, end);
-
+       // planlist = dbcity.searchPlanByTwoDate(start, end);
+         planlist=c.searchPlanByTwoDate(start, end);
         if (planlist == null) {
             System.out.println("没有找到符合条件的计划");
             return;
@@ -190,7 +245,8 @@ public class PlanSearchPanel extends javax.swing.JPanel {
     }
 
     private void searchByCityDate(String searchCondition, Date date) {
-        planlist = dbcity.searchPlanByCityDate(searchCondition, date);
+       // planlist = dbcity.searchPlanByCityDate(searchCondition, date);
+        planlist = c.searchPlanByCityDate(searchCondition, date);
         if (planlist == null) {
             System.out.println("没有找到符合的城市");
             return;
@@ -198,7 +254,9 @@ public class PlanSearchPanel extends javax.swing.JPanel {
         this.planTable.setDataVector(TableModel.getInstance().planTableVector(planlist), TableModel.PLAN_COLUMN_NAMES);
     }
     ArrayList<Plan> planlist = null;
-    private DBcity dbcity = new DBcity();
+    ArrayList<Phase>phaselist = null ;
+    CityLogicInterface c = new CityLogic();
+   // private DBcity dbcity = new DBcity();
     private DefaultTableModel planTable = new DefaultTableModel(null, TableModel.PLAN_COLUMN_NAMES);
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser jDateChooser1;

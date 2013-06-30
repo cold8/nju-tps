@@ -1,6 +1,7 @@
 package Client.geass.gui.travellerGUI;
 
 import Shared.geass.dataPOJO.City;
+import Shared.geass.dataPOJO.Phase;
 import Shared.geass.dataPOJO.Plan;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -82,8 +83,46 @@ public class TableModel {
         list.add(dateformat.format(plan.getEnddate()));
         return list;
     }
+     /**
+     *
+     */
+    public static Vector<String>  PHASE_COLUMN_NAMES  =
+            new Vector<String>(Arrays.asList("当天","开始时间", "结束时间", "城市","交通工具","景点","早餐","中餐","晚餐","评论"));
+     public Vector<List> phaseTableVector(List list) {
+        Vector<Vector<String>> resultList;
+        try {
+            Vector<Phase> phaseList = new Vector(list);
+            resultList = new Vector<Vector<String>>();
+            for (Phase p : phaseList) {
+                resultList.add((Vector<String>) phaseToStringArray(p));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return new Vector<List>(resultList);
+    }
+ public List phaseToStringArray(Phase phase) {
+        Vector<String> list = new Vector<String>();
+        DateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");//("yyyy-MM-dd HH:mm:ss");
+        DateFormat datef = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        list.add(dateformat.format(phase.getDate()));
+        list.add(datef.format(phase.getBegintime()));
+        list.add(datef.format(phase.getEndtime()));
+        list.add(phase.getCityname());
+        list.add(phase.getTransport());
+        list.add(phase.getSite());
+        list.add(phase.getBreakfast());
+        list.add(phase.getLunch());
+        list.add(phase.getDinner());
+        list.add(phase.getComment());
+       // list.add(phase.getBegintime());
+        //list.add(dateformat.format(plan.getStartdate()));
+       // list.add(dateformat.format(plan.getEnddate()));
+        return list;
+    }
 }
-
+ 
 class TravellerTableModel extends DefaultTableModel {
 
     public TravellerTableModel(Vector<Vector<String>> data, Vector<String> columnNames) {

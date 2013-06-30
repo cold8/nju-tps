@@ -4,10 +4,14 @@
  */
 package Client.geass.gui.searchGUI;
 
+
+import Client.geass.clientController.searchController.CityLogic;
+import Client.geass.clientController.searchController.CityLogicInterface;
 import Client.geass.gui.travellerGUI.ComboBoxModel;
 import Client.geass.gui.travellerGUI.TableModel;
-import Server.geass.database.DBcity;
+
 import Shared.geass.dataPOJO.City;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -24,6 +28,7 @@ public class CitySearchPanel extends javax.swing.JPanel {
      */
     public CitySearchPanel() {
         initComponents();
+        setTable();
     }
 
     public void init() {
@@ -85,7 +90,22 @@ public class CitySearchPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+private void setTable(){
+    jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+    public void mouseClicked(java.awt.event.MouseEvent evt) {
+        jTable2MouseClicked(evt);
+    }});
 
+        
+    }
+            private void jTable2MouseClicked(MouseEvent evt) {
+                int index= jTable1.getSelectedRow();System.out.println(""+(citylist==null));
+                if((index!=-1)&&(citylist!=null)){
+                    System.out.println("in");
+                String str = citylist.get(index).getDescription();
+                new desciptionDialog(str).setVisible(true);}
+                
+        }
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
         String searchkey = String.valueOf(jComboBox1.getSelectedItem());
@@ -107,28 +127,35 @@ public class CitySearchPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void searchBySeason(String searchCondition) {
-        citylist = dbcity.searchCityBySeason(searchCondition);
+       citylist = controller.SearchBySeason(searchCondition);
+      //  citylist=  dbcity.searchCityBySeason(searchCondition);
         if (citylist == null) {
             System.out.println("没有找到符合的城市");
             return;
         }
-        this.cityTable.setDataVector(TableModel.getInstance().cityTableVector(citylist), TableModel.CITY_COLUMN_NAMES);
+      this.cityTable.setDataVector(TableModel.getInstance().cityTableVector(citylist), TableModel.CITY_COLUMN_NAMES);
+       
     }
 
     private void searchByCityName(String searchCondition) {
-        citylist = dbcity.searchCityByName(searchCondition);
+       citylist = controller.SearchByName(searchCondition);
+        //citylist =  dbcity.searchCityByName(searchCondition);
         if (citylist == null) {
             System.out.println("没有找到符合的城市");
             return;
         }
-        this.cityTable.setDataVector(TableModel.getInstance().cityTableVector(citylist), TableModel.CITY_COLUMN_NAMES);
+       this.cityTable.setDataVector(TableModel.getInstance().cityTableVector(citylist), TableModel.CITY_COLUMN_NAMES);
+       
     }
     
     
     ArrayList<City> citylist = null;
-    private DBcity dbcity = new DBcity();
+    CityLogicInterface controller = new CityLogic();
+   // private DBcity dbcity = new DBcity();
     private DefaultTableModel cityTable = new DefaultTableModel(null, TableModel.CITY_COLUMN_NAMES);
     private DefaultComboBoxModel cityBox = new DefaultComboBoxModel(ComboBoxModel.CITY_COLUMN_NAMES);
+  
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;

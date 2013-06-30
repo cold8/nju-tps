@@ -1,5 +1,7 @@
 package Client.geass.clientController.searchController;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 
@@ -9,8 +11,9 @@ import java.util.Vector;
 public interface CityLogicInterface {
 	
     public String getText(String cityid);
-    public Vector<List> getListByName(String city);
-    public Vector<List> getListBySeason(String season);
-    public boolean isCity(String city);
-	 public boolean isSeason(String season);
+    public ArrayList SearchByName(String city);
+    public ArrayList SearchBySeason(String season);
+    public ArrayList searchPlanByTwoDate(Date beginDate, Date endDate);
+    public ArrayList searchPlanByCityDate(String searchCondition ,Date date);
+    public ArrayList getPhase(int planid);	
 }

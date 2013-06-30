@@ -1,5 +1,6 @@
 package Server.geass.database.Controller;
 
+import Server.geass.database.DBcity;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -21,12 +22,13 @@ public class DatabaseController implements DatabaseControllerInterface{
 
     private DBuser dBuser = null;
     private DBplan dBplan = null;
-
+    private DBcity dBcity = null;
     static DatabaseController instance;
 
     public DatabaseController() {
         this.dBuser = new DBuser();
         this.dBplan = new DBplan();
+        this.dBcity = new DBcity();
     }
 
     static public DatabaseController getInstance(){
@@ -156,23 +158,23 @@ public class DatabaseController implements DatabaseControllerInterface{
 
 	public ArrayList searchCityBySeason(String cityname) {
 		// TODO Auto-generated method stub
-		return null;
+		return dBcity.searchCityBySeason(cityname);
 	}
 
 	public ArrayList searchCityByName(String cityname) {
 		// TODO Auto-generated method stub
-		return null;
+		return dBcity.searchCityByName(cityname);
 	}
 
 	public ArrayList searchPlanByTwoDate(Date beginDate, Date endDate) {
 		// TODO Auto-generated method stub
-		return null;
+		return dBcity.searchPlanByTwoDate(beginDate, endDate);
 	}
 
 	public ArrayList searchPlanByCityDate(String cityName, Date indate) {
 		// TODO Auto-generated method stub
 		//这里的indate 是 当天
-		return null;
+		return dBcity.searchPlanByCityDate(cityName, indate);
 	}
 	
 	public boolean checkPlanTitle(String plantitle){
@@ -184,7 +186,9 @@ public class DatabaseController implements DatabaseControllerInterface{
 		return null;
 	}
 
-
+       public ArrayList getPhase(int planid){
+           return dBcity.getPhase(planid);
+       }
 
 
 
