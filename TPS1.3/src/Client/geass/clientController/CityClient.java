@@ -18,11 +18,15 @@ import Shared.geass.message.response.search.GetPlanByCityDateResponse;
 import Shared.geass.message.response.search.GetPlanByTwoDateResponse;
 
 import Client.geass.net.ClientMessageSender;
+import Shared.geass.dataPOJO.Phase;
+import Shared.geass.message.request.search.GetPhaseRequest;
+import Shared.geass.message.response.search.GetPhaseReponse;
+
 
 public class CityClient {
 	
 	private static CityClient instance ;
-    private ClientMessageSender infoSender;
+        private static ClientMessageSender infoSender;
 
     public CityClient(){
     	
@@ -40,6 +44,7 @@ public class CityClient {
 
     public void setInfoSender(ClientMessageSender infoSender){
         this.infoSender = infoSender;
+       // System.out.println(""+ (infoSender==null));
     }
     
 	public boolean checkTitle(String title) throws IOException {
@@ -48,13 +53,15 @@ public class CityClient {
 		return response.isConfirmed();
 	}
 	
-	public ArrayList<City> searchCityByName(String cityname) throws IOException{
+	public ArrayList<City> searchCityByName(String cityname) throws IOException{ 
+            System.out.println(""+ (infoSender==null));
 		Object obj = infoSender.sendRequest(new SearchCityByNameRequest(cityname));
 		GetCityByNameResponse response = (GetCityByNameResponse)obj;
 		return response.getCityByName();
 	}
 	
 	public ArrayList<City> searchCityBySeason(String season) throws IOException{
+             System.out.println(""+ (infoSender==null));
 		Object obj = infoSender.sendRequest(new SearchCityBySeasonRequest(season));
 		GetCityBySeasonResponse response = (GetCityBySeasonResponse)obj;
 		return response.getCityBySeason();
@@ -71,5 +78,10 @@ public class CityClient {
 		GetPlanByCityDateResponse response = (GetPlanByCityDateResponse)obj;
 		return response.GetPlanByCityDate();
 	}
-
+        public ArrayList<Phase> getPhase(int planid) throws IOException{
+            Object obj = infoSender.sendRequest(new GetPhaseRequest(planid));
+            GetPhaseReponse reponse =(GetPhaseReponse)obj;
+            return reponse.getPhase();
+        }
+ 
 }

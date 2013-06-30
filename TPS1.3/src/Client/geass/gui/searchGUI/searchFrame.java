@@ -23,7 +23,10 @@ public class searchFrame extends javax.swing.JFrame {
     public void innit(){
         citySearchPanel = new CitySearchPanel();
         planSearchPanel = new PlanSearchPanel();
-        this.setContentPane(planSearchPanel);
+        recommendPanel = new recommendJPanel();
+       //this.setContentPane(planSearchPanel);
+      // this.setContentPane(citySearchPanel);
+        this.setContentPane(recommendPanel);
         this.validate();
     }
 
@@ -50,7 +53,6 @@ public class searchFrame extends javax.swing.JFrame {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -83,7 +85,7 @@ public class searchFrame extends javax.swing.JFrame {
             }
         });
     }
-    
+    private recommendJPanel   recommendPanel;
     private CitySearchPanel  citySearchPanel;
     private PlanSearchPanel  planSearchPanel;
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import Shared.geass.dataPOJO.City;
+import Shared.geass.dataPOJO.Phase;
 import Shared.geass.dataPOJO.Plan;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -55,7 +56,48 @@ public class DBcity {
         }
         return city;
     }
-
+     /**
+     * 根据季节名模糊搜索
+     *
+     * @param
+     * @return
+     */
+ public City randomSearch() {
+        connection = DBConnection.getDBConnection();
+          
+        Statement statement = null;
+        ResultSet resultSet = null;
+        City city = null;
+        try {
+            statement = connection.createStatement();
+            String query4 = "select * from city order by rand()  ";
+            resultSet = statement.executeQuery(query4);
+            if (resultSet.next()) {
+                city = new City(resultSet.getString("cityid"), resultSet.getString("cityname"),
+                        resultSet.getString("province"), resultSet.getString("country"),
+                        resultSet.getString("description"), resultSet.getString("bestseason"),
+                        resultSet.getString("picturehref"), resultSet.getString("longtitude"),
+                        resultSet.getString("latitude"));
+               
+                System.out.println("查询了城市:" + city.getCityname());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                    if (statement != null) {
+                        statement.close();
+                    }
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            DBConnection.freeDBConnection(connection);
+        }
+        return city;
+    }
     /**
      * 根据季节名模糊搜索
      *
@@ -182,6 +224,7 @@ public class DBcity {
         try {
             String sql = "select plan.planid, plan.plantitle,plan.username,plan.startdate,plan.enddate from plan"
                      + " join phase on phase.planid = plan.planid and phase.date = ? and phase.cityname like ?";
+          
             pstmt = connection.prepareStatement(sql);
             pstmt.setDate(1, new java.sql.Date(indate.getTime()));
             pstmt.setString(2, "%"+cityName+"%");
@@ -190,10 +233,47 @@ public class DBcity {
                 System.out.println(resultSet.getInt("planid"));
                 plans.add(new Plan(resultSet.getInt("planid"), resultSet.getString("plantitle"), resultSet.getString("username"), resultSet.getDate("startdate"), resultSet.getDate("enddate")));
             }
-            System.out.println("执行：" + sql);
+            System.out.println("执行：" + sql+plans.size());
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return plans;
     }
+    public ArrayList<Phase> getPhase(int planid) {
+		ArrayList<Phase> phases = new ArrayList<Phase>();
+		connection = DBConnection.getDBConnection();
+		PreparedStatement pstmt = null;
+		ResultSet resultSet = null;
+		try {
+			String sql = "select * from phase where planid = ?";
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, planid);
+			//pstmt.setDate(2, new java.sql.Date(date.getTime()));
+			resultSet = pstmt.executeQuery();
+			while(resultSet.next()){
+				phases.add(new Phase(planid,resultSet.getInt("phaseid"),resultSet.getDate("date"),
+						new java.util.Date(resultSet.getTimestamp("begintime").getTime()),
+						new java.util.Date(resultSet.getTimestamp("endtime").getTime()),
+						resultSet.getString("cityname"),resultSet.getString("transport"),
+						resultSet.getString("site"),resultSet.getString("breakfast"),
+						resultSet.getString("lunch"),resultSet.getString("dinner"),
+						resultSet.getString("comment")));
+
+			}
+			System.out.println("执行：" + sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+            try{
+                if(pstmt!=null)
+                    pstmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            DBConnection.freeDBConnection(connection);
+		}
+		
+		return phases;
+	}
+
 }
