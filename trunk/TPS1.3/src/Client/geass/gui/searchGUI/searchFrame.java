@@ -4,6 +4,14 @@
  */
 package Client.geass.gui.searchGUI;
 
+import Client.geass.gui.planGUI.DisplayPlanListPanel;
+import Client.geass.gui.planGUI.DisplayPlanPanel;
+
+import Shared.geass.dataPOJO.Plan;
+import java.io.IOException;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.UIManager;
 
 /**
@@ -15,18 +23,22 @@ public class searchFrame extends javax.swing.JFrame {
     /**
      * Creates new form searchFrame
      */
-    public searchFrame() {
+    public searchFrame() throws IOException {
         initComponents();
         innit();
     }
     
-    public void innit(){
-        citySearchPanel = new CitySearchPanel();
-        planSearchPanel = new PlanSearchPanel();
-        recommendPanel = new recommendJPanel();
-       //this.setContentPane(planSearchPanel);
-      // this.setContentPane(citySearchPanel);
-        this.setContentPane(recommendPanel);
+    public void innit() throws IOException{Date dd = new Date(); dd.setDate(4);dd.setMonth(10);dd.setYear(2013);
+     //   citySearchPanel = new CitySearchPanel();
+      //  planSearchPanel = new PlanSearchPanel();
+     //   recommendPanel = new recommendJPanel();
+        splitPanel = new SplitPanel();
+       // displayPlanPanel = new DisplayPlanPanel(null ,new Plan(1,"e","f",dd,dd));
+      //  dispListPlanPanel = new DisplayPlanListPanel(null);
+      // this.setContentPane(planSearchPanel);
+     //  this.setContentPane(citySearchPanel);
+        this.setContentPane(splitPanel);
+       // this.setContentPane(dispListPlanPanel);
         this.validate();
     }
 
@@ -45,11 +57,11 @@ public class searchFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGap(0, 660, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 427, Short.MAX_VALUE)
         );
 
         pack();
@@ -81,10 +93,17 @@ public class searchFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new searchFrame().setVisible(true);
+                try {
+                    new searchFrame().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(searchFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
+    private SplitPanel splitPanel ;
+   private DisplayPlanListPanel dispListPlanPanel ;
+    private DisplayPlanPanel displayPlanPanel;
     private recommendJPanel   recommendPanel;
     private CitySearchPanel  citySearchPanel;
     private PlanSearchPanel  planSearchPanel;
