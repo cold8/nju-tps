@@ -19,13 +19,15 @@ public class SplitPanel extends javax.swing.JPanel {
         initComponents();
         set();
     }
- public void set(){
-      jSplitPane1.setOrientation(JSplitPane.HORIZONTAL_SPLIT);    
-    jSplitPane1.setOneTouchExpandable(true);
-    jSplitPane1.setDividerLocation(400);    
-    jSplitPane1.setContinuousLayout(true);
-    jSplitPane1.setEnabled(false);
- }
+
+    public void set() {
+        jSplitPane1.setOrientation(JSplitPane.HORIZONTAL_SPLIT);
+        jSplitPane1.setOneTouchExpandable(true);
+        jSplitPane1.setDividerLocation(400);
+        jSplitPane1.setContinuousLayout(true);
+        jSplitPane1.setEnabled(false);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -101,20 +103,18 @@ public class SplitPanel extends javax.swing.JPanel {
                 .addContainerGap(69, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-boolean isSplit = false ;
+    boolean isSplit = false;
     private void jumpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jumpButtonActionPerformed
         // TODO add your handling code here:
-        if(!isSplit){
-        jSplitPane1.setDividerLocation(0.5);
-        isSplit = true;
-        }
-        else  {
+        if (!isSplit) {
+            jSplitPane1.setDividerLocation(0.5);
+            isSplit = true;
+        } else {
             jSplitPane1.setDividerLocation(400);
-            isSplit=false;
+            isSplit = false;
         }
-        
-    }//GEN-LAST:event_jumpButtonActionPerformed
 
+    }//GEN-LAST:event_jumpButtonActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
