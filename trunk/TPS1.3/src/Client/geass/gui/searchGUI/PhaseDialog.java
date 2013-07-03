@@ -16,18 +16,19 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PhaseDialog extends javax.swing.JDialog {
 private ArrayList<Phase> phaseList ;
-private DefaultTableModel phasetable =  new DefaultTableModel(null, TableModel.PLAN_COLUMN_NAMES);
+//private DefaultTableModel phasetable =  new DefaultTableModel(null, TableModel.PLAN_COLUMN_NAMES);
     /**
      * Creates new form PhaseDialog
      */
     public PhaseDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+       
     }
     public PhaseDialog(){
         
         initComponents();
-        
+         this.setLocation(800, 200);
     }
     public void setP(ArrayList<Phase> phaseList){
         this.phaseList=phaseList;
@@ -117,7 +118,7 @@ private DefaultTableModel phasetable =  new DefaultTableModel(null, TableModel.P
             }
         });
     }
-     private DefaultTableModel phaseTable = new DefaultTableModel(null, TableModel.PHASE_COLUMN_NAMES);
+     private DefaultTableModel phasetable = new DefaultTableModel(null, TableModel.PHASE_COLUMN_NAMES);
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

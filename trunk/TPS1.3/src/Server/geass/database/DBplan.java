@@ -657,4 +657,41 @@ public Plan createPlan(String username,String title, Date startdate, Date enddat
 		}
 		return result;
 	}
+        
+        public ArrayList<Plan> getPlanByuser(String username) {
+		// TODO Auto-generated method stub
+		Plan plan = null;
+                ArrayList<Plan> planlist = new ArrayList<Plan>();
+		connection = DBConnection.getDBConnection();
+		PreparedStatement pstmt = null;
+		ResultSet resultSet = null;
+		try{
+			String sql = "select * from plan where username = ?";
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, username);
+			resultSet = pstmt.executeQuery();System.out.println(" userName 查询");
+			if(resultSet.next()){
+				plan = new Plan(resultSet.getString("plantitle"),resultSet.getString("username"),resultSet.getDate("startdate"),resultSet.getDate
+
+("enddate"));
+                                planlist.add(plan);
+			}else
+			System.out.println("执行：" + sql);
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+            try{
+                if(resultSet!=null)
+                    resultSet.close();
+                if(pstmt!=null)
+                    pstmt.close();
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+            DBConnection.freeDBConnection(connection);
+        }
+
+		return planlist;
+	}
+
 }

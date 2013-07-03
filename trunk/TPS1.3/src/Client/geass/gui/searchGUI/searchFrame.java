@@ -29,16 +29,15 @@ public class searchFrame extends javax.swing.JFrame {
     }
     
     public void innit() throws IOException{Date dd = new Date(); dd.setDate(4);dd.setMonth(10);dd.setYear(2013);
-     //   citySearchPanel = new CitySearchPanel();
-      //  planSearchPanel = new PlanSearchPanel();
-     //   recommendPanel = new recommendJPanel();
-        splitPanel = new SplitPanel();
-       // displayPlanPanel = new DisplayPlanPanel(null ,new Plan(1,"e","f",dd,dd));
-      //  dispListPlanPanel = new DisplayPlanListPanel(null);
-      // this.setContentPane(planSearchPanel);
+       citySearchPanel = new CitySearchPanel();
+       planSearchPanel = new PlanSearchPanel();
+      //  recommendPanel = new recommendJPanel();
+      
+       userPlanPanel = new userPlanPanel();
+       this.setContentPane(planSearchPanel);
      //  this.setContentPane(citySearchPanel);
-        this.setContentPane(splitPanel);
-       // this.setContentPane(dispListPlanPanel);
+       // this.setContentPane(splitPanel);
+     this.setContentPane(userPlanPanel);
         this.validate();
     }
 
@@ -57,11 +56,11 @@ public class searchFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 660, Short.MAX_VALUE)
+            .addGap(0, 973, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 427, Short.MAX_VALUE)
+            .addGap(0, 531, Short.MAX_VALUE)
         );
 
         pack();
@@ -101,7 +100,8 @@ public class searchFrame extends javax.swing.JFrame {
             }
         });
     }
-    private SplitPanel splitPanel ;
+    private userPlanPanel userPlanPanel;
+
    private DisplayPlanListPanel dispListPlanPanel ;
     private DisplayPlanPanel displayPlanPanel;
     private recommendJPanel   recommendPanel;

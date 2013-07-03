@@ -6,6 +6,7 @@ package Client.geass.gui.searchGUI;
 
 import Client.geass.clientController.searchController.CityLogic;
 import Client.geass.clientController.searchController.CityLogicInterface;
+
 import Client.geass.gui.travellerGUI.TableModel;
 import Server.geass.database.DBcity;
 import Shared.geass.dataPOJO.Phase;
@@ -18,6 +19,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -25,15 +27,23 @@ import javax.swing.table.DefaultTableModel;
  * @author Kite
  */
 public class PlanSearchPanel extends javax.swing.JPanel {
-
+userPlanPanel up =null;
     /**
      * Creates new form PlanSearchPanel
      */
-    public PlanSearchPanel() {
+    public PlanSearchPanel(userPlanPanel up) {
+        
         initComponents();
+        this.up=up;
         setDrag();
+//        searchTable.addMouseListener(listen.getClickListener());
+//        searchTable.addMouseMotionListener(listen.getDragListener());
     }
-
+ public PlanSearchPanel(){
+      initComponents();
+       // this.up=up;
+        setDrag();
+ }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,7 +54,7 @@ public class PlanSearchPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        searchTable = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         searchButton1 = new javax.swing.JButton();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
@@ -57,8 +67,9 @@ public class PlanSearchPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
 
-        jTable1.setModel(planTable);
-        jScrollPane1.setViewportView(jTable1);
+        searchTable.setModel(planTable);
+        searchTable.setName("search");
+        jScrollPane1.setViewportView(searchTable);
 
         searchButton1.setText("搜一下");
         searchButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -88,29 +99,29 @@ public class PlanSearchPanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jDateChooser3, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(51, 51, 51)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(searchButton1))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(104, 104, 104)
-                        .addComponent(searchButton2)))
-                .addContainerGap())
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(16, 16, 16)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                    .addComponent(jDateChooser3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                    .addComponent(jTextField1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(searchButton1)
+                    .addComponent(searchButton2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,39 +152,25 @@ public class PlanSearchPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+    PhaseDialog pd =  new PhaseDialog(); boolean isDrag = false ;
     private void setDrag(){
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        searchTable.addMouseListener(new java.awt.event.MouseAdapter() {
      public void mouseClicked(java.awt.event.MouseEvent evt) {
-        tableMouseClicked(evt);
-    }
-    public void mouseReleased(java.awt.event.MouseEvent evt) {
-        tableMouseReleased(evt);
-    }
-
-        });
-jTable1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-    public void mouseDragged(java.awt.event.MouseEvent evt) {
-        tableDragged(evt);
-    }
-});
-
-    }PhaseDialog pd =  new PhaseDialog();
-    private void tableMouseClicked(java.awt.event.MouseEvent evt){
-        int index = jTable1.getSelectedRow();
+        
+        int index = searchTable.getSelectedRow();
         int id ;
         
         if((planlist!=null)&&(index!=-1)){
@@ -185,22 +182,55 @@ jTable1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
         pd .setVisible(true);
           
         }
+    
     }
-     private void tableDragged(java.awt.event.MouseEvent evt) {                                     
-        // TODO add your handling code here:
-        Toolkit kit = Toolkit.getDefaultToolkit();    
-					Image img = kit.getImage("src//c.PNG"); 
-					
-					Cursor dynamiteCuror = kit.createCustomCursor(img, new Point(10,10),"dynamite stick") ;      
-					setCursor(dynamiteCuror);
-    }                                    
+    public void mouseReleased(java.awt.event.MouseEvent evt) {
+        up.cusor(false);
+      //  set(null);
+        if(valid(evt.getX(),evt.getY())){
+         up.getPlanByuser(getDrag());}
+        isDrag=false;
+         System.out.println(" ps:"+isDrag);
+    }
+    public boolean valid(int x,int y){
+        boolean valid = false ;
+        if((x<=-31)&&(x>=-495)&&(y<297)&&(y>-30))
+            valid=true;
+        return valid ;
+    }
+        });
+        
+searchTable.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+    public void mouseDragged(java.awt.event.MouseEvent evt) {
+          
+					up.cusor(true);
+                                       
+                                        //set(dynamiteCuror);
+                                        isDrag=true ;
+                                      //   System.out.println(" ps:"+evt.getX()+","+evt.getY());
+                                        
+    }
+});
 
-    private void tableMouseReleased(java.awt.event.MouseEvent evt) {                                      
-        // TODO add your handling code here:
-        setCursor(null);
-    }    
-    public Plan  getDrag(){
-        return planlist.get(jTable1.getSelectedRow());
+    }
+    
+    public void set(Cursor c){
+        setCursor(c);
+    }
+    public ArrayList<Plan>  getDrag(){
+         ArrayList<Plan> list =new  ArrayList<Plan>();
+         int [] rows =searchTable.getSelectedRows();
+         System.out.println(rows.length);
+         for(int i =0;i<rows.length;i++)
+           list.add(  planlist.get(rows[i]));
+        return list;
+    }
+    public ArrayList<Phase> getPhase(){
+        return phaselist ;
+    }
+    public JTable getSelect(){
+        
+        return searchTable;
     }
     private void searchButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButton1ActionPerformed
         // TODO add your handling code here:
@@ -268,9 +298,9 @@ jTable1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton searchButton1;
     private javax.swing.JButton searchButton2;
+    private javax.swing.JTable searchTable;
     // End of variables declaration//GEN-END:variables
 }
