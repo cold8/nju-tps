@@ -73,20 +73,20 @@ public class userPlanPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 315, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(stackButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(stackButton)
+                        .addContainerGap())
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 757, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(stackButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -131,6 +131,8 @@ boolean begin =true;
         }
         else{
              jSplitPane1.setDividerLocation(1.0);
+             
+             
              stack =true;
         }
     }//GEN-LAST:event_stackButtonActionPerformed
@@ -151,12 +153,12 @@ public void addPlan(ArrayList<Plan> list){
 }
 // 拆分 窗格的 使用
 public void init(){
-    jSplitPane1.setDividerLocation(1.0);  
+    
       jSplitPane1.setOrientation(JSplitPane.HORIZONTAL_SPLIT);    
-    jSplitPane1.setOneTouchExpandable(true);
+   // jSplitPane1.setOneTouchExpandable(true);
       
     jSplitPane1.setContinuousLayout(true);
-    jSplitPane1.setEnabled(false);
+    jSplitPane1.setEnabled(false); jSplitPane1.setDividerLocation(960); 
 //    jTable1.addMouseListener(listen.getClickListener());
 //    jTable1.addMouseMotionListener(listen.getDragListener());
 //      Toolkit kit = Toolkit.getDefaultToolkit();    
