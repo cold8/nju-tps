@@ -1,9 +1,8 @@
 package Client.geass.gui.loginGUI;
 
 
-import Client.geass.gui.guiController.guiUserController.ClientUserController;
-import Client.geass.gui.guiController.guiUserController.ClientUserControllerInterface;
-
+import Client.geass.gui.guiController.ClientUserController;
+import Client.geass.gui.guiController.ClientUserControllerInterface;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
@@ -17,7 +16,7 @@ public class LoginJFrame extends javax.swing.JFrame {
     private RegisterJPanel registerPanel ;
     private LoadingJPanel loadingPanel ;
     private ClientUserControllerInterface clientUserController;
-
+    
     public LoginJFrame() {
         initComponents();
         innitial();
@@ -25,7 +24,6 @@ public class LoginJFrame extends javax.swing.JFrame {
     
     
     private void innitial(){
-
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize=kit.getScreenSize();
         this.setLocation((screenSize.width-this.getWidth())/2, (screenSize.height-this.getHeight())/2);
@@ -37,9 +35,7 @@ public class LoginJFrame extends javax.swing.JFrame {
         this.validate();
         
     }
-
-
-
+    
     
     public void switchToRegister(){
         this.setContentPane(registerPanel);
@@ -55,8 +51,6 @@ public class LoginJFrame extends javax.swing.JFrame {
         
         
     }
-
-
     
    
     public void destroy(){
@@ -78,17 +72,17 @@ public class LoginJFrame extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 300, Short.MAX_VALUE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 185, Short.MAX_VALUE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
-    }// </editor-fold>
+    }// </editor-fold>//GEN-END:initComponents
 
     /**
      * @param args the command line arguments

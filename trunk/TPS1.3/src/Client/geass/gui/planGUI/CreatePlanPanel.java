@@ -45,7 +45,7 @@ public class CreatePlanPanel extends javax.swing.JPanel {
         cancelButton = new javax.swing.JButton();
         beginTimePicker = new JXDatePicker();
 
-        setPreferredSize(new java.awt.Dimension(850, 1000));
+        setPreferredSize(new java.awt.Dimension(850, 600));
 
         jPanel2.setPreferredSize(new java.awt.Dimension(780, 170));
 
@@ -207,16 +207,13 @@ public class CreatePlanPanel extends javax.swing.JPanel {
     }                                            
     
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        	titlefield.setText("");
-		titlefield.repaint();
-		
+        	titlefield.setText("");	
 		beginTimePicker.getEditor().setText("");
-		beginTimePicker.setDate(null);
-		beginTimePicker.repaint();
-	
+		beginTimePicker.setDate(null);	
 		endtimePicker.getEditor().setText("");
 		endtimePicker.setDate(null);
-		endtimePicker.repaint();
+                this.parent.backToMain();
+                
     }                                            
 
     // Variables declaration - do not modify                     

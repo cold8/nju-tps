@@ -43,8 +43,8 @@ public abstract class ClientNotResponseNet implements ClientNet{
             oo.flush();
         } catch (IOException e) {
             // TODO Auto-generated catch block
-            //e.printStackTrace();
-            System.out.println("UnidirectionBearer down");
+            e.printStackTrace();
+           // System.out.println("UnidirectionBearer down");
             start(ip,port);
         }
 

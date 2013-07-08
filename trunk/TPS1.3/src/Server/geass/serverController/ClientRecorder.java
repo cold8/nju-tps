@@ -10,7 +10,7 @@ public class ClientRecorder implements Runnable{
 
     private ArrayList<String> userList;
     private ArrayList<Integer> signalList;
-    private TravellerController travellerController;
+    private ServerTravellerController travellerController;
     private static ClientRecorder instance;
 
     static public ClientRecorder getInstance() {
@@ -22,7 +22,7 @@ public class ClientRecorder implements Runnable{
     private ClientRecorder(){
         userList = new ArrayList<String>();
         signalList =new ArrayList<Integer> ();
-        travellerController = TravellerController.getInstance();
+        travellerController = ServerTravellerController.getInstance();
     }
 
     public void add(String name){
