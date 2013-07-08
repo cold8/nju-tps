@@ -3,7 +3,7 @@ package Client.geass.clientController;
 import Client.geass.gui.loginGUI.LoginJFrame;
 import Client.geass.gui.guiController.GUIController;
 import Client.geass.net.ClientMessageSender;
-import Shared.geass.assist.Config;
+import Shared.geass.file.Config;
 import Shared.geass.message.request.ConnectRequest;
 
 import javax.swing.*;
@@ -23,7 +23,6 @@ public class ClientController {
     private int infoPort;
     private int signalPort;
     private LoginJFrame loginFrame;
-    private int index;
 
     ClientMessageSender infoSender;
     ClientMessageSender signalSender;
@@ -44,7 +43,6 @@ public class ClientController {
     private void intialize(){
         System.out.println("clientmanager inni");
 
-        index = 0;
         infoSender = new ClientMessageSender();
         infoSender.start(ip,infoPort);
         signalSender = new ClientMessageSender();
@@ -76,7 +74,6 @@ public class ClientController {
                     if(hasUser){
 						//System.out.println("hello");
                         signalSender.sendRequest(new ConnectRequest(userName));
-                        index = 0;
                         Thread.sleep(1000);
                     }
                 } catch (IOException e) {

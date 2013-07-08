@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
-import Client.geass.gui.guiController.guiUserController.ClientUserControllerInterface;
+import Client.geass.gui.guiController.ClientUserControllerInterface;
 import Client.geass.gui.planGUI.CreatePlanPanel;
 import Client.geass.gui.planGUI.DisplayPlanListPanel;
 import Client.geass.gui.planGUI.DisplayPlanPanel;
@@ -27,30 +27,30 @@ import Shared.geass.dataPOJO.Plan;
 public class TravellerFrame extends javax.swing.JFrame {
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	/**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Creates new form TravellerFrame
      */
-    public TravellerFrame( ClientUserControllerInterface clientUserController) {
+    public TravellerFrame(ClientUserControllerInterface clientUserController) {
         initComponents();
         initial(clientUserController);
-        
+
     }
-    
-    
-    private void initial(ClientUserControllerInterface clientUserController){
+
+    private void initial(ClientUserControllerInterface clientUserController) {
         this.clientUserController = clientUserController;
         Toolkit kit = Toolkit.getDefaultToolkit();
-        Dimension screenSize=kit.getScreenSize();
-        this.setLocation((screenSize.width-this.getWidth())/2, (screenSize.height-this.getHeight())/2);
-        this.welcomePanel = new WelcomePanel(this,clientUserController);
+        Dimension screenSize = kit.getScreenSize();
+        this.setLocation((screenSize.width - this.getWidth()) / 2, (screenSize.height - this.getHeight()) / 2);
+        this.welcomePanel = new WelcomePanel(this, clientUserController);
         //plan
         //journey
-        this.createPlanPanel = new CreatePlanPanel(this,clientUserController.getUserName());
+        this.createPlanPanel = new CreatePlanPanel(this, clientUserController.getUserName());
         this.setContentPane(welcomePanel);
-        
+
     }
 
     /**
@@ -67,108 +67,96 @@ public class TravellerFrame extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 850, Short.MAX_VALUE)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 850, Short.MAX_VALUE));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 600, Short.MAX_VALUE));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
- 
-    public void backToMain(){
-    	this.setContentPane(welcomePanel);
-    	this.validate();
+    public void backToMain() {
+        this.setContentPane(welcomePanel);
+        this.validate();
+    }
+
+    public void CreateNewPlan() {
+        this.setContentPane(createPlanPanel);
+        this.validate();
+
     }
     
-    public void CreateNewPlan(){
-    	this.setContentPane(createPlanPanel);
-    	this.validate();
-    	
-    }
     
-
-
-    
-
     private CreatePlanPanel createPlanPanel;
     private WelcomePanel welcomePanel;
     private ClientUserControllerInterface clientUserController;
-    
-	public void setNewPanel(TravellerFrame parent, Plan plan) {
-		JScrollPane jp = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		jp.setViewportView(new SetPlanPanel(parent,plan));
-		this.setContentPane(jp);
-		this.validate();
-	}
 
+    public void setNewPanel(TravellerFrame parent, Plan plan) {
+        JScrollPane jp = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jp.setViewportView(new SetPlanPanel(parent, plan));
+        this.setContentPane(jp);
+        this.validate();
+    }
 
-	public void displayPlan(TravellerFrame parent, Plan plan) {
-		JScrollPane jp = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		try {
-			jp.setViewportView(new DisplayPlanPanel(parent,plan));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		this.setContentPane(jp);
-		this.validate();
-	}
+    public void displayPlan(TravellerFrame parent, Plan plan) {
+        JScrollPane jp = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        try {
+            jp.setViewportView(new DisplayPlanPanel(parent, plan));
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        this.setContentPane(jp);
+        this.validate();
+    }
 
+    public void displayPlanList(TravellerFrame parent) throws IOException {
+        JScrollPane jp = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jp.setViewportView(new DisplayPlanListPanel(parent));
+        this.setContentPane(jp);
+        this.validate();
+    }
 
-	public void displayPlanList(TravellerFrame parent) throws IOException {
-		JScrollPane jp = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		jp.setViewportView(new DisplayPlanListPanel(parent));
-		this.setContentPane(jp);
-		this.validate();
-	}
-	
-	public void displaySearchedPlan(TravellerFrame parent, ArrayList<Plan> resultlist, Plan plan) throws IOException{
-		JScrollPane jp = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		jp.setViewportView(new DisplaySearchedPlanPanel(parent,resultlist,plan));
-		this.setContentPane(jp);
-		this.validate();
-	}
-	
-	public void displaySearchedPlanList(TravellerFrame parent,ArrayList<Plan> resultlist) {
-		JScrollPane jp = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		jp.setViewportView(new DisplaySearchedPlanListPanel(parent,resultlist));
-		this.setContentPane(jp);
-		this.validate();
-	}
-	
-	public void modifyPlan(TravellerFrame parent, Plan plan) throws IOException{
-		JScrollPane jp = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		jp.setViewportView(new ModifyPlanPanel(parent,plan));
-		this.setContentPane(jp);
-		this.validate();
-	}
-	
-	public void modifyDayOfPlan(TravellerFrame parent, Plan plan,String datestr){
-		JScrollPane jp = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		jp.setViewportView(new ModifyDayOfPlanPanel(parent,plan,datestr));
-		this.setContentPane(jp);
-		this.validate();
-	}
+    public void displaySearchedPlan(TravellerFrame parent, ArrayList<Plan> resultlist, Plan plan) throws IOException {
+        JScrollPane jp = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jp.setViewportView(new DisplaySearchedPlanPanel(parent, resultlist, plan));
+        this.setContentPane(jp);
+        this.validate();
+    }
 
+    public void displaySearchedPlanList(TravellerFrame parent, ArrayList<Plan> resultlist) {
+        JScrollPane jp = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jp.setViewportView(new DisplaySearchedPlanListPanel(parent, resultlist));
+        this.setContentPane(jp);
+        this.validate();
+    }
 
-	public void modifyPlan(TravellerFrame parent, int planid) throws IOException {
-		JScrollPane jp = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		jp.setViewportView(new ModifyPlanPanel(parent,planid));
-		this.setContentPane(jp);
-		this.validate();
-		
-	}
+    public void modifyPlan(TravellerFrame parent, Plan plan) throws IOException {
+        JScrollPane jp = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jp.setViewportView(new ModifyPlanPanel(parent, plan));
+        this.setContentPane(jp);
+        this.validate();
+    }
 
+    public void modifyDayOfPlan(TravellerFrame parent, Plan plan, String datestr) {
+        JScrollPane jp = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jp.setViewportView(new ModifyDayOfPlanPanel(parent, plan, datestr));
+        this.setContentPane(jp);
+        this.validate();
+    }
 
-	public void switchtoManageJourney(Journey journey) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void modifyPlan(TravellerFrame parent, int planid) throws IOException {
+        JScrollPane jp = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jp.setViewportView(new ModifyPlanPanel(parent, planid));
+        this.setContentPane(jp);
+        this.validate();
+
+    }
+
+    public void switchtoManageJourney(Journey journey) {
+        // TODO Auto-generated method stub
+    }
 }

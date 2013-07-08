@@ -2,46 +2,50 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Client.geass.gui.searchGUI;
+package Client.geass.gui.StatusGUI;
 
-import Client.geass.gui.planGUI.DisplayPlanListPanel;
-import Client.geass.gui.planGUI.DisplayPlanPanel;
-
-import Shared.geass.dataPOJO.Plan;
-import java.io.IOException;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import Client.geass.gui.guiController.ClientTravellerController;
+import Client.geass.gui.guiController.ClientTravellerControllerInterface;
 import javax.swing.UIManager;
 
 /**
  *
- * @author Kite
+ * @author tin
  */
-public class searchFrame extends javax.swing.JFrame {
+public class NewStatusFrame extends javax.swing.JFrame {
 
     /**
-     * Creates new form searchFrame
+     * Creates new form NewStatusFrame
      */
-    public searchFrame() throws IOException {
+    public NewStatusFrame() {
         initComponents();
-        innit();
+        initial();
+
+
     }
 
-    public void innit() throws IOException {
-        Date dd = new Date();
-        dd.setDate(4);
-        dd.setMonth(10);
-        dd.setYear(2013);
-        citySearchPanel = new CitySearchPanel();
-        planSearchPanel = new PlanSearchPanel();
-        //  recommendPanel = new recommendJPanel();
+    private void initial() {
+        
+        clientTravellerController = new ClientTravellerController();
+        planselectPanel = new PlanSelectPanel(this);
+        submitStatusPanel = new SubmitStatusPanel(this);
+        
+        this.setContentPane(planselectPanel);
+        this.validate();
+    }
 
-        userPlanPanel = new userPlanPanel();
-        this.setContentPane(planSearchPanel);
-        //  this.setContentPane(citySearchPanel);
-        // this.setContentPane(splitPanel);
-        //this.setContentPane(userPlanPanel);
+    public void close() {
+        this.dispose();
+        this.close();
+    }
+
+    public void selectPlan() {
+        this.setContentPane(planselectPanel);
+        this.validate();
+    }
+
+    public void submitStatus() {
+        this.setContentPane(submitStatusPanel);
         this.validate();
     }
 
@@ -60,14 +64,15 @@ public class searchFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 973, Short.MAX_VALUE)
+            .addGap(0, 485, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 531, Short.MAX_VALUE)
+            .addGap(0, 421, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -81,35 +86,27 @@ public class searchFrame extends javax.swing.JFrame {
          */
         try {
             UIManager.setLookAndFeel("org.jb2011.lnf.beautyeye.BeautyEyeLookAndFeelCross");
-            UIManager.put("RootPane.setupButtonVisible", false);
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(searchFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewStatusFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(searchFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewStatusFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(searchFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewStatusFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(searchFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewStatusFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new searchFrame().setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(searchFrame.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new NewStatusFrame().setVisible(true);
             }
         });
     }
-    private userPlanPanel userPlanPanel;
-    private DisplayPlanListPanel dispListPlanPanel;
-    private DisplayPlanPanel displayPlanPanel;
-    private recommendJPanel recommendPanel;
-    private CitySearchPanel citySearchPanel;
-    private PlanSearchPanel planSearchPanel;
+    private PlanSelectPanel planselectPanel;
+    private SubmitStatusPanel submitStatusPanel;
+    private ClientTravellerControllerInterface clientTravellerController;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }

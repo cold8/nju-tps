@@ -332,7 +332,7 @@ public class ModifyDayOfPlanPanel extends javax.swing.JPanel {
             }
         });
 
-        mapPicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Client/geass/traveller/gui/picture/plan/map.jpg")));
+        mapPicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Client/geass/gui/picture/map.jpg")));
         mapPicture.setMaximumSize(new java.awt.Dimension(400, 400));
         mapPicture.setMinimumSize(new java.awt.Dimension(400, 400));
         mapPicture.setPreferredSize(new java.awt.Dimension(400, 400));

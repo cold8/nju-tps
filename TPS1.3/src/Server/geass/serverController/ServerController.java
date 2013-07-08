@@ -17,13 +17,13 @@ public class ServerController {
     private int signalPort;
     private ServerNet inforBearer;
     private ServerNet signalBearer;
-    private TravellerController travellerController;
+    private ServerTravellerController travellerController;
     private ClientRecorder clientRecorder;
 
     public ServerController(int port,int signalPort){
         this.port = port;
         this.signalPort = signalPort;
-        //travellerController = TravellerController.getInstance();
+        //travellerController = ServerTravellerController.getInstance();
         /**
          * 用户日志处理
          */

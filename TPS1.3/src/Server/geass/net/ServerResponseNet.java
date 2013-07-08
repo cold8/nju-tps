@@ -72,7 +72,6 @@ public abstract class ServerResponseNet implements ServerNet {
                 // TODO Auto-generated catch block
                 if(isOn)
                     System.out.println(port+"端口断开");
-                    //日志记录
             }
         }
     }

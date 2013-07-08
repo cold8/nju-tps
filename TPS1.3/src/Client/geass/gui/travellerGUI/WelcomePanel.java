@@ -1,6 +1,6 @@
 package Client.geass.gui.travellerGUI;
 
-import Client.geass.gui.guiController.guiUserController.ClientUserControllerInterface;
+import Client.geass.gui.guiController.ClientUserControllerInterface;
 
 import java.awt.event.ActionEvent;
 import java.io.IOException;

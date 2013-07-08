@@ -1,6 +1,6 @@
 package Shared.geass.message.request.user;
 
-import Server.geass.traveller.userController.ServerUserController;
+import Server.geass.serverController.ServerUserController;
 import Shared.geass.message.request.Request;
 import Shared.geass.message.response.Response;
 import Shared.geass.message.response.StatusReponse;

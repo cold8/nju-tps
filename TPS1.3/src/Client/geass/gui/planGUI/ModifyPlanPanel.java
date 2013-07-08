@@ -396,12 +396,12 @@ public class ModifyPlanPanel extends javax.swing.JPanel {
         detailSite.setText("jLabel28");
         detailSite.setPreferredSize(new java.awt.Dimension(100, 30));
 
-        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("../../picture/plan/1.png"))); // NOI18N
+        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Client/geass/gui/picture/1.png"))); // NOI18N
         jLabel29.setMaximumSize(new java.awt.Dimension(30, 30));
         jLabel29.setMinimumSize(new java.awt.Dimension(30, 30));
         jLabel29.setPreferredSize(new java.awt.Dimension(30, 30));
 
-        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("../../picture/plan/2.png"))); // NOI18N
+        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Client/geass/gui/picture/2.png"))); // NOI18N
         jLabel30.setMaximumSize(new java.awt.Dimension(30, 30));
         jLabel30.setMinimumSize(new java.awt.Dimension(30, 30));
         jLabel30.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -436,27 +436,27 @@ public class ModifyPlanPanel extends javax.swing.JPanel {
         detailDinner.setText("jLabel42");
         detailDinner.setPreferredSize(new java.awt.Dimension(100, 30));
 
-        jLabel44.setIcon(new javax.swing.ImageIcon(getClass().getResource("../../picture/plan/2.png"))); // NOI18N
+        jLabel44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Client/geass/gui/picture/2.png"))); // NOI18N
         jLabel44.setMaximumSize(new java.awt.Dimension(30, 30));
         jLabel44.setMinimumSize(new java.awt.Dimension(30, 30));
         jLabel44.setPreferredSize(new java.awt.Dimension(30, 30));
 
-        jLabel45.setIcon(new javax.swing.ImageIcon(getClass().getResource("../../picture/plan/2.png"))); // NOI18N
+        jLabel45.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Client/geass/gui/picture/2.png"))); // NOI18N
         jLabel45.setMaximumSize(new java.awt.Dimension(30, 30));
         jLabel45.setMinimumSize(new java.awt.Dimension(30, 30));
         jLabel45.setPreferredSize(new java.awt.Dimension(30, 30));
 
-        jLabel46.setIcon(new javax.swing.ImageIcon(getClass().getResource("../../picture/plan/1.png"))); // NOI18N
+        jLabel46.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Client/geass/gui/picture/1.png"))); // NOI18N
         jLabel46.setMaximumSize(new java.awt.Dimension(30, 30));
         jLabel46.setMinimumSize(new java.awt.Dimension(30, 30));
         jLabel46.setPreferredSize(new java.awt.Dimension(30, 30));
 
-        jLabel47.setIcon(new javax.swing.ImageIcon(getClass().getResource("../../picture/plan/1.png"))); // NOI18N
+        jLabel47.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Client/geass/gui/picture/1.png"))); // NOI18N
         jLabel47.setMaximumSize(new java.awt.Dimension(30, 30));
         jLabel47.setMinimumSize(new java.awt.Dimension(30, 30));
         jLabel47.setPreferredSize(new java.awt.Dimension(30, 30));
 
-        jLabel48.setIcon(new javax.swing.ImageIcon(getClass().getResource("../../picture/plan/2.png"))); // NOI18N
+        jLabel48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Client/geass/gui/picture/2.png"))); // NOI18N
         jLabel48.setMaximumSize(new java.awt.Dimension(30, 30));
         jLabel48.setMinimumSize(new java.awt.Dimension(30, 30));
         jLabel48.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -738,7 +738,7 @@ public class ModifyPlanPanel extends javax.swing.JPanel {
                 .addGap(0, 412, Short.MAX_VALUE));
 
         mapPanel.add(jPanel10);
-        mapPicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Client/geass/traveller/gui/picture/plan/map.jpg")));
+        mapPicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Client/geass/gui/picture/map.jpg")));
         mapPicture.setMaximumSize(new java.awt.Dimension(400, 400));
         mapPicture.setMinimumSize(new java.awt.Dimension(400, 400));
         mapPicture.setPreferredSize(new java.awt.Dimension(400, 400));
@@ -780,7 +780,7 @@ public class ModifyPlanPanel extends javax.swing.JPanel {
         jToolBar1.add(jLabel18);
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("../../picture/plan/6.png"))); // NOI18N
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Client/geass/gui/picture/6.png"))); // NOI18N
         jLabel14.setMaximumSize(new java.awt.Dimension(25, 25));
         jLabel14.setMinimumSize(new java.awt.Dimension(25, 25));
         jLabel14.setPreferredSize(new java.awt.Dimension(25, 25));
@@ -801,7 +801,7 @@ public class ModifyPlanPanel extends javax.swing.JPanel {
         jToolBar1.add(detailButton);
 
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("../../picture/plan/6.png"))); // NOI18N
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Client/geass/gui/picture/6.png"))); // NOI18N
         jLabel16.setMaximumSize(new java.awt.Dimension(25, 25));
         jLabel16.setMinimumSize(new java.awt.Dimension(25, 25));
         jLabel16.setPreferredSize(new java.awt.Dimension(25, 25));
@@ -826,7 +826,7 @@ public class ModifyPlanPanel extends javax.swing.JPanel {
         jToolBar1.add(deletePhaseButton);
 
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("../../picture/plan/6.png"))); // NOI18N
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Client/geass/gui/picture/6.png"))); // NOI18N
         jLabel17.setMaximumSize(new java.awt.Dimension(25, 25));
         jLabel17.setMinimumSize(new java.awt.Dimension(25, 25));
         jLabel17.setPreferredSize(new java.awt.Dimension(25, 25));
@@ -852,7 +852,7 @@ public class ModifyPlanPanel extends javax.swing.JPanel {
         jToolBar1.add(backButton);
 
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("../../picture/plan/6.png"))); // NOI18N
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Client/geass/gui/picture/6.png"))); // NOI18N
         jLabel19.setMaximumSize(new java.awt.Dimension(25, 25));
         jLabel19.setMinimumSize(new java.awt.Dimension(25, 25));
         jLabel19.setPreferredSize(new java.awt.Dimension(25, 25));
