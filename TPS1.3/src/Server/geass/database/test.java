@@ -28,7 +28,8 @@ public class test {
         //dbplan.createPlan("hi","d",new Date(),new Date());
 //        Plan plan = dbplan.getPlanInfo("d");
 //        Date a = plan.getStartdate();
-//        DateFormat d1 = new SimpleDateFormat("yyyyy-MM-dd HH:mm:ss"); //默认语言（汉语）下的默认风格（MEDIUM风格，比如：2008-6-16 20:54:53）
+//        DateFormat d1 = new SimpleDateFormat("yyyyy-MM-dd HH:mm:ss"); 
+        //默认语言（汉语）下的默认风格（MEDIUM风格，比如：2008-6-16 20:54:53）
 //        String str1 = d1.format(a);
 //        String str2 = d1.format(new Date());
 //        System.out.println(str1 + " \n" + str2);

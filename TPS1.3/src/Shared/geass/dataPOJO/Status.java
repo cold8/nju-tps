@@ -19,23 +19,54 @@ public class Status implements Serializable{
     private Date date;
     private String text;
     private String picturehref;
+    private String audiohref;
     private String videohref;
     private String description;
+    private String username;
+    private int nice;
     
     public Status(){
         
         
     }
 
-    public Status(int planid, Date date, String text, String picturehref, String videohref, String description) {
+    public Status(int planid, Date date, String text, String picturehref, String audiohref, String videohref, String description) {
         this.planid = planid;
         this.date = date;
         this.text = text;
         this.picturehref = picturehref;
+        this.audiohref = audiohref;
         this.videohref = videohref;
         this.description = description;
     }
 
+    public int getNice() {
+        return nice;
+    }
+
+    public void setNice(int nice) {
+        this.nice = nice;
+    }
+
+    
+    
+    public String getAudiohref() {
+        return audiohref;
+    }
+
+    public void setAudiohref(String audiohref) {
+        this.audiohref = audiohref;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    
     
     
     public int getStatusid() {

@@ -19,23 +19,20 @@ public class LoginJPanel extends javax.swing.JPanel {
     /**
      * Creates new form LoginJPanel
      */
-    
     public LoginJPanel() {
         initComponents();
     }
-    
-    
-    
+
     /**
      *
      * @param parent
      */
     public LoginJPanel(LoginJFrame parent) {
         initComponents();
-        loginFrame =  parent;
+        loginFrame = parent;
     }
 
-        /**
+    /**
      *
      * @param parent
      * @param clientUserController
@@ -43,11 +40,11 @@ public class LoginJPanel extends javax.swing.JPanel {
     public LoginJPanel(LoginJFrame parent, ClientUserControllerInterface clientUserController) {
 
         initComponents();
-        loginFrame =  parent;
+        loginFrame = parent;
         this.clientUserController = clientUserController;
 
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -180,10 +177,10 @@ public class LoginJPanel extends javax.swing.JPanel {
 
     private void registerLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerLabelMouseClicked
         // TODO add your handling code here:
-        loginFrame.switchToRegister();    
+        loginFrame.switchToRegister();
     }//GEN-LAST:event_registerLabelMouseClicked
 
-        private void startLogin() {
+    private void startLogin() {
         LoginThread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -191,27 +188,25 @@ public class LoginJPanel extends javax.swing.JPanel {
             }
         });
 
-        if(!nameField.getText().equals("")&&!passwordField.getText().equals("")){
+        if (!nameField.getText().equals("") && !passwordField.getText().equals("")) {
             loginFrame.switchToLoading();
             LoginThread.start();
-        }
-        else
-        {
-            if(nameField.getText().equals("")){
-                JOptionPane.showMessageDialog(this,"请输入用户名");
-            }else if(passwordField.getText().equals("")){
-                JOptionPane.showMessageDialog(this,"请输入密码");
+        } else {
+            if (nameField.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "请输入用户名");
+            } else if (passwordField.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "请输入密码");
             }
         }
     }
 
     public void login() {
         try {
-            int result  ;
+            int result;
             result = clientUserController.login(nameField.getText(), passwordField.getText());
 
             System.out.println(result);
-            if(result == 2){
+            if (result == 2) {
                 java.awt.EventQueue.invokeLater(new Runnable() {
                     public void run() {
                         new TravellerFrame(clientUserController).setVisible(true);
@@ -219,27 +214,22 @@ public class LoginJPanel extends javax.swing.JPanel {
                 });
 
                 this.loginFrame.dispose();
-            }else if(result == 1){
+            } else if (result == 1) {
                 loginFrame.switchToLogin();
-                JOptionPane.showMessageDialog(this,"用户已登录");
+                JOptionPane.showMessageDialog(this, "用户已登录");
                 nameField.setText("");
                 passwordField.setText("");
-            }else if (result ==0){
+            } else if (result == 0) {
                 loginFrame.switchToLogin();
-                JOptionPane.showMessageDialog(this,"密码错误");
+                JOptionPane.showMessageDialog(this, "密码错误");
                 passwordField.setText("");
             }
-        }catch (IOException e) {
+        } catch (IOException e) {
             loginFrame.switchToLogin();
-            JOptionPane.showMessageDialog(this,"网络错误");
+            JOptionPane.showMessageDialog(this, "网络错误");
             e.printStackTrace();
         }
     }
-
-
-    
-    
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -251,9 +241,7 @@ public class LoginJPanel extends javax.swing.JPanel {
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel registerLabel;
     // End of variables declaration//GEN-END:variables
-
     private LoginJFrame loginFrame = null;
     private Thread LoginThread;
     private ClientUserControllerInterface clientUserController;
-
 }

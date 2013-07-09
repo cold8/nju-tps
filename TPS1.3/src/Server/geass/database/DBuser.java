@@ -14,6 +14,12 @@ public class DBuser {
 
     Connection connection = null;
 
+    
+    /**
+     * 添加用户
+     * @param user
+     * @return 
+     */
     public boolean addUser(User user){
         connection = DBConnection.getDBConnection();
         PreparedStatement pstmt = null;
@@ -51,10 +57,15 @@ public class DBuser {
             DBConnection.freeDBConnection(connection);
         }
 
-
         return true;
     }
 
+    
+    /**
+     * 
+     * @param user
+     * @return 
+     */
     public boolean deleteUser(User user){
         connection = DBConnection.getDBConnection();
         Statement stmt = null;
@@ -84,6 +95,11 @@ public class DBuser {
 
     }
 
+    /**
+     * 修改用户信息
+     * @param user
+     * @return 
+     */
     public boolean modifyUserInfo(User user){
         connection = DBConnection.getDBConnection() ;
         Statement stmt = null;
@@ -107,6 +123,11 @@ public class DBuser {
         return true;
     }
 
+    /**
+     * 通过用户名获取用户信息
+     * @param name
+     * @return 
+     */
     public User getUserByName(String name){
 
         connection = DBConnection.getDBConnection();
@@ -140,6 +161,11 @@ public class DBuser {
         return user;
     }
 
+    
+    /**
+     * 获取所有的用户信息
+     * @return 
+     */
     public ArrayList<User> fetchAllUsers(){
          return  null;
     }

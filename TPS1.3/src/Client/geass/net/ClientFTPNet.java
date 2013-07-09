@@ -27,6 +27,8 @@ public class ClientFTPNet {
     private int intPort;
     private String user;
     private String password;
+    
+    
 
     public ClientFTPNet(String strIp, int intPort, String user, String Password) {
         this.strIp = strIp;
@@ -70,7 +72,7 @@ public class ClientFTPNet {
             System.out.println(this.user + "登录FTP服务失败！" + e.getMessage());
         }
         this.ftpClient.setBufferSize(1024 * 2);
-        this.ftpClient.setDataTimeout(30 * 1000);
+        this.ftpClient.setDataTimeout(30000);
         return isLogin;
     }
 
@@ -100,10 +102,8 @@ public class ClientFTPNet {
     }
 
     /**
-     * *
      * 上传Ftp文件
-     *
-     * @param localFile 当地文件
+     * @param localFile 本地文件
      * @param romotUpLoadePath上传服务器路径 - 应该以/结束
      *
      */
@@ -151,7 +151,7 @@ public class ClientFTPNet {
      * @param remoteDownLoadPath remoteFileName所在的路径
      *
      */
-    public boolean downloadFile(String remoteFileName, String localDires, String remoteDownLoadPath) {
+    public boolean downloadFile(String remoteDownLoadPath,String remoteFileName, String localDires ) {
         File localDir = new File(localDires);
         if(!localDir.exists()){
             localDir.mkdir();
@@ -184,7 +184,7 @@ public class ClientFTPNet {
                 }
             }
             if (success == false) {
-                System.out.println(remoteFileName + "下载失败!!!");
+                System.out.println(remoteFileName + "下载失败");
             }
             return success;
         }
@@ -198,7 +198,7 @@ public class ClientFTPNet {
 
         ftp.ftpLogin();
         ftp.uploadFile("C:\\Users\\tin\\Downloads\\original_EWk8_46b7000018b6125f.jpg", "/2013");
-        ftp.downloadFile("少年Pi的奇幻漂流.Life.of.Pi.2012.DVDSCR-MP4-人人影视原创翻译中英双语字幕.mp4", "D:\\traveller\\temp\\", "/");
+        ftp.downloadFile("/","少年Pi的奇幻漂流.Life.of.Pi.2012.DVDSCR-MP4-人人影视原创翻译中英双语字幕.mp4", "D:\\traveller\\temp\\" );
         ftp.ftpLogOut();
     }
 }

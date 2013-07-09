@@ -73,8 +73,13 @@ public class RegisterJPanel extends javax.swing.JPanel {
         jLabel3.setText("确认密码：");
 
         confirmField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                confirmFieldFocusLost(evt);
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                confirmFieldFocusGained(evt);
+            }
+        });
+        confirmField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                confirmFieldKeyReleased(evt);
             }
         });
 
@@ -199,15 +204,12 @@ public class RegisterJPanel extends javax.swing.JPanel {
         }
 
         if ((!nameField.getText().equals("")) && (!passwordField.getText().equals("") && (!confirmField.getText().equals("")))) {
-
-
-
-
             try {
                 clientUserController.submitUserInfo(nameField.getText(), passwordField.getText());
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(this, "注册失败，请检查网络后重试", "网络异常", JOptionPane.INFORMATION_MESSAGE);
                 e.printStackTrace();
+                return;
             }
             JOptionPane.showMessageDialog(this, "注册成功");
             this.loginFrame.switchToLogin();
@@ -244,31 +246,40 @@ public class RegisterJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_nameFieldFocusGained
 
-    private void confirmFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_confirmFieldFocusLost
-        // TODO add your handling code here:
-        if (!passwordField.getText().equals("")) {
-            if (!passwordField.getText().equals(confirmField.getText())) {
-
-                passwordField.setForeground(new java.awt.Color(255, 255, 0));
-                confirmField.setText("");
-                passwordValid = false;
-            } else {
-                passwordValid = true;
-            }
-
-        }
-
-
-
-    }//GEN-LAST:event_confirmFieldFocusLost
-
     private void passwordFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFieldFocusGained
         // TODO add your handling code here:
         if (passwordField.getForeground().equals(new java.awt.Color(255, 255, 0))) {
+            passwordField.setForeground(new java.awt.Color(0, 0, 0));
             passwordField.setText("");
-            passwordField.getForeground().equals(new java.awt.Color(0, 0, 0));
+            confirmField.setText("");
         }
     }//GEN-LAST:event_passwordFieldFocusGained
+
+    private void confirmFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_confirmFieldKeyReleased
+        // TODO add your handling code here:
+        if (!passwordField.getText().equals("")) {
+            if (!passwordField.getText().equals(confirmField.getText())) {
+                passwordField.setForeground(new java.awt.Color(255, 255, 0));
+                passwordValid = false;
+            } else {
+                passwordField.setForeground(new java.awt.Color(0, 0, 0));
+                passwordValid = true;
+            }
+        }
+    }//GEN-LAST:event_confirmFieldKeyReleased
+
+    private void confirmFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_confirmFieldFocusGained
+        // TODO add your handling code here:
+        if (!passwordField.getText().equals("")) {
+            if (!passwordField.getText().equals(confirmField.getText())) {
+                passwordField.setForeground(new java.awt.Color(255, 255, 0));
+                passwordValid = false;
+            } else {
+                passwordField.setForeground(new java.awt.Color(0, 0, 0));
+                passwordValid = true;
+            }
+        }
+    }//GEN-LAST:event_confirmFieldFocusGained
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backLabel;
     private javax.swing.JPasswordField confirmField;

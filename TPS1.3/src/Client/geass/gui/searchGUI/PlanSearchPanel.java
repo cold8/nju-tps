@@ -69,6 +69,11 @@ userPlanPanel up =null;
 
         searchTable.setModel(planTable);
         searchTable.setName("search");
+        searchTable.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                searchTableMouseDragged(evt);
+            }
+        });
         jScrollPane1.setViewportView(searchTable);
 
         searchButton1.setText("搜一下");
@@ -263,10 +268,14 @@ searchTable.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
 
     }//GEN-LAST:event_searchButton2ActionPerformed
 
+    private void searchTableMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchTableMouseDragged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchTableMouseDragged
+
     private void searchByTwoDate(Date start, Date end) {
 
-       // planlist = dbcity.searchPlanByTwoDate(start, end);
-         planlist=c.searchPlanByTwoDate(start, end);
+        planlist = dbcity.searchPlanByTwoDate(start, end);
+//         planlist=c.searchPlanByTwoDate(start, end);
         if (planlist == null) {
             System.out.println("没有找到符合条件的计划");
             return;
@@ -275,8 +284,8 @@ searchTable.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
     }
 
     private void searchByCityDate(String searchCondition, Date date) {
-       // planlist = dbcity.searchPlanByCityDate(searchCondition, date);
-        planlist = c.searchPlanByCityDate(searchCondition, date);
+        planlist = dbcity.searchPlanByCityDate(searchCondition, date);
+       // planlist = c.searchPlanByCityDate(searchCondition, date);
         if (planlist == null) {
             System.out.println("没有找到符合的城市");
             return;
@@ -286,7 +295,7 @@ searchTable.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
     ArrayList<Plan> planlist = null;
     ArrayList<Phase>phaselist = null ;
     CityLogicInterface c = new CityLogic();
-   // private DBcity dbcity = new DBcity();
+    private DBcity dbcity = new DBcity();
     private DefaultTableModel planTable = new DefaultTableModel(null, TableModel.PLAN_COLUMN_NAMES);
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser jDateChooser1;

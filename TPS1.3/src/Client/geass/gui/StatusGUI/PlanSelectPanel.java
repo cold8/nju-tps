@@ -21,15 +21,15 @@ public class PlanSelectPanel extends javax.swing.JPanel {
     public PlanSelectPanel() {
         initComponents();
     }
-    
-    public PlanSelectPanel(NewStatusFrame parent ) {
+
+    public PlanSelectPanel(StatusFrame parent) {
         initComponents();
         this.parent = parent;
     }
-    
-    private void initial(){
-        
-        
+
+
+
+    private void initial() {
     }
 
     /**
@@ -180,7 +180,7 @@ public class PlanSelectPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
                 .addGap(18, 18, 18))
@@ -192,28 +192,24 @@ public class PlanSelectPanel extends javax.swing.JPanel {
         Date start = jDateChooser1.getDate();
         Date end = jDateChooser2.getDate();
 
-        if ( start == null || end == null) {
+        if (start == null || end == null) {
             JOptionPane.showMessageDialog(this, "请选择日期：）");
         } else {
-
             //this.searchByTwoDate(start, end);
-
         }
     }//GEN-LAST:event_searchButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        this.parent.close();
+        this.parent.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.parent.submitStatus();
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    
     private DefaultTableModel planTable = new DefaultTableModel(null, TableModel.PLAN_COLUMN_NAMES);
-    private NewStatusFrame parent;
+    private StatusFrame parent;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
