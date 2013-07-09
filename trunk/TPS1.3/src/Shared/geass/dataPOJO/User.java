@@ -17,6 +17,7 @@ public class User implements Serializable {
     private String phone;
     private String Email;
     private String address;
+    private int planid;
 
     public User() {
     }
@@ -26,10 +27,20 @@ public class User implements Serializable {
         this.password = password;
         this.gender = gender;
         this.phone = phone;
-        Email = email;
+        this.Email = email;
         this.address = address;
     }
 
+    public int getPlanid() {
+        return planid;
+    }
+
+    public void setPlanid(int planid) {
+        this.planid = planid;
+    }
+
+    
+    
     public String getName() {
         return name;
     }

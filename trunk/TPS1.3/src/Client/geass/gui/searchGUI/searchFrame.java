@@ -38,10 +38,11 @@ public class searchFrame extends javax.swing.JFrame {
         //  recommendPanel = new recommendJPanel();
 
         userPlanPanel = new userPlanPanel();
-        this.setContentPane(planSearchPanel);
+        //this.jSplitPane1.setRightComponent(planSearchPanel);
+        //this.jSplitPane1.setLeftComponent(userPlanPanel);
         //  this.setContentPane(citySearchPanel);
         // this.setContentPane(splitPanel);
-        //this.setContentPane(userPlanPanel);
+        this.setContentPane(userPlanPanel);
         this.validate();
     }
 
@@ -60,7 +61,7 @@ public class searchFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 973, Short.MAX_VALUE)
+            .addGap(0, 888, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

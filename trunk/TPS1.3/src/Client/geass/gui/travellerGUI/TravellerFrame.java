@@ -1,12 +1,8 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Client.geass.gui.travellerGUI;
-
-import java.awt.Dimension;
-import java.awt.Toolkit;
-import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
 
 import Client.geass.gui.guiController.ClientUserControllerInterface;
 import Client.geass.gui.planGUI.CreatePlanPanel;
@@ -17,23 +13,27 @@ import Client.geass.gui.planGUI.DisplaySearchedPlanPanel;
 import Client.geass.gui.planGUI.ModifyDayOfPlanPanel;
 import Client.geass.gui.planGUI.ModifyPlanPanel;
 import Client.geass.gui.planGUI.SetPlanPanel;
-import Shared.geass.dataPOJO.Journey;
 import Shared.geass.dataPOJO.Plan;
+import java.awt.Toolkit;
+import java.io.IOException;
+import java.util.ArrayList;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 /**
  *
- * @author Kite
+ * @author tin
  */
 public class TravellerFrame extends javax.swing.JFrame {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
-
     /**
      * Creates new form TravellerFrame
      */
+    public TravellerFrame() {
+        initComponents();
+    }
+
     public TravellerFrame(ClientUserControllerInterface clientUserController) {
         initComponents();
         initial(clientUserController);
@@ -41,16 +41,18 @@ public class TravellerFrame extends javax.swing.JFrame {
     }
 
     private void initial(ClientUserControllerInterface clientUserController) {
+        
+
         this.clientUserController = clientUserController;
-        Toolkit kit = Toolkit.getDefaultToolkit();
-        Dimension screenSize = kit.getScreenSize();
-        this.setLocation((screenSize.width - this.getWidth()) / 2, (screenSize.height - this.getHeight()) / 2);
+        //Toolkit kit = Toolkit.getDefaultToolkit();
+        //Dimension screenSize = kit.getScreenSize();
+        //this.setLocation((screenSize.width - this.getWidth()) / 2, (screenSize.height - this.getHeight()) / 2);
         this.welcomePanel = new WelcomePanel(this, clientUserController);
-        //plan
-        //journey
+
+        //status
         this.createPlanPanel = new CreatePlanPanel(this, clientUserController.getUserName());
         this.setContentPane(welcomePanel);
-
+        
     }
 
     /**
@@ -63,21 +65,23 @@ public class TravellerFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(new javax.swing.ImageIcon("/Client/geass/gui/picture/3.png").getImage());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 850, Short.MAX_VALUE));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 900, Short.MAX_VALUE)
+        );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 600, Short.MAX_VALUE));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 650, Short.MAX_VALUE)
+        );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    // End of variables declaration//GEN-END:variables
     public void backToMain() {
         this.setContentPane(welcomePanel);
         this.validate();
@@ -89,10 +93,6 @@ public class TravellerFrame extends javax.swing.JFrame {
 
     }
     
-    
-    private CreatePlanPanel createPlanPanel;
-    private WelcomePanel welcomePanel;
-    private ClientUserControllerInterface clientUserController;
 
     public void setNewPanel(TravellerFrame parent, Plan plan) {
         JScrollPane jp = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -155,8 +155,12 @@ public class TravellerFrame extends javax.swing.JFrame {
         this.validate();
 
     }
+    
+    private CreatePlanPanel createPlanPanel;
+    private WelcomePanel welcomePanel;
+    private ClientUserControllerInterface clientUserController;
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // End of variables declaration//GEN-END:variables
 
-    public void switchtoManageJourney(Journey journey) {
-        // TODO Auto-generated method stub
-    }
+
 }

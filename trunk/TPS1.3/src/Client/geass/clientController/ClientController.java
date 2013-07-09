@@ -2,6 +2,7 @@ package Client.geass.clientController;
 
 import Client.geass.gui.loginGUI.LoginJFrame;
 import Client.geass.gui.guiController.GUIController;
+import Client.geass.net.ClientFTPNet;
 import Client.geass.net.ClientMessageSender;
 import Shared.geass.file.Config;
 import Shared.geass.message.request.ConnectRequest;
@@ -22,6 +23,7 @@ public class ClientController {
     static String ip;
     private int infoPort;
     private int signalPort;
+    private ClientFTPNet clientFtp;
     private LoginJFrame loginFrame;
 
     ClientMessageSender infoSender;

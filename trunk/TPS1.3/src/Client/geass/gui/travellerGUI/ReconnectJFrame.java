@@ -10,7 +10,7 @@ import java.awt.*;
  * Date: 13-6-1
  */
 public class ReconnectJFrame extends javax.swing.JFrame{
-
+    private static final long serialVersionUID = 1L;
     private TravellerFrame mainFrame;
     private GUIControllerInterface guicontroller;
     private ClientController clientController;
