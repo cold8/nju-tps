@@ -8,6 +8,7 @@ import Client.geass.clientController.searchController.CityLogic;
 import Client.geass.clientController.searchController.CityLogicInterface;
 import Server.geass.database.DBcity;
 import Shared.geass.dataPOJO.City;
+import javax.swing.JFrame;
 
 /**
  *
@@ -15,10 +16,12 @@ import Shared.geass.dataPOJO.City;
  */
 public class recommendJPanel extends javax.swing.JPanel {
  City c;
+ JFrame parent ;
     /**
      * Creates new form recommendJPanel
      */
-    public recommendJPanel() {
+    public recommendJPanel(JFrame parent) {
+        this.parent =parent; 
         initComponents();
      //  c =dbcity.randomSearch();
         c=cityLogic.getRandomCity();
