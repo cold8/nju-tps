@@ -4,12 +4,14 @@
  */
 package Client.geass.gui.searchGUI;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Administrator
  */
 public class desciptionDialog extends javax.swing.JDialog {
-
+JFrame parent;
     /**
      * Creates new form desciptionDialog
      */
@@ -18,8 +20,8 @@ public class desciptionDialog extends javax.swing.JDialog {
         initComponents();
         jTextArea1.setText(s);
     }
-   public desciptionDialog(String s ){
-       
+   public desciptionDialog(String s ,JFrame parent ){
+       this.parent=parent;
        initComponents();
        jTextArea1.setText(s);
    }

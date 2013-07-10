@@ -34,11 +34,11 @@ public class searchFrame extends javax.swing.JFrame {
       // planSearchPanel = new PlanSearchPanel();
      //   recommendPanel = new recommendJPanel();
       
-       userPlanPanel = new userPlanPanel();
+       //userPlanPanel = new userPlanPanel();
        //this.setContentPane(planSearchPanel);
      //  this.setContentPane(citySearchPanel);
        // this.setContentPane(splitPanel);
-     this.setContentPane(userPlanPanel);
+     //this.setContentPane(userPlanPanel);
        //this.setContentPane(recommendPanel);
         this.validate();
     }

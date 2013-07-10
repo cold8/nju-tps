@@ -14,6 +14,7 @@ import Shared.geass.dataPOJO.City;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,11 +23,12 @@ import javax.swing.table.DefaultTableModel;
  * @author Kite
  */
 public class CitySearchPanel extends javax.swing.JPanel {
-
+   JFrame parent ;
     /**
      * Creates new form CitySearchPanel
      */
-    public CitySearchPanel() {
+    public CitySearchPanel(JFrame parent) {
+        this.parent=parent;
         initComponents();
         setTable();
     }
@@ -103,7 +105,7 @@ private void setTable(){
                 if((index!=-1)&&(citylist!=null)){
                     System.out.println("in");
                 String str = citylist.get(index).getDescription();
-                new desciptionDialog(str).setVisible(true);}
+                new desciptionDialog(str,parent).setVisible(true);}
                 
         }
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed

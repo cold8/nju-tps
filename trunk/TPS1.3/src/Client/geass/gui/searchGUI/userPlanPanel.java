@@ -8,6 +8,7 @@ package Client.geass.gui.searchGUI;
 
 import Client.geass.clientController.searchController.CityLogic;
 import Client.geass.clientController.searchController.CityLogicInterface;
+import Client.geass.gui.planGUI.DisplayPlanPanel;
 
 import Client.geass.gui.travellerGUI.TableModel;
 
@@ -22,7 +23,11 @@ import java.awt.Toolkit;
 import java.awt.event.FocusEvent;
 
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
 
@@ -33,11 +38,12 @@ import javax.swing.table.DefaultTableModel;
  * @author Administrator
  */
 public class userPlanPanel extends javax.swing.JPanel {
-
+JFrame parent;
     /**
      * Creates new form userPlanPanel
      */
-    public userPlanPanel() {
+    public userPlanPanel(JFrame parent) {
+        this.parent=parent;
         initComponents();
       
         getPlanByuser();
@@ -68,6 +74,7 @@ public class userPlanPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         comp = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setAutoscrolls(true);
         setOpaque(false);
@@ -104,25 +111,34 @@ public class userPlanPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton3.setText("返回主界面");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(46, 46, 46)
                 .addComponent(comp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(33, 33, 33)
                 .addComponent(jButton2)
                 .addGap(35, 35, 35)
                 .addComponent(jButton1)
-                .addGap(142, 142, 142)
+                .addGap(37, 37, 37)
                 .addComponent(PhaseButton1)
-                .addGap(129, 129, 129))
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,16 +147,13 @@ public class userPlanPanel extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(PhaseButton1)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(comp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(45, 45, 45)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(PhaseButton1)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(comp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(111, 111, 111))
@@ -169,7 +182,14 @@ public class userPlanPanel extends javax.swing.JPanel {
     //===================================================================================
     private void PhaseButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PhaseButton1ActionPerformed
         // TODO add your handling code here:
-     
+        int index = jTable1.getSelectedRow();
+        if(index!=-1){
+            try {
+                new  DisplayPlanPanel(null ,planList.get(index));
+            } catch (IOException ex) {
+                Logger.getLogger(userPlanPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_PhaseButton1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -200,6 +220,11 @@ public class userPlanPanel extends javax.swing.JPanel {
             else
              JOptionPane.showMessageDialog(null, "提交失败了 ：9");   
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 // 利用 JScrollBar 做 界面调转 到 目标 框 中
     public void display(){
        //  jSplitPane1.setDividerLocation(1.0);
@@ -266,6 +291,7 @@ private PlanSearchPanel  ps = new PlanSearchPanel(this,logic);
     private javax.swing.JTextField comp;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
