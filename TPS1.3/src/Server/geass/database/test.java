@@ -46,7 +46,7 @@ public class test {
 //            System.out.println(c.getCityname());
 //        }
 //        Date dddd = new Date();
-//        Date dd = new Date();
+        Date dd = new Date();
 //        dddd.setDate(4); dd.setDate(19);
 //        dddd.setYear(2013);dd.setYear(2013);
 //        dddd.setMonth(6);  dd.setMonth(6);
@@ -59,9 +59,16 @@ public class test {
 //      //  System.out.println(planss==null);
 //        ArrayList<Phase> phase = dbcity.getPhase(3);
 //        System.out.println(phase.get(0).getCityname());
-        City city ;
-        city=dbcity.randomSearch();
-        System.out.println(city.getCityname());
-
+//        City city ;
+//        city=dbcity.randomSearch();
+//        System.out.println(city.getCityname());
+        
+//        boolean need =dbcity.insertPlan(99, "tt" ,"rr", dd, dd);
+//         System.out.println(need);
+//       boolean need = dbcity.insertPhase(3, dd, dd, dd, "tt", "kk", "yy", null, null, null, null);
+//         System.out.println(need);
+       ArrayList< Plan> p = dbcity.getPlanByuser("ff");
+         System.out.println(p.size());
+        
     }
 }

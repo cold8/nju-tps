@@ -19,10 +19,17 @@ import Shared.geass.message.response.search.GetPlanByTwoDateResponse;
 
 import Client.geass.net.ClientMessageSender;
 import Shared.geass.dataPOJO.Phase;
+
 import Shared.geass.message.request.search.GetPhaseRequest;
+import Shared.geass.message.request.search.GetPlanByUserRequest;
 import Shared.geass.message.request.search.GetRandomCityRequest;
+import Shared.geass.message.request.search.InsertPhaseRequest;
+import Shared.geass.message.request.search.InsertPlanRequest;
 import Shared.geass.message.response.search.GetPhaseReponse;
+import Shared.geass.message.response.search.GetPlanByUserResponse;
 import Shared.geass.message.response.search.GetRandomCityResponse;
+import Shared.geass.message.response.search.InsertPhaseResponse;
+import Shared.geass.message.response.search.InsertPlanResponse;
 
 
 public class CityClient {
@@ -90,5 +97,20 @@ public class CityClient {
              GetRandomCityResponse reponse =(GetRandomCityResponse)obj;
              return reponse.getRandomCity();
         }
- 
+        public ArrayList<Plan> getPlanByUser(String userName) throws IOException{
+            
+             Object obj = infoSender.sendRequest(new GetPlanByUserRequest(userName));
+             GetPlanByUserResponse reponse = (GetPlanByUserResponse)obj;
+             return reponse.GetPlanByUser();
+        }
+          public boolean insertPhase(ArrayList<Phase> phase) throws IOException{
+              Object obj = infoSender.sendRequest(new InsertPhaseRequest(phase.get(0)));
+              InsertPhaseResponse reponse= (InsertPhaseResponse)obj;
+              return reponse.InsertPhase();
+          }
+          public boolean insertPlan(Plan plan) throws IOException{
+               Object obj = infoSender.sendRequest(new InsertPlanRequest(plan));
+               InsertPlanResponse reponse =(InsertPlanResponse)obj;
+               return reponse.InsertPlan();
+          }
 }

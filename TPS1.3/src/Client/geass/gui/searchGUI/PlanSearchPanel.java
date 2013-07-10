@@ -8,20 +8,22 @@ import Client.geass.clientController.searchController.CityLogic;
 import Client.geass.clientController.searchController.CityLogicInterface;
 
 import Client.geass.gui.travellerGUI.TableModel;
-import Server.geass.database.DBcity;
+
 import Shared.geass.dataPOJO.Phase;
 import Shared.geass.dataPOJO.Plan;
-import Shared.geass.dataPOJO.User;
-import java.awt.Cursor;
-import java.awt.Image;
+
 import java.awt.Point;
-import java.awt.Toolkit;
-import java.awt.event.MouseEvent;
+
 import java.util.ArrayList;
 import java.util.Date;
+
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
+
+
+import javax.swing.JTextField;
+;
 import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -29,27 +31,24 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PlanSearchPanel extends javax.swing.JPanel {
 
-    userPlanPanel up = null;
-    User user;
+  
+
+   
     /**
      * Creates new form PlanSearchPanel
      */
-    public PlanSearchPanel(userPlanPanel up) {
+    public PlanSearchPanel(userPlanPanel up,CityLogicInterface c) {
 
         initComponents();
         this.up = up;
         setDrag();
-//        searchTable.addMouseListener(listen.getClickListener());
-//        searchTable.addMouseMotionListener(listen.getDragListener());
+        this.c=c;
+      
+
     }
 
    
-   public PlanSearchPanel(User user,userPlanPanel up ){
-        initComponents();
-       this.user=user; 
-        this.up = up;
-        setDrag();
-   }
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -73,10 +72,15 @@ public class PlanSearchPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        comp = new javax.swing.JTextField();
+
+        jScrollPane1.setName("表格"); // NOI18N
 
         searchTable.setModel(planTable);
         searchTable.setName("search");
         jScrollPane1.setViewportView(searchTable);
+
+        jPanel1.setOpaque(true);
 
         searchButton1.setText("搜一下");
         searchButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -107,6 +111,8 @@ public class PlanSearchPanel extends javax.swing.JPanel {
             }
         });
 
+        comp.setEditable(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -136,34 +142,36 @@ public class PlanSearchPanel extends javax.swing.JPanel {
                     .addComponent(searchButton1)
                     .addComponent(searchButton2))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addComponent(comp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(searchButton1)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(searchButton2)
-                                .addComponent(jLabel4)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel2)
-                                .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jButton1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchButton1)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(searchButton2)
+                        .addComponent(jLabel4)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel2)
+                        .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(comp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -176,7 +184,7 @@ public class PlanSearchPanel extends javax.swing.JPanel {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 31, Short.MAX_VALUE))))
+                        .addGap(0, 23, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,19 +195,24 @@ public class PlanSearchPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        //a拖拽所选的行数限定
     }// </editor-fold>//GEN-END:initComponents
-    PhaseDialog pd = new PhaseDialog();
-    boolean isDrag = false;
+   
+   
     int index ;
     private void setDrag() {
         searchTable.addMouseListener(new java.awt.event.MouseAdapter() {
            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                up.release();
-                //  set(null);
-                System.out.println(evt.getX()+","+evt.getY());
+                     
+                 p = evt.getPoint();
+              //  System.out.println(evt.getX()+","+evt.getY());
+                 if(p.getX()<-70)
+                    up.release(plan,getPhase());
+                    comp.setVisible(false);
  //到达有效区 填充表格              
-                if (valid(evt.getX(), evt.getY())) {
-                    up.getPlanByuser(getDragPlan());
+                if (valid()) {
+                    up.getPlanByuser();
                     
                 }
                
@@ -208,30 +221,39 @@ public class PlanSearchPanel extends javax.swing.JPanel {
 
 
         searchTable.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+                
             public void mouseDragged(java.awt.event.MouseEvent evt) {
-// 拖拽 移动
-                            up.move();
-               
- //拖拽到一定位置                    
-                     if (valid(evt.getX(), evt.getY())) {
-                             up.enter();
-                          if(evt.getX()<-70)
-                             up.display();
-                }
-                //set(dynamiteCuror);
-                         isDrag = true;  //   System.out.println(" ps:"+evt.getX()+","+evt.getY());
- //a拖拽所选的行数限定             
-                  index =searchTable.getSelectedRow();// System.out.println(index+","+searchTable.getRowCount());
-                  searchTable.setRowSelectionInterval(index,index);
                  
-            }
+                // 拖拽 移动
+                     p.setLocation(evt.getX()-30, evt.getY()+50);
+               
+                       GhostPaint(comp);   
+                 //拖拽到一定位置       
+                      if (valid( )) {
+                            up.enter(p,detail);
+                          
+                         if(p.getX()<-70)
+                             up.display();
+                          
+                   }  
+                // 限制拖拽的行数
+                  index =searchTable.getSelectedRow();
+                  searchTable.setRowSelectionInterval(index,index);
+
+                    }
         });
 
-    }
+    }    
+               
+           
+                  
+                 
+     
 // 判断 鼠标是否在有效区域
-    public boolean valid(int x, int y) {
+    public boolean valid() {
         boolean valid = false;
-        
+        int x = (int) p.getX();
+        int y = (int) p.getY();
         if ((x <= -31) && (x >= -126) && (y < 297) && (y > -30)) {  // 进入 边界 区域 
             valid = true;
         }    
@@ -241,21 +263,28 @@ public class PlanSearchPanel extends javax.swing.JPanel {
         return valid;
     }
 
-// 提供给 userPlan 的数据 接口  index 是选中的 plan 下标
 
-    public Plan getDragPlan() {
-        Plan p =planlist.get(index);
-        p.setUsername("g");   // 这里是桩 
-        //p.setUsername(user.getName());
-        return p ;
-       
-    }
+
+   
 
     public ArrayList<Phase> getPhase() {
         return phaselist;//jButton1ActionPerformed 方法中 初始化，可以 重新赋值
     }
-
+     public JTextField getComp(){
+         return comp ;
+     }
    
+public void GhostPaint(JTextField comp){
+        // comp.setText());
+             plan =planlist.get(index);
+          detail = plan.getPlantitle()+"      ，      "+plan.getUsername()+".....";
+         comp.setVisible(true);
+         comp.setText(detail);
+         comp.setSize(200, 25);
+         comp.setLocation(p);
+         comp.repaint();
+       }
+ 
     private void searchButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButton1ActionPerformed
         // TODO add your handling code here:
         Date start = jDateChooser1.getDate();
@@ -323,12 +352,17 @@ public class PlanSearchPanel extends javax.swing.JPanel {
         }
         this.planTable.setDataVector(TableModel.getInstance().planTableVector(planlist), TableModel.PLAN_COLUMN_NAMES);
     }
-    ArrayList<Plan> planlist = null;
-    ArrayList<Phase> phaselist = null;
-    CityLogicInterface c = new CityLogic();
-    // private DBcity dbcity = new DBcity();
-    private DefaultTableModel planTable = new DefaultTableModel(null, TableModel.PLAN_COLUMN_NAMES);
+    private userPlanPanel up = null;
+    private Point p = new Point(0,0) ;
+    private  Plan plan = null;
+    private ArrayList<Plan> planlist = null;
+    private ArrayList<Phase> phaselist = null;
+    private CityLogicInterface c ;
+    private  PhaseSearchDialog pd = new PhaseSearchDialog();
+    private  DefaultTableModel planTable = new DefaultTableModel(null, TableModel.PLAN_COLUMN_NAMES);
+    private String detail;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField comp;
     private javax.swing.JButton jButton1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;

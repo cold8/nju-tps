@@ -2,6 +2,8 @@ package Client.geass.clientController.searchController;
 
 import Client.geass.clientController.CityClient;
 import Shared.geass.dataPOJO.City;
+import Shared.geass.dataPOJO.Phase;
+import Shared.geass.dataPOJO.Plan;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -108,6 +110,37 @@ public class CityLogic implements CityLogicInterface {
         } catch (IOException ex) {
             Logger.getLogger(CityLogic.class.getName()).log(Level.SEVERE, null, ex);
             return null;
+        }
+    }
+
+    @Override
+    public ArrayList getPlanByUser(String username) {
+        try {
+            
+            return cityClient.getPlanByUser(username);
+        } catch (IOException ex) {
+            Logger.getLogger(CityLogic.class.getName()).log(Level.SEVERE, null, ex);
+            return null ;
+        }
+    }
+
+    @Override
+    public boolean insertPhase(ArrayList<Phase> phase) {
+        try {
+            return cityClient.insertPhase(phase);
+        } catch (IOException ex) {
+            Logger.getLogger(CityLogic.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+
+    @Override
+    public boolean insertPlan(Plan plan) {
+        try {
+            return cityClient.insertPlan(plan);
+        } catch (IOException ex) {
+            Logger.getLogger(CityLogic.class.getName()).log(Level.SEVERE, null, ex);
+            return false ;
         }
     }
 
