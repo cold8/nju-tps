@@ -100,4 +100,24 @@ public class CityLogic implements CityLogicInterface {
             return null;
         }
     }
+
+    @Override
+    public City getRandomCity() {
+        try {
+            return cityClient.randomSearch();
+        } catch (IOException ex) {
+            Logger.getLogger(CityLogic.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+   
+  
+    
+ 
+
+
+  
+   
+   
 }

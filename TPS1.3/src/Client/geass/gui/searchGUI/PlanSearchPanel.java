@@ -11,6 +11,7 @@ import Client.geass.gui.travellerGUI.TableModel;
 import Server.geass.database.DBcity;
 import Shared.geass.dataPOJO.Phase;
 import Shared.geass.dataPOJO.Plan;
+import Shared.geass.dataPOJO.User;
 import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.Point;
@@ -27,23 +28,28 @@ import javax.swing.table.DefaultTableModel;
  * @author Kite
  */
 public class PlanSearchPanel extends javax.swing.JPanel {
-userPlanPanel up =null;
+
+    userPlanPanel up = null;
+    User user;
     /**
      * Creates new form PlanSearchPanel
      */
     public PlanSearchPanel(userPlanPanel up) {
-        
+
         initComponents();
-        this.up=up;
+        this.up = up;
         setDrag();
 //        searchTable.addMouseListener(listen.getClickListener());
 //        searchTable.addMouseMotionListener(listen.getDragListener());
     }
- public PlanSearchPanel(){
-      initComponents();
-       // this.up=up;
+
+   
+   public PlanSearchPanel(User user,userPlanPanel up ){
+        initComponents();
+       this.user=user; 
+        this.up = up;
         setDrag();
- }
+   }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -66,14 +72,10 @@ userPlanPanel up =null;
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         searchTable.setModel(planTable);
         searchTable.setName("search");
-        searchTable.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                searchTableMouseDragged(evt);
-            }
-        });
         jScrollPane1.setViewportView(searchTable);
 
         searchButton1.setText("搜一下");
@@ -97,6 +99,13 @@ userPlanPanel up =null;
         jLabel3.setText("计划结束时间");
 
         jLabel4.setText("城市名称");
+
+        jButton1.setText("查看");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -126,27 +135,34 @@ userPlanPanel up =null;
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(searchButton1)
                     .addComponent(searchButton2))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchButton1)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(searchButton2)
-                        .addComponent(jLabel4)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel2)
-                        .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(searchButton1)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(searchButton2)
+                                .addComponent(jLabel4)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel2)
+                                .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jButton1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -157,8 +173,10 @@ userPlanPanel up =null;
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 31, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,79 +188,80 @@ userPlanPanel up =null;
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-    PhaseDialog pd =  new PhaseDialog(); boolean isDrag = false ;
-    private void setDrag(){
+    PhaseDialog pd = new PhaseDialog();
+    boolean isDrag = false;
+    int index ;
+    private void setDrag() {
         searchTable.addMouseListener(new java.awt.event.MouseAdapter() {
-     public void mouseClicked(java.awt.event.MouseEvent evt) {
-        
-        int index = searchTable.getSelectedRow();
-        int id ;
-        
-        if((planlist!=null)&&(index!=-1)){
-       id =planlist.get(index).getPlanid();
-          // System.out.println(id);
-        phaselist =c.getPhase(id);
-       // System.out.println(phaselist.get(0).getSite());
-         pd.setP(phaselist);
-        pd .setVisible(true);
-          
-        }
-    
-    }
-    public void mouseReleased(java.awt.event.MouseEvent evt) {
-        up.cusor(false);
-      //  set(null);
-        if(valid(evt.getX(),evt.getY())){
-         up.getPlanByuser(getDrag());}
-        isDrag=false;
-         System.out.println(" ps:"+isDrag);
-    }
-    public boolean valid(int x,int y){
-        boolean valid = false ;
-        if((x<=-31)&&(x>=-495)&&(y<297)&&(y>-30))
-            valid=true;
-        return valid ;
-    }
+           public void mouseReleased(java.awt.event.MouseEvent evt) {
+                up.release();
+                //  set(null);
+                System.out.println(evt.getX()+","+evt.getY());
+ //到达有效区 填充表格              
+                if (valid(evt.getX(), evt.getY())) {
+                    up.getPlanByuser(getDragPlan());
+                    
+                }
+               
+            }
         });
-        
-searchTable.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-    public void mouseDragged(java.awt.event.MouseEvent evt) {
-          
-					up.cusor(true);
-                                       
-                                        //set(dynamiteCuror);
-                                        isDrag=true ;
-                                      //   System.out.println(" ps:"+evt.getX()+","+evt.getY());
-                                        
-    }
-});
+
+
+        searchTable.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+// 拖拽 移动
+                            up.move();
+               
+ //拖拽到一定位置                    
+                     if (valid(evt.getX(), evt.getY())) {
+                             up.enter();
+                          if(evt.getX()<-70)
+                             up.display();
+                }
+                //set(dynamiteCuror);
+                         isDrag = true;  //   System.out.println(" ps:"+evt.getX()+","+evt.getY());
+ //a拖拽所选的行数限定             
+                  index =searchTable.getSelectedRow();// System.out.println(index+","+searchTable.getRowCount());
+                  searchTable.setRowSelectionInterval(index,index);
+                 
+            }
+        });
 
     }
-    
-    public void set(Cursor c){
-        setCursor(c);
-    }
-    public ArrayList<Plan>  getDrag(){
-         ArrayList<Plan> list =new  ArrayList<Plan>();
-         int [] rows =searchTable.getSelectedRows();
-         System.out.println(rows.length);
-         for(int i =0;i<rows.length;i++)
-           list.add(  planlist.get(rows[i]));
-        return list;
-    }
-    public ArrayList<Phase> getPhase(){
-        return phaselist ;
-    }
-    public JTable getSelect(){
+// 判断 鼠标是否在有效区域
+    public boolean valid(int x, int y) {
+        boolean valid = false;
         
-        return searchTable;
+        if ((x <= -31) && (x >= -126) && (y < 297) && (y > -30)) {  // 进入 边界 区域 
+            valid = true;
+        }    
+        if((x <= -135) && (x >= -730) && (y < 297) && (y > -30)){  // 进入 目标表格区域
+            valid = true;
+        }
+        return valid;
     }
+
+// 提供给 userPlan 的数据 接口  index 是选中的 plan 下标
+
+    public Plan getDragPlan() {
+        Plan p =planlist.get(index);
+        p.setUsername("g");   // 这里是桩 
+        //p.setUsername(user.getName());
+        return p ;
+       
+    }
+
+    public ArrayList<Phase> getPhase() {
+        return phaselist;//jButton1ActionPerformed 方法中 初始化，可以 重新赋值
+    }
+
+   
     private void searchButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButton1ActionPerformed
         // TODO add your handling code here:
         Date start = jDateChooser1.getDate();
         Date end = jDateChooser2.getDate();
 
-        if ( start == null || end == null) {
+        if (start == null || end == null) {
             JOptionPane.showMessageDialog(this, "请选择日期：）");
         } else {
 
@@ -255,11 +274,11 @@ searchTable.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
         // TODO add your handling code here:
         Date date = jDateChooser3.getDate();
         String searchCondition = this.jTextField1.getText();
-        if ( searchCondition.equals("") ) {
+        if (searchCondition.equals("")) {
             JOptionPane.showMessageDialog(this, "请输入城市名：）");
-        }else if(date == null){
+        } else if (date == null) {
             JOptionPane.showMessageDialog(this, "请输入选择日期：）");
-        }else {
+        } else {
 
             this.searchByCityDate(searchCondition, date);
 
@@ -268,14 +287,26 @@ searchTable.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
 
     }//GEN-LAST:event_searchButton2ActionPerformed
 
-    private void searchTableMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchTableMouseDragged
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_searchTableMouseDragged
+         int index = searchTable.getSelectedRow();
+                int id;
+
+                if ((planlist != null) && (index != -1)) {
+                    id = planlist.get(index).getPlanid();
+                    // System.out.println(id);
+                    phaselist = c.getPhase(id);
+                    // System.out.println(phaselist.get(0).getSite());
+                    pd.setP(phaselist);
+                    pd.setVisible(true);
+
+                }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void searchByTwoDate(Date start, Date end) {
 
-        planlist = dbcity.searchPlanByTwoDate(start, end);
-//         planlist=c.searchPlanByTwoDate(start, end);
+        // planlist = dbcity.searchPlanByTwoDate(start, end);
+        planlist = c.searchPlanByTwoDate(start, end);
         if (planlist == null) {
             System.out.println("没有找到符合条件的计划");
             return;
@@ -284,8 +315,8 @@ searchTable.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
     }
 
     private void searchByCityDate(String searchCondition, Date date) {
-        planlist = dbcity.searchPlanByCityDate(searchCondition, date);
-       // planlist = c.searchPlanByCityDate(searchCondition, date);
+        // planlist = dbcity.searchPlanByCityDate(searchCondition, date);
+        planlist = c.searchPlanByCityDate(searchCondition, date);
         if (planlist == null) {
             System.out.println("没有找到符合的城市");
             return;
@@ -293,11 +324,12 @@ searchTable.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
         this.planTable.setDataVector(TableModel.getInstance().planTableVector(planlist), TableModel.PLAN_COLUMN_NAMES);
     }
     ArrayList<Plan> planlist = null;
-    ArrayList<Phase>phaselist = null ;
+    ArrayList<Phase> phaselist = null;
     CityLogicInterface c = new CityLogic();
-    private DBcity dbcity = new DBcity();
+    // private DBcity dbcity = new DBcity();
     private DefaultTableModel planTable = new DefaultTableModel(null, TableModel.PLAN_COLUMN_NAMES);
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private com.toedter.calendar.JDateChooser jDateChooser3;

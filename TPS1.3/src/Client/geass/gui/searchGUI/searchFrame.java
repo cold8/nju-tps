@@ -26,23 +26,20 @@ public class searchFrame extends javax.swing.JFrame {
     public searchFrame() throws IOException {
         initComponents();
         innit();
+        
     }
-
-    public void innit() throws IOException {
-        Date dd = new Date();
-        dd.setDate(4);
-        dd.setMonth(10);
-        dd.setYear(2013);
-        citySearchPanel = new CitySearchPanel();
-        planSearchPanel = new PlanSearchPanel();
-        //  recommendPanel = new recommendJPanel();
-
-        userPlanPanel = new userPlanPanel();
-        //this.jSplitPane1.setRightComponent(planSearchPanel);
-        //this.jSplitPane1.setLeftComponent(userPlanPanel);
-        //  this.setContentPane(citySearchPanel);
-        // this.setContentPane(splitPanel);
-        this.setContentPane(userPlanPanel);
+    
+    public void innit() throws IOException{Date dd = new Date(); dd.setDate(4);dd.setMonth(10);dd.setYear(2013);
+      // citySearchPanel = new CitySearchPanel();
+      // planSearchPanel = new PlanSearchPanel();
+     //   recommendPanel = new recommendJPanel();
+      
+       userPlanPanel = new userPlanPanel();
+       //this.setContentPane(planSearchPanel);
+     //  this.setContentPane(citySearchPanel);
+       // this.setContentPane(splitPanel);
+     this.setContentPane(userPlanPanel);
+       //this.setContentPane(recommendPanel);
         this.validate();
     }
 
@@ -61,7 +58,7 @@ public class searchFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 888, Short.MAX_VALUE)
+            .addGap(0, 973, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

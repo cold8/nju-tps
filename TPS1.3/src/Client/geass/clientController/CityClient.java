@@ -20,7 +20,9 @@ import Shared.geass.message.response.search.GetPlanByTwoDateResponse;
 import Client.geass.net.ClientMessageSender;
 import Shared.geass.dataPOJO.Phase;
 import Shared.geass.message.request.search.GetPhaseRequest;
+import Shared.geass.message.request.search.GetRandomCityRequest;
 import Shared.geass.message.response.search.GetPhaseReponse;
+import Shared.geass.message.response.search.GetRandomCityResponse;
 
 
 public class CityClient {
@@ -82,6 +84,11 @@ public class CityClient {
             Object obj = infoSender.sendRequest(new GetPhaseRequest(planid));
             GetPhaseReponse reponse =(GetPhaseReponse)obj;
             return reponse.getPhase();
+        }
+        public City randomSearch() throws IOException{
+             Object obj = infoSender.sendRequest(new GetRandomCityRequest());
+             GetRandomCityResponse reponse =(GetRandomCityResponse)obj;
+             return reponse.getRandomCity();
         }
  
 }
