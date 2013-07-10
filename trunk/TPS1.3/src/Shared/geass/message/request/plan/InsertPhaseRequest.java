@@ -3,9 +3,11 @@ package Shared.geass.message.request.plan;
 import java.util.Date;
 
 import Server.geass.database.Controller.DatabaseController;
+import Shared.geass.dataPOJO.Phase;
 import Shared.geass.message.request.Request;
 import Shared.geass.message.response.ConfirmResponse;
 import Shared.geass.message.response.Response;
+import java.util.ArrayList;
 
 public class InsertPhaseRequest extends Request {
 
@@ -38,6 +40,7 @@ public class InsertPhaseRequest extends Request {
 		
 	}
 
+   
 	@Override
 	public Response invoke() {
 		boolean success = DatabaseController.getInstance().insertPhase(planid,date,begintime,endtime,cityname,site,transport,breakfast,lunch,dinner,comment);

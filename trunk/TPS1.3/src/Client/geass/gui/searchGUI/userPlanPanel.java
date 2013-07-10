@@ -6,12 +6,15 @@ package Client.geass.gui.searchGUI;
 
 
 
-import Client.geass.gui.planGUI.DisplayPlanPanel;
-import Client.geass.gui.planGUI.DisplaySearchedPlanPanel;
+import Client.geass.clientController.searchController.CityLogic;
+import Client.geass.clientController.searchController.CityLogicInterface;
+
 import Client.geass.gui.travellerGUI.TableModel;
-import Server.geass.database.DBplan;
+
+import Shared.geass.dataPOJO.Phase;
 import Shared.geass.dataPOJO.Plan;
 import Shared.geass.dataPOJO.User;
+import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.Point;
@@ -22,9 +25,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
-import javax.swing.ScrollPaneConstants;
+
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -38,21 +39,15 @@ public class userPlanPanel extends javax.swing.JPanel {
      */
     public userPlanPanel() {
         initComponents();
-       
-        getPlanByuser(null);
+      
+        getPlanByuser();
       //  init();
-        
-        jSplitPane1.setRightComponent(new PlanSearchPanel(this)); 
+        jButton1.setEnabled(false);
+        jSplitPane1.setRightComponent(ps); 
        
         // System.out.println("初始位置"+j.getValue());
     }
- public userPlanPanel(User user){
-     this.user=user ;
-      initComponents();
-            //  init();
-      getPlanByuser(null);
-       jSplitPane1.setRightComponent(new PlanSearchPanel(user,this)); 
- }
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,6 +66,8 @@ public class userPlanPanel extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         PhaseButton1 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        comp = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
 
         setAutoscrolls(true);
         setOpaque(false);
@@ -90,10 +87,20 @@ public class userPlanPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("删除");
+        jButton1.setText("取消拖拽");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        comp.setText("jTextField1");
+        comp.setVisible(false);
+
+        jButton2.setText("提交");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -103,11 +110,15 @@ public class userPlanPanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(43, 43, 43)
+                .addComponent(comp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(jButton2)
+                .addGap(35, 35, 35)
                 .addComponent(jButton1)
                 .addGap(142, 142, 142)
                 .addComponent(PhaseButton1)
@@ -120,10 +131,16 @@ public class userPlanPanel extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PhaseButton1)
-                    .addComponent(jButton1))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(PhaseButton1)
+                            .addComponent(jButton1)
+                            .addComponent(jButton2)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(comp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(111, 111, 111))
@@ -137,10 +154,9 @@ public class userPlanPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(153, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 721, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(147, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 721, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,19 +174,33 @@ public class userPlanPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        int index =jTable1.getSelectedRow();
-        if(index!=-1){
+       
                planList.remove(index);
+               jButton1.setEnabled(false);
              if(planList==null){
                 System.out.println("没有的行程"); 
                 return ;}
             
                      
-        } else JOptionPane.showMessageDialog(this, "请选中一行：）");
+        
     this.plantable.setDataVector(TableModel.getInstance().planTableVector(planList), TableModel.PLAN_COLUMN_NAMES);
         
     }//GEN-LAST:event_jButton1ActionPerformed
-// 利用 JScrollBar 做的 界面调转 到 目标 框 中
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        boolean isInsert =true;
+           if(phaseList!=null){
+            isInsert = logic.insertPhase(phaseList); System.out.println("we are in ");
+           }
+           // boolean isIn = logic.insertPlan(plan);
+            boolean isIn=true;
+            if(isInsert&&isIn)
+            JOptionPane.showMessageDialog(null, "提交成功 ：）");
+            else
+             JOptionPane.showMessageDialog(null, "提交失败了 ：9");   
+    }//GEN-LAST:event_jButton2ActionPerformed
+// 利用 JScrollBar 做 界面调转 到 目标 框 中
     public void display(){
        //  jSplitPane1.setDividerLocation(1.0);
         // jScrollPane1.scrollRectToVisible(null);
@@ -181,9 +211,9 @@ public class userPlanPanel extends javax.swing.JPanel {
     }
     
     //  查询某一个用户的计划，刷新表格 可以添加 计划
-public void getPlanByuser(Plan p){
-    if(p!=null){
-    planList.add(p);}
+public void getPlanByuser(){
+    if(plan!=null){
+    planList.add(plan);}
     if(planList==null){
         System.out.println("没有的行程"); 
         return ;
@@ -195,38 +225,47 @@ public void getPlanByuser(Plan p){
     
     
   
-    public void move( ){
-    
-         
-  Toolkit kit = Toolkit.getDefaultToolkit();    
-					Image img = kit.getImage("src//c.PNG"); 
-					
-					Cursor dynamiteCuror = kit.createCustomCursor(img, new Point(10,10),"dynamite stick") ;    
-                                        setCursor(dynamiteCuror);
-       
-   
-}
-    public void enter(){
+  
+    public void enter(Point p , String r){
          Toolkit kit = Toolkit.getDefaultToolkit();    
 					Image img = kit.getImage("src//7.jpg"); 
 					
 					Cursor dynamiteCuror = kit.createCustomCursor(img, new Point(10,10),"dynamite stick") ;    
                                         setCursor(dynamiteCuror);
-       
+                                        System.out.println(p.x+","+p.y);
+                                        int x = p.x ; int y =p.y;
+//        comp.setText(r);
+//        comp.setSize(200,20); // Point o =comp.getLocation();
+//        comp.setVisible(true); //System.out.println(o.x+" ,"+o.y);
+//        comp.setLocation(700-x,-y);
+//         comp.repaint();                    
+                 ps.GhostPaint(comp);   
+                 comp.repaint();
     }
-    public void release(){
+    public void release(Plan plan , ArrayList<Phase> phase){
          setCursor(null);
+         comp.setVisible(false);
+         if(phase!=null)
+         this.phaseList=phase; 
+         this.plan=plan;
+         this.plan.setUsername("g");
+        jButton1.setEnabled(true);
     }
-
-DBplan dbplan = new DBplan();
-    
-private User  user ;
-ArrayList<Plan>  planList = dbplan.getPlanByuser("g");
+    int index =0;
+CityLogicInterface logic =new CityLogic(); 
+   
+private User  user =null;
+private Plan  plan =null;
+private ArrayList<Phase> phaseList=null;
+private ArrayList<Plan>  planList = logic.getPlanByUser("ff");
 private DefaultTableModel plantable = new DefaultTableModel(null,TableModel.PLAN_COLUMN_NAMES);
-private PlanSearchPanel  ps = new PlanSearchPanel(this);
+private PlanSearchPanel  ps = new PlanSearchPanel(this,logic);
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton PhaseButton1;
+    private javax.swing.JTextField comp;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

@@ -192,6 +192,16 @@ public class DatabaseController implements DatabaseControllerInterface{
        public City randomCity(){
            return dBcity.randomSearch();
        }
-
+       public ArrayList getPlanByuser(String username){
+           return dBcity.getPlanByuser(username);
+       }
+       public boolean InsertPhase(Phase phase){
+           
+           return dBcity.insertPhase(phase.getPhaseid(),phase.getDate(),phase.getBegintime(),phase.getEndtime(),phase.getCityname(),
+                   phase.getSite(),phase.getTransport(),phase.getBreakfast(),phase.getLunch(),phase.getDinner(),phase.getComment());
+       }
+       public boolean InsertPlan(Plan plan){
+           return dBcity.insertPlan( plan.getPlantitle(),plan.getUsername(), plan.getStartdate(), plan.getEnddate());
+       }
 
 }

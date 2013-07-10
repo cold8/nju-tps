@@ -2,6 +2,7 @@ package Client.geass.clientController;
 
 import Client.geass.gui.loginGUI.LoginJFrame;
 import Client.geass.gui.guiController.GUIController;
+import Client.geass.gui.searchGUI.searchFrame;
 import Client.geass.net.ClientFTPNet;
 import Client.geass.net.ClientMessageSender;
 import Shared.geass.file.Config;
@@ -9,6 +10,8 @@ import Shared.geass.message.request.ConnectRequest;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created with IntelliJ IDEA.
@@ -37,9 +40,16 @@ public class ClientController {
         this.ip = ip;
         this.infoPort = infoPort;
         this.signalPort = signalPort;
-        loginFrame = new LoginJFrame();
+       loginFrame = new LoginJFrame();
         loginFrame.setVisible(true);
         intialize();
+        searchFrame s;
+        try {
+            s = new searchFrame();  s.setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(ClientController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+              
     }
 
     private void intialize(){
@@ -54,6 +64,7 @@ public class ClientController {
         UserClient.getInstance().setInfoSender(infoSender);
         TravellerClient.getInstance().setInfoSender(infoSender);
         PlanClient.getInstance().setInfoSender(infoSender);
+        System.out.println("here we are ");
         CityClient.getInstance().setInfoSender(infoSender);
     }
 
