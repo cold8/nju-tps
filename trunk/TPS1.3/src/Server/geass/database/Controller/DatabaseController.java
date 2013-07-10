@@ -189,7 +189,9 @@ public class DatabaseController implements DatabaseControllerInterface{
        public ArrayList getPhase(int planid){
            return dBcity.getPhase(planid);
        }
-
+       public City randomCity(){
+           return dBcity.randomSearch();
+       }
 
 
 }

@@ -1,5 +1,6 @@
 package Client.geass.clientController.searchController;
 
+import Shared.geass.dataPOJO.City;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,5 +16,6 @@ public interface CityLogicInterface {
     public ArrayList SearchBySeason(String season);
     public ArrayList searchPlanByTwoDate(Date beginDate, Date endDate);
     public ArrayList searchPlanByCityDate(String searchCondition ,Date date);
-    public ArrayList getPhase(int planid);	
+    public ArrayList getPhase(int planid);
+    public City getRandomCity();
 }
